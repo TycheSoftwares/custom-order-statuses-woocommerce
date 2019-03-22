@@ -173,8 +173,11 @@ class Alg_WC_Custom_Order_Statuses_Core {
 	 * @todo    [feature] separate content, subject etc. for each custom status
 	 */
 	function send_email_on_order_status_changed( $order_id, $status_from, $status_to, $order ) {
+
+		$alg_orders_custom_statuses_array = alg_get_custom_order_statuses();
+
 		$emails_statuses = get_option( 'alg_orders_custom_statuses_emails_statuses', array() );
-		if ( in_array( 'wc-' . $status_to, $emails_statuses ) || ( empty( $emails_statuses ) && in_array( 'wc-' . $status_to, array_keys( alg_get_custom_order_statuses() ) ) ) ) {
+		if ( in_array( 'wc-' . $status_to, $emails_statuses ) || ( empty( $emails_statuses ) && in_array( 'wc-' . $status_to, array_keys( $alg_orders_custom_statuses_array ) ) ) ) {
 			// Options
 			$email_address = get_option( 'alg_orders_custom_statuses_emails_address', '' );
 			$email_subject = get_option( 'alg_orders_custom_statuses_emails_subject',
@@ -183,6 +186,11 @@ class Alg_WC_Custom_Order_Statuses_Core {
 				sprintf( __( 'Order status changed to %s', 'custom-order-statuses-woocommerce' ), '{status_to}' ) );
 			$email_content = get_option( 'alg_orders_custom_statuses_emails_content',
 				sprintf( __( 'Order #%s status changed from %s to %s', 'custom-order-statuses-woocommerce' ), '{order_number}', '{status_from}', '{status_to}' ) );
+
+			$woo_statuses = wc_get_order_statuses();
+			$replace_status_from = isset( $alg_orders_custom_statuses_array[ 'wc-' . $status_from ] ) ? $alg_orders_custom_statuses_array[ 'wc-' . $status_from ] : $woo_statuses[ 'wc-' . $status_from ];
+			$replace_status_to = isset( $alg_orders_custom_statuses_array[ 'wc-' . $status_to ] ) ? $alg_orders_custom_statuses_array[ 'wc-' . $status_to ] : $woo_statuses[ 'wc-' . $status_to ];
+
 			// Replaced values
 			$replaced_values = array(
 				'{order_id}'        => $order_id,
@@ -190,8 +198,8 @@ class Alg_WC_Custom_Order_Statuses_Core {
 				'{order_date}'      => date( get_option( 'date_format' ), strtotime( $order->get_date_created() ) ),
 				'{order_details}'   => ( false !== strpos( $email_content, '{order_details}' ) ? $this->get_wc_order_details_template( $order ) : '' ),
 				'{site_title}'      => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
-				'{status_from}'     => $status_from,
-				'{status_to}'       => $status_to,
+				'{status_from}'     => $replace_status_from,
+				'{status_to}'       => $replace_status_to,
 			);
 			$email_replaced_values = array(
 				'%customer%' => $order->get_billing_email(),
