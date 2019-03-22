@@ -200,6 +200,8 @@ class Alg_WC_Custom_Order_Statuses_Core {
 				'{site_title}'      => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
 				'{status_from}'     => $replace_status_from,
 				'{status_to}'       => $replace_status_to,
+				'{first_name}'		=> $order->get_billing_first_name(),
+				'{last_name}'		=> $order->get_billing_last_name(),
 			);
 			$email_replaced_values = array(
 				'{customer_email}' => $order->get_billing_email(),
