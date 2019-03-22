@@ -202,8 +202,8 @@ class Alg_WC_Custom_Order_Statuses_Core {
 				'{status_to}'       => $replace_status_to,
 			);
 			$email_replaced_values = array(
-				'%customer%' => $order->get_billing_email(),
-				'%admin%'    => get_option( 'admin_email' ),
+				'{customer_email}' => $order->get_billing_email(),
+				'{admin_email}'    => get_option( 'admin_email' ),
 			);
 			// Final processing
 			$email_address = ( '' == $email_address ? get_option( 'admin_email' ) : str_replace( array_keys( $email_replaced_values ), $email_replaced_values, $email_address ) );

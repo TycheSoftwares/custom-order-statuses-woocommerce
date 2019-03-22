@@ -64,7 +64,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_Emails extends Alg_WC_Custom_Order_S
 				'title'    => __( 'Email address', 'custom-order-statuses-woocommerce' ),
 				'desc_tip' => sprintf( __( 'Comma separated list of emails. Leave blank to send emails to admin (%s).', 'custom-order-statuses-woocommerce' ), get_option( 'admin_email' ) ),
 				'desc'     => sprintf( __( 'Use %s to send email to the customer\'s billing email; %s to the admin\'s email.', 'custom-order-statuses-woocommerce' ),
-					'<code>%customer%</code>', '<code>%admin%</code>' ),
+					'<code>{customer_email}</code>', '<code>{admin_email}</code>' ),
 				'id'       => 'alg_orders_custom_statuses_emails_address',
 				'default'  => '',
 				'type'     => 'text',
