@@ -157,6 +157,22 @@ final class Alg_WC_Custom_Order_Statuses {
 			}
 		}
 		update_option( 'alg_custom_order_statuses_version', $this->version );
+
+		// get the email send to address option as it needs to be updated
+		$email_send_to = get_option( 'alg_orders_custom_statuses_emails_address' );
+		if( '' != $email_send_to && in_array( $email_send_to, array( '%customer%', '%admin%', 'min%' ) ) ) { // contains old values
+			switch( $email_send_to ) {
+				case 'min%':
+				case '%admin%':
+					update_option( 'alg_orders_custom_statuses_emails_address', '{admin_email}' );
+					break;
+				case '%customer%':
+					update_option( 'alg_orders_custom_statuses_emails_address', '{customer_email}' );
+					break;
+				default:
+					break;
+			} 
+		}
 	}
 
 	/**

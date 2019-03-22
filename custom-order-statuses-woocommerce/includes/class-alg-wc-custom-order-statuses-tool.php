@@ -235,6 +235,12 @@ class Alg_WC_Custom_Order_Statuses_Tool {
 		// Checking function arguments
 		if ( '' == $new_status ) {
 			return '<div class="error"><p>' . __( 'Status slug is empty. Status was not added!', 'custom-order-statuses-woocommerce' ) . '</p></div>';
+		} else {
+			global $wpdb;
+			$terms_list = $wpdb->get_col( "SELECT DISTINCT slug FROM `" . $wpdb->prefix . "terms`" );
+			if( is_array( $terms_list ) && in_array( $new_status, $terms_list ) ) {
+				return '<div class="error"><p>' . __( 'Status slug is already present. Please use another slug name.', 'custom-order-statuses-woocommerce' ) . '</p></div>';
+			}
 		}
 		if ( strlen( $new_status ) > 17 ) {
 			return '<div class="error"><p>' . __( 'The length of status slug must be 17 or less characters. Status was not added!', 'custom-order-statuses-woocommerce' ) . '</p></div>';

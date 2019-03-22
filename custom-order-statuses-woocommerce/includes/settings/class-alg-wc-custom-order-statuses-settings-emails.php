@@ -33,7 +33,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_Emails extends Alg_WC_Custom_Order_S
 	 */
 	function get_settings() {
 		$emails_replaced_values_desc = sprintf( __( 'Replaced values: %s.', 'custom-order-statuses-woocommerce' ),
-			'<code>' . implode( '</code>, <code>', array( '{order_id}', '{order_number}', '{order_date}', '{order_details}', '{site_title}', '{status_from}','{status_to}' ) ) . '</code>' ) . ' ' .
+			'<code>' . implode( '</code>, <code>', array( '{order_id}', '{order_number}', '{order_date}', '{order_details}', '{first_name}', '{last_name}', '{site_title}', '{status_from}','{status_to}' ) ) . '</code>' ) . ' ' .
 			__( 'You can also use shortcodes here.', 'custom-order-statuses-woocommerce' );
 		return array(
 			array(
@@ -64,7 +64,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_Emails extends Alg_WC_Custom_Order_S
 				'title'    => __( 'Email address', 'custom-order-statuses-woocommerce' ),
 				'desc_tip' => sprintf( __( 'Comma separated list of emails. Leave blank to send emails to admin (%s).', 'custom-order-statuses-woocommerce' ), get_option( 'admin_email' ) ),
 				'desc'     => sprintf( __( 'Use %s to send email to the customer\'s billing email; %s to the admin\'s email.', 'custom-order-statuses-woocommerce' ),
-					'<code>%customer%</code>', '<code>%admin%</code>' ),
+					'<code>{customer_email}</code>', '<code>{admin_email}</code>' ),
 				'id'       => 'alg_orders_custom_statuses_emails_address',
 				'default'  => '',
 				'type'     => 'text',
@@ -72,7 +72,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_Emails extends Alg_WC_Custom_Order_S
 			),
 			array(
 				'title'    => __( 'Email subject', 'custom-order-statuses-woocommerce' ),
-				'desc'     => str_replace( ', <code>{order_details}</code>', '', $emails_replaced_values_desc ),
+				'desc'     => str_replace( ', <code>{order_details}</code>, <code>{first_name}</code>, <code>{last_name}</code>', '', $emails_replaced_values_desc ),
 				'id'       => 'alg_orders_custom_statuses_emails_subject',
 				'default'  => sprintf( __( '[%s] Order #%s status changed to %s - %s', 'custom-order-statuses-woocommerce' ),
 					'{site_title}', '{order_number}', '{status_to}', '{order_date}' ),
@@ -81,7 +81,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_Emails extends Alg_WC_Custom_Order_S
 			),
 			array(
 				'title'    => __( 'Email heading', 'custom-order-statuses-woocommerce' ),
-				'desc'     => str_replace( ', <code>{order_details}</code>', '', $emails_replaced_values_desc ),
+				'desc'     => str_replace( ', <code>{order_details}</code>, <code>{first_name}</code>, <code>{last_name}</code>', '', $emails_replaced_values_desc ),
 				'id'       => 'alg_orders_custom_statuses_emails_heading',
 				'default'  => sprintf( __( 'Order status changed to %s', 'custom-order-statuses-woocommerce' ), '{status_to}' ),
 				'type'     => 'text',
