@@ -98,7 +98,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_General extends Alg_WC_Custom_Order_
 				'id'       => 'alg_orders_custom_statuses_add_to_order_list_actions',
 				'default'  => 'no',
 				'type'     => 'checkbox',
-				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://wpfactory.com/item/custom-order-status-woocommerce/' ), 'settings' ),
+				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/' ), 'settings' ),
 				'checkboxgroup' => 'start',
 				'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 			),
@@ -107,7 +107,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_General extends Alg_WC_Custom_Order_
 				'id'       => 'alg_orders_custom_statuses_add_to_order_list_actions_colored',
 				'default'  => 'no',
 				'type'     => 'checkbox',
-				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://wpfactory.com/item/custom-order-status-woocommerce/' ), 'settings' ),
+				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/' ), 'settings' ),
 				'checkboxgroup' => 'end',
 				'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 			),
@@ -117,7 +117,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_General extends Alg_WC_Custom_Order_
 				'id'       => 'alg_orders_custom_statuses_enable_column_colored',
 				'default'  => 'no',
 				'type'     => 'checkbox',
-				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://wpfactory.com/item/custom-order-status-woocommerce/' ), 'settings' ),
+				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/' ), 'settings' ),
 				'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 			),
 			array(
@@ -126,7 +126,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_General extends Alg_WC_Custom_Order_
 				'id'       => 'alg_orders_custom_statuses_add_to_order_preview_actions',
 				'default'  => 'no',
 				'type'     => 'checkbox',
-				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://wpfactory.com/item/custom-order-status-woocommerce/' ), 'settings' ),
+				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/' ), 'settings' ),
 				'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 			),
 			array(
@@ -135,7 +135,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_General extends Alg_WC_Custom_Order_
 				'id'       => 'alg_orders_custom_statuses_enable_editable',
 				'default'  => 'no',
 				'type'     => 'checkbox',
-				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://wpfactory.com/item/custom-order-status-woocommerce/' ), 'settings' ),
+				'desc_tip' => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/' ), 'settings' ),
 				'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 			),
 			array(
@@ -145,7 +145,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_General extends Alg_WC_Custom_Order_
 				'default'  => 'no',
 				'type'     => 'checkbox',
 				'desc_tip' => sprintf( __( 'By default paid statuses are: %s.', 'custom-order-statuses-woocommerce' ), '<code>processing</code>, <code>completed</code>' ) .
-					apply_filters( 'alg_orders_custom_statuses', sprintf( '<br>' . __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://wpfactory.com/item/custom-order-status-woocommerce/' ), 'settings' ),
+					apply_filters( 'alg_orders_custom_statuses', sprintf( '<br>' . __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/' ), 'settings' ),
 				'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 			),
 			array(
