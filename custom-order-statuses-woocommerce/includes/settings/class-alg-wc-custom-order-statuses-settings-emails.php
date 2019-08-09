@@ -48,7 +48,7 @@ class Alg_WC_Custom_Order_Statuses_Settings_Emails extends Alg_WC_Custom_Order_S
 				'default'  => 'no',
 				'type'     => 'checkbox',
 				'desc_tip' => apply_filters( 'alg_orders_custom_statuses',
-					'Get <a href="https://wpfactory.com/item/custom-order-status-woocommerce/" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this section.', 'settings' ),
+					'Get <a href="https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=cosupgradetopro&utm_medium=link&utm_campaign=CustomOrderStatusLite" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this section.', 'settings' ),
 				'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 			),
 			array(
