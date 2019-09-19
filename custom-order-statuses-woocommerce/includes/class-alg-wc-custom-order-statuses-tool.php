@@ -75,7 +75,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 			} elseif ( isset( $_GET['delete'] ) && ( '' !== $_GET['delete'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				$result_message = $this->delete_custom_status( sanitize_text_field( wp_unslash( $_GET['delete'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification
 			}
-			return $result_message;
+			echo wp_kses_post( $result_message );
 		}
 
 		/**
@@ -245,7 +245,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 			<h1><?php esc_html_e( 'Custom Order Status Tool', 'custom-order-statuses-woocommerce' ); ?></h1>
 			<p><?php esc_html_e( 'The tool lets you add or delete any WooCommerce orders custom status.', 'custom-order-statuses-woocommerce' ); ?></p>
 			<?php
-			$html .= $this->maybe_execute_actions();
+			$this->maybe_execute_actions();
 			$html .= $this->get_actions_box_html();
 			$html .= $this->get_status_table_html();
 			echo $html;
