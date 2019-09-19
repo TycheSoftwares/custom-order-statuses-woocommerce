@@ -237,7 +237,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 		 * @since   1.0.0
 		 */
 		public function create_custom_statuses_tool() {
-			$html  = '';
+			$html = '';
 			?>
 			<div class="wrap">
 			<p><a href="<?php echo esc_url( admin_url( 'admin.php?page=wc-settings&tab=alg_wc_custom_order_statuses' ) ); ?>">
