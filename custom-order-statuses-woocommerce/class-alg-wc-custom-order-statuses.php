@@ -1,17 +1,6 @@
 <?php
 /**
- * Plugin Name: Custom Order Status for WooCommerce
- * Plugin URI: https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/
- * Description: Add custom order statuses to WooCommerce.
- * Version: 1.4.7
- * Author: Tyche Softwares
- * Author URI: https://www.tychesoftwares.com/
- * Text Domain: custom-order-statuses-woocommerce
- * Domain Path: /langs
- * Copyright: � 2018 Tyche Softwares
- * WC tested up to: 3.5.7
- * License: GNU General Public License v3.0
- * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ * Performs the basic functions for the plugin.
  *
  * @package Custom-Order-Statuses-Lite
  */
@@ -23,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Check if WooCommerce is active.
 $plugin_name = 'woocommerce/woocommerce.php';
 if (
-	! in_array( $plugin_name, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ) ) &&
+	! in_array( $plugin_name, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) &&
 	! ( is_multisite() && array_key_exists( $plugin_name, get_site_option( 'active_sitewide_plugins', array() ) ) )
 ) {
 	return;
@@ -33,7 +22,7 @@ if ( 'custom-order-statuses-for-woocommerce.php' === basename( __FILE__ ) ) {
 	// Check if Pro is active, if so then return.
 	$plugin_file = 'custom-order-statuses-for-woocommerce-pro/custom-order-statuses-for-woocommerce-pro.php';
 	if (
-		in_array( $plugin_file, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ) ) ||
+		in_array( $plugin_file, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) ||
 		( is_multisite() && array_key_exists( $plugin_file, get_site_option( 'active_sitewide_plugins', array() ) ) )
 	) {
 		return;
@@ -65,7 +54,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @var   Alg_WC_Custom_Order_Statuses The single instance of the class
 		 * @since 1.0.0
 		 */
-		protected static $_instance = null;
+		protected static $instance = null;
 
 		/**
 		 * Main Alg_WC_Custom_Order_Statuses Instance
@@ -78,10 +67,10 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @return  Alg_WC_Custom_Order_Statuses - Main instance
 		 */
 		public static function instance() {
-			if ( is_null( self::$_instance ) ) {
-				self::$_instance = new self();
+			if ( is_null( self::$instance ) ) {
+				self::$instance = new self();
 			}
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		/**
