@@ -2,8 +2,8 @@
 Contributors: tychesoftwares
 Tags: woocommerce, order status, woo commerce
 Requires at least: 4.4
-Tested up to: 5.1.1
-Stable tag: 1.4.6
+Tested up to: 5.2.3
+Stable tag: 1.4.8
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -38,6 +38,9 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 2. Order with custom status.
 
 == Changelog ==
+
+= 1.4.8 - 23/09/2019 = 
+* Made the plugin code compliant with WPCS standards.
 
 = 1.4.7 - 27/03/2019 =
 * Added uninstall.php to ensure the plugin settings are removed from the DB when the plugin is deleted.

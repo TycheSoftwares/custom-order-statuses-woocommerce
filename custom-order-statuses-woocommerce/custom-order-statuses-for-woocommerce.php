@@ -3,13 +3,13 @@
  * Plugin Name: Custom Order Status for WooCommerce
  * Plugin URI: https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/
  * Description: Add custom order statuses to WooCommerce.
- * Version: 1.4.7
+ * Version: 1.4.8
  * Author: Tyche Softwares
  * Author URI: https://www.tychesoftwares.com/
  * Text Domain: custom-order-statuses-woocommerce
  * Domain Path: /langs
  * Copyright: � 2018 Tyche Softwares
- * WC tested up to: 3.5.7
+ * WC tested up to: 3.7.0
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
