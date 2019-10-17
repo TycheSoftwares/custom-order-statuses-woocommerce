@@ -19,7 +19,7 @@ This plugin lets you add [custom order statuses](https://www.tychesoftwares.com/
 * Custom status **icon**.
 * Custom status **icon and column color**.
 
-### Check out the PRO version of [Custom Order Status for WooCommerce plugin page](https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=wprepo&utm_medium=prolink&utm_campaign=CustomStatus).
+### Check out the PRO version of [Custom Order Status for WooCommerce plugin](https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=wprepo&utm_medium=prolink&utm_campaign=CustomStatus).
 
 Added custom statuses can be added to admin order list **bulk actions** and to admin **reports**.
 
@@ -55,7 +55,7 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 3. **[Product Delivery Date for WooCommerce - Lite](https://wordpress.org/plugins/product-delivery-date-for-woocommerce-lite/ "Product Delivery Date for WooCommerce")**
 
-4. **[Custom Order Status for WooCommerce](https://wordpress.org/plugins/custom-order-statuses-woocommerce/ "Custom Order Status for WooCommerce")**
+4. **[Payment Gateway Based Fees and Discounts for WooCommerce](https://wordpress.org/plugins/checkout-fees-for-woocommerce/ "Payment Gateway Based Fees and Discounts for WooCommerce")**
 
 5. **[Custom Order Numbers for WooCommerce](https://wordpress.org/plugins/custom-order-numbers-for-woocommerce/ "Custom Order Numbers for WooCommerce")**
 
