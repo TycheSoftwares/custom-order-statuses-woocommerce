@@ -80,6 +80,9 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
+= 1.4.9 - 19/03/2020 = 
+* Updated compatibility with WC 4.0.0
+
 = 1.4.8 - 23/09/2019 = 
 * Made the plugin code compliant with WPCS standards.
 
