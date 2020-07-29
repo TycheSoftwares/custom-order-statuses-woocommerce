@@ -479,22 +479,25 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @since   1.0.0
 		 */
 		public function hook_statuses_icons_css() {
-			$output   = '<style>';
-			$statuses = alg_get_custom_order_statuses();
-			foreach ( $statuses as $status => $status_name ) {
-				$icon_data = get_option( 'alg_orders_custom_status_icon_data_' . substr( $status, 3 ), '' );
-				if ( '' !== $icon_data ) {
-					$content = $icon_data['content'];
-					$color   = $icon_data['color'];
-				} else {
-					$content = 'e011';
-					$color   = '#999999';
+			global $post;
+			if ( 'shop_order' === $post->post_type ) {
+				$output   = '<style>';
+				$statuses = alg_get_custom_order_statuses();
+				foreach ( $statuses as $status => $status_name ) {
+					$icon_data = get_option( 'alg_orders_custom_status_icon_data_' . substr( $status, 3 ), '' );
+					if ( '' !== $icon_data ) {
+						$content = $icon_data['content'];
+						$color   = $icon_data['color'];
+					} else {
+						$content = 'e011';
+						$color   = '#999999';
+					}
+					$output .= 'mark.' . substr( $status, 3 ) . '::after { content: "\\' . $content . '"; color: ' . $color . '; }';
+					$output .= 'mark.' . substr( $status, 3 ) . ':after {font-family:WooCommerce;speak:none;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;margin:0;text-indent:0;position:absolute;top:0;left:0;width:100%;height:100%;text-align:center}';
 				}
-				$output .= 'mark.' . substr( $status, 3 ) . '::after { content: "\\' . $content . '"; color: ' . $color . '; }';
-				$output .= 'mark.' . substr( $status, 3 ) . ':after {font-family:WooCommerce;speak:none;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;margin:0;text-indent:0;position:absolute;top:0;left:0;width:100%;height:100%;text-align:center}';
+				$output .= '</style>';
+				echo wp_kses( $output, array( 'style' => array() ) );
 			}
-			$output .= '</style>';
-			echo wp_kses( $output, array( 'style' => array() ) );
 		}
 
 		/**
