@@ -414,7 +414,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			$payment_method = $order->get_payment_method();
 			if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) ) {
 				$order->update_status( get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) );
-			} else {
+			} elseif ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) ) {
 				$order->update_status( get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) );
 			}
 		}
@@ -477,8 +477,9 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 						$content = 'e011';
 						$color   = '#999999';
 					}
-					$output .= 'mark.' . substr( $status, 3 ) . '::after { content: "\\' . $content . '"; color: ' . $color . '; }';
-					$output .= 'mark.' . substr( $status, 3 ) . ':after {font-family:WooCommerce;speak:none;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;margin:0;text-indent:0;position:absolute;top:0;left:0;width:100%;height:100%;text-align:center}';
+					$output .= '.status-' . substr( $status, 3 ) . ' { position: relative; }';
+					$output .= 'mark.status-' . substr( $status, 3 ) . '::after { content: "\\' . $content . '"; color: ' . $color . '; }';
+					$output .= 'mark.status-' . substr( $status, 3 ) . ':after {font-family:WooCommerce;speak:none;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;margin:0;text-indent:0;position:absolute;top:0;left:0;width:100%;height:100%;text-align:center}';
 				}
 				$output .= '</style>';
 				echo wp_kses( $output, array( 'style' => array() ) );
