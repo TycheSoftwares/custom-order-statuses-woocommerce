@@ -464,8 +464,8 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @since   1.0.0
 		 */
 		public function hook_statuses_icons_css() {
-			global $post;
-			if ( 'shop_order' === $post->post_type ) {
+			global $post_type;
+			if ( isset( $post_type ) && 'shop_order' === $post_type ) {
 				$output   = '<style>';
 				$statuses = alg_get_custom_order_statuses();
 				foreach ( $statuses as $status => $status_name ) {
