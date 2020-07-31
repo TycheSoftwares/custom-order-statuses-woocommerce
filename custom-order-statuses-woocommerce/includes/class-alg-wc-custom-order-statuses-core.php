@@ -41,13 +41,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 
 			// Default Status.
 			if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) ) {
-				add_filter( 'woocommerce_default_order_status', array( $this, 'set_default_order_status' ), $filters_priority );
-			}
-			if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_bacs', 'alg_disabled' ) ) {
-				add_filter( 'woocommerce_bacs_process_payment_order_status', array( $this, 'set_default_order_status_bacs' ), $filters_priority );
-			}
-			if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_cod', 'alg_disabled' ) ) {
-				add_filter( 'woocommerce_cod_process_payment_order_status', array( $this, 'set_default_order_status_cod' ), $filters_priority );
+				add_filter( 'woocommerce_thankyou', array( $this, 'set_default_order_status' ), $filters_priority );
 			}
 
 			// Reports.
@@ -407,31 +401,22 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		/**
 		 * Set_default_order_status.
 		 *
+		 * @param array $order_id - Order id.
+		 *
 		 * @version 1.0.0
 		 * @since   1.0.0
 		 */
-		public function set_default_order_status() {
-			return get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' );
-		}
-
-		/**
-		 * Set_default_order_status_bacs.
-		 *
-		 * @version 1.4.4
-		 * @since   1.4.4
-		 */
-		public function set_default_order_status_bacs() {
-			return get_option( 'alg_orders_custom_statuses_default_status_bacs', 'alg_disabled' );
-		}
-
-		/**
-		 * Set_default_order_status_cod.
-		 *
-		 * @version 1.4.4
-		 * @since   1.4.4
-		 */
-		public function set_default_order_status_cod() {
-			return get_option( 'alg_orders_custom_statuses_default_status_cod', 'alg_disabled' );
+		public function set_default_order_status( $order_id ) {
+			if ( ! $order_id ) {
+				return;
+			}
+			$order          = wc_get_order( $order_id );
+			$payment_method = $order->get_payment_method();
+			if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) ) {
+				$order->update_status( get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) );
+			} else {
+				$order->update_status( get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) );
+			}
 		}
 
 		/**
