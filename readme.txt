@@ -80,7 +80,7 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
-= 1.4.11 - 19/03/2020 = 
+= 1.4.11 - 10/09/2020 = 
 * Updated compatibility with WordPress 5.5
 
 = 1.4.9 - 19/03/2020 = 
