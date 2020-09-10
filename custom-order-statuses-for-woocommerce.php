@@ -9,7 +9,7 @@
  * Text Domain: custom-order-statuses-woocommerce
  * Domain Path: /langs
  * Copyright: © 2020 Tyche Softwares
- * WC tested up to: 4.4
+ * WC tested up to: 4.5
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *

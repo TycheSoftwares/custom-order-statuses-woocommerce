@@ -82,6 +82,7 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 = 1.4.11 - 10/09/2020 = 
 * Updated compatibility with WordPress 5.5
+* Updated compatibility with WC 4.5
 
 = 1.4.9 - 19/03/2020 = 
 * Updated compatibility with WC 4.0.0
