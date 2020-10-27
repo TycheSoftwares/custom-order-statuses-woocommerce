@@ -83,7 +83,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			}
 
 			// Emails.
-			if ( 'yes' === apply_filters( 'alg_orders_custom_statuses', 'no', 'value_emails' ) ) {
+			if ( 'yes' === get_option( 'alg_orders_custom_statuses_emails_enabled', 'no' ) ) {
 				add_action( 'woocommerce_order_status_changed', array( $this, 'send_email_on_order_status_changed' ), PHP_INT_MAX, 4 );
 			}
 

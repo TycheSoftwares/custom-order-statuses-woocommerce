@@ -45,6 +45,11 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 				'alg-custom-order-statuses-tool',
 				array( $this, 'create_custom_statuses_tool' )
 			);
+			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses();
+			$is_migrated                      = get_option( 'is_statuses_migrated' );
+			if ( $is_migrated || empty( $alg_orders_custom_statuses_array ) ) {
+				remove_submenu_page( 'woocommerce', 'alg-custom-order-statuses-tool' );
+			}
 		}
 
 		/**
