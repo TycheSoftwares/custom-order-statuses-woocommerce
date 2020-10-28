@@ -51,11 +51,11 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_Emails' ) ) :
 					'id'    => 'alg_orders_custom_statuses_emails_options',
 				),
 				array(
-					'title'             => __( 'Emails', 'custom-order-statuses-woocommerce' ),
-					'desc'              => '<strong>' . __( 'Enable section', 'custom-order-statuses-woocommerce' ) . '</strong>',
-					'id'                => 'alg_orders_custom_statuses_emails_enabled',
-					'default'           => 'no',
-					'type'              => 'checkbox',
+					'title'   => __( 'Emails', 'custom-order-statuses-woocommerce' ),
+					'desc'    => '<strong>' . __( 'Enable section', 'custom-order-statuses-woocommerce' ) . '</strong>',
+					'id'      => 'alg_orders_custom_statuses_emails_enabled',
+					'default' => 'no',
+					'type'    => 'checkbox',
 				),
 				array(
 					'title'    => __( 'Statuses', 'custom-order-statuses-woocommerce' ),

@@ -401,10 +401,9 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 		public function alg_save_meta_box( $post_id ) {
 			$_nonce = isset( $_POST['custom_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['custom_nonce'] ) ) : '';
 			if ( wp_verify_nonce( $_nonce, 'custom_post_type_nonce' ) ) {
-				$_icon_content                             = ( isset( $_POST['new_status_icon_content'] ) && ! empty( $_POST['new_status_icon_content'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_content'] ) ) : 'e011';
-				$_text_color                               = ( isset( $_POST['new_status_text_color'] ) && ! empty( $_POST['new_status_text_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_text_color'] ) ) : '#000000';
-				$_color                                    = ( isset( $_POST['new_status_icon_color'] ) && ! empty( $_POST['new_status_icon_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_color'] ) ) : '#999999';
-				
+				$_icon_content = ( isset( $_POST['new_status_icon_content'] ) && ! empty( $_POST['new_status_icon_content'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_content'] ) ) : 'e011';
+				$_text_color   = ( isset( $_POST['new_status_text_color'] ) && ! empty( $_POST['new_status_text_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_text_color'] ) ) : '#000000';
+				$_color        = ( isset( $_POST['new_status_icon_color'] ) && ! empty( $_POST['new_status_icon_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_color'] ) ) : '#999999';
 				update_post_meta( $post_id, 'color', $_color );
 				update_post_meta( $post_id, 'content', $_icon_content );
 				update_post_meta( $post_id, 'text_color', $_text_color );
