@@ -51,17 +51,11 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_Emails' ) ) :
 					'id'    => 'alg_orders_custom_statuses_emails_options',
 				),
 				array(
-					'title'             => __( 'Emails', 'custom-order-statuses-woocommerce' ),
-					'desc'              => '<strong>' . __( 'Enable section', 'custom-order-statuses-woocommerce' ) . '</strong>',
-					'id'                => 'alg_orders_custom_statuses_emails_enabled',
-					'default'           => 'no',
-					'type'              => 'checkbox',
-					'desc_tip'          => apply_filters(
-						'alg_orders_custom_statuses',
-						'Get <a href="https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=cosupgradetopro&utm_medium=link&utm_campaign=CustomOrderStatusLite" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this section.',
-						'settings'
-					),
-					'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
+					'title'   => __( 'Emails', 'custom-order-statuses-woocommerce' ),
+					'desc'    => '<strong>' . __( 'Enable section', 'custom-order-statuses-woocommerce' ) . '</strong>',
+					'id'      => 'alg_orders_custom_statuses_emails_enabled',
+					'default' => 'no',
+					'type'    => 'checkbox',
 				),
 				array(
 					'title'    => __( 'Statuses', 'custom-order-statuses-woocommerce' ),

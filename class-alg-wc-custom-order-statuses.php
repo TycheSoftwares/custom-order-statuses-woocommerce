@@ -92,6 +92,8 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 			if ( is_admin() ) {
 				add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
 				add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
+				// Register Custom Post Type for custom order status.
+				require_once 'includes/class-alg-wc-custom-post-type-for-order-statuses.php';
 				// Tool.
 				require_once 'includes/class-alg-wc-custom-order-statuses-tool.php';
 				// Settings.
