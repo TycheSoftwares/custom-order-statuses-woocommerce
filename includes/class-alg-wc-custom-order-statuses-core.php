@@ -98,7 +98,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 */
 		public function get_custom_order_statuses_actions( $_order ) {
 			$status_actions        = array();
-			$custom_order_statuses = alg_get_custom_order_statuses( true );
+			$custom_order_statuses = alg_get_custom_order_statuses_from_cpt( true );
 			foreach ( $custom_order_statuses as $custom_order_status => $label ) {
 				if ( ! $_order->has_status( array( $custom_order_status ) ) ) { // if order status is not $custom_order_status.
 					$status_actions[ $custom_order_status ] = $label;
@@ -168,7 +168,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @todo    [feature] separate option for each custom status
 		 */
 		public function add_custom_order_statuses_to_order_paid( $statuses ) {
-			return array_merge( $statuses, array_keys( alg_get_custom_order_statuses( true ) ) );
+			return array_merge( $statuses, array_keys( alg_get_custom_order_statuses_from_cpt( true ) ) );
 		}
 
 		/**
@@ -189,7 +189,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 */
 		public function send_email_on_order_status_changed( $order_id, $status_from, $status_to, $order ) {
 
-			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses();
+			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses_from_cpt();
 
 			$emails_statuses = get_option( 'alg_orders_custom_statuses_emails_statuses', array() );
 			if ( in_array( 'wc-' . $status_to, $emails_statuses, true ) || ( empty( $emails_statuses ) && in_array( 'wc-' . $status_to, array_keys( $alg_orders_custom_statuses_array ), true ) ) ) {
@@ -205,10 +205,12 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 					// translators: New Order status.
 					sprintf( __( 'Order status changed to %s', 'custom-order-statuses-woocommerce' ), '{status_to}' )
 				);
-				$email_content = get_option(
-					'alg_orders_custom_statuses_emails_content',
-					// translators: WC Order Number, Old status, new status.
-					sprintf( __( 'Order #%1$s status changed from %2$s to %3$s', 'custom-order-statuses-woocommerce' ), '{order_number}', '{status_from}', '{status_to}' )
+				$email_content = nl2br(
+					get_option(
+						'alg_orders_custom_statuses_emails_content',
+						// translators: WC Order Number, Old status, new status.
+						sprintf( __( 'Order #%1$s status changed from %2$s to %3$s', 'custom-order-statuses-woocommerce' ), '{order_number}', '{status_from}', '{status_to}' )
+					)
 				);
 
 				$woo_statuses        = wc_get_order_statuses();
@@ -308,7 +310,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @todo    [feature] separate option for each custom status
 		 */
 		public function add_custom_order_statuses_to_order_editable( $is_editable, $_order ) {
-			return ( in_array( 'wc-' . $_order->get_status(), array_keys( alg_get_custom_order_statuses() ), true ) ? true : $is_editable );
+			return ( in_array( 'wc-' . $_order->get_status(), array_keys( alg_get_custom_order_statuses_from_cpt() ), true ) ? true : $is_editable );
 		}
 
 		/**
@@ -318,7 +320,10 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @since   1.3.2
 		 */
 		public function add_custom_status_column_css() {
-			$statuses = alg_get_custom_order_statuses();
+			$statuses = alg_get_custom_order_statuses_from_cpt();
+			if ( empty( $statuses ) ) {
+				$statuses = alg_get_custom_order_statuses();
+			}
 			foreach ( $statuses as $slug => $label ) {
 				$custom_order_status = substr( $slug, 3 );
 				$icon_data           = get_option( 'alg_orders_custom_status_icon_data_' . $custom_order_status, '' );
@@ -343,7 +348,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @since   1.2.0
 		 */
 		public function add_custom_status_actions_buttons( $actions, $_order ) {
-			$statuses = alg_get_custom_order_statuses();
+			$statuses = alg_get_custom_order_statuses_from_cpt();
 			foreach ( $statuses as $slug => $label ) {
 				$custom_order_status = substr( $slug, 3 );
 				if ( ! $_order->has_status( array( $custom_order_status ) ) ) { // if order status is not $custom_order_status.
@@ -365,7 +370,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @since   1.2.0
 		 */
 		public function add_custom_status_actions_buttons_css() {
-			$statuses = alg_get_custom_order_statuses();
+			$statuses = alg_get_custom_order_statuses_from_cpt( true, true );
 			foreach ( $statuses as $slug => $label ) {
 				$custom_order_status = substr( $slug, 3 );
 				$icon_data           = get_option( 'alg_orders_custom_status_icon_data_' . $custom_order_status, '' );
@@ -391,7 +396,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 */
 		public function add_custom_order_statuses_to_reports( $order_statuses ) {
 			if ( is_array( $order_statuses ) && in_array( 'completed', $order_statuses, true ) ) {
-				return array_merge( $order_statuses, array_keys( alg_get_custom_order_statuses( true ) ) );
+				return array_merge( $order_statuses, array_keys( alg_get_custom_order_statuses_from_cpt( true ) ) );
 			}
 			return $order_statuses;
 		}
@@ -424,7 +429,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @since   1.0.0
 		 */
 		public function register_custom_post_statuses() {
-			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses();
+			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses_from_cpt();
 			foreach ( $alg_orders_custom_statuses_array as $slug => $label ) {
 				register_post_status(
 					$slug,
@@ -450,7 +455,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @since   1.0.0
 		 */
 		public function add_custom_statuses_to_filter( $order_statuses ) {
-			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses();
+			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses_from_cpt();
 			$order_statuses                   = ( '' === $order_statuses ) ? array() : $order_statuses;
 			return array_merge( $order_statuses, $alg_orders_custom_statuses_array );
 		}
@@ -465,7 +470,10 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			global $post_type;
 			if ( isset( $post_type ) && 'shop_order' === $post_type ) {
 				$output   = '<style>';
-				$statuses = alg_get_custom_order_statuses();
+				$statuses = alg_get_custom_order_statuses_from_cpt( true, true );
+				if ( empty( $statuses ) ) {
+					$statuses = alg_get_custom_order_statuses();
+				}
 				foreach ( $statuses as $status => $status_name ) {
 					$icon_data = get_option( 'alg_orders_custom_status_icon_data_' . substr( $status, 3 ), '' );
 					if ( '' !== $icon_data ) {
@@ -494,7 +502,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 * @see     https://make.wordpress.org/core/2016/10/04/custom-bulk-actions/
 		 */
 		public function register_order_custom_status_bulk_actions( $bulk_actions ) {
-			$custom_order_statuses = alg_get_custom_order_statuses( true );
+			$custom_order_statuses = alg_get_custom_order_statuses_from_cpt( true );
 			foreach ( $custom_order_statuses as $slug => $label ) {
 				// translators: New Status.
 				$bulk_actions[ 'mark_' . $slug ] = sprintf( __( 'Change status to %s', 'custom-order-statuses-woocommerce' ), $label );
