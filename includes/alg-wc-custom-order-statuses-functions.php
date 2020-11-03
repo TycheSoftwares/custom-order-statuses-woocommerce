@@ -96,3 +96,56 @@ if ( ! function_exists( 'alg_get_table_html' ) ) {
 		return $html;
 	}
 }
+
+if ( ! function_exists( 'alg_get_custom_order_statuses_from_cpt' ) ) {
+	/**
+	 * Function alg_get_custom_order_statuses_from_cpt.
+	 *
+	 * @param bool $cut_prefix - Whether the prefix should be added or no.
+	 * @param bool $get_post_ids - Whether it will return post name or ID.
+	 *
+	 * @version 1.3.5
+	 * @since   1.3.5
+	 */
+	function alg_get_custom_order_statuses_from_cpt( $cut_prefix = false, $get_post_ids = false ) {
+		// Get the order statues.
+		$arg = array(
+			'numberposts' => -1,
+			'post_type'   => 'custom_order_status',
+		);
+
+		// Allow third party to change the arguments.
+		$arg = apply_filters( 'alg_fetch_custom_order_status_arg', $arg );
+
+		$custom_order_statuses = get_posts( $arg );
+
+		$custom_order_statuses_no_prefix = array();
+
+		$prefix = ! $cut_prefix ? 'wc-' : '';
+
+		// Check array is not empty.
+		if ( ! empty( $custom_order_statuses ) ) {
+
+			if ( $get_post_ids ) {
+
+				foreach ( $custom_order_statuses as $post ) {
+
+					$custom_order_statuses_no_prefix[ $prefix . $post->post_name ] = $post->ID;
+				}
+			} else {
+				foreach ( $custom_order_statuses as $post ) {
+
+					$custom_order_statuses_no_prefix[ $prefix . $post->post_name ] = $post->post_title;
+				}
+			}
+		}
+		// Filter the order status results.
+		$custom_order_statuses_no_prefix = apply_filters( 'alg_resuts_order_statues', $custom_order_statuses_no_prefix );
+
+		if ( empty( $custom_order_statuses_no_prefix ) ) {
+			$custom_order_statuses_no_prefix = alg_get_custom_order_statuses();
+		}
+
+		return $custom_order_statuses_no_prefix;
+	}
+}

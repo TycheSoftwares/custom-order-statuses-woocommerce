@@ -64,7 +64,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_Emails' ) ) :
 					'default'  => array(),
 					'type'     => 'multiselect',
 					'class'    => 'chosen_select',
-					'options'  => alg_get_custom_order_statuses(),
+					'options'  => alg_get_custom_order_statuses_from_cpt(),
 				),
 				array(
 					'title'    => __( 'Email address', 'custom-order-statuses-woocommerce' ),
