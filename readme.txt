@@ -80,6 +80,10 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
+= 2.0.0 - 05/11/2020 = 
+* Feature - Added Custom Post Type for custom statuses with the support of previous tool page.
+* Feature - Added Global level email function to send the email to customer & admin on change of custom order status.
+
 = 1.4.11 - 10/09/2020 = 
 * Updated compatibility with WordPress 5.5
 * Updated compatibility with WC 4.5
