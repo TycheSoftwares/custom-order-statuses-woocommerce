@@ -85,6 +85,11 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 			// Set up localisation.
 			load_plugin_textdomain( 'custom-order-statuses-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 
+			if ( is_admin() ) {
+				// The Filter.
+				add_filter( 'alg_orders_custom_statuses', array( $this, 'alg_orders_custom_statuses' ), PHP_INT_MAX, 3 );
+			}
+
 			// Include required files.
 			$this->includes();
 
@@ -106,6 +111,25 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 					add_action( 'admin_init', array( $this, 'version_updated' ) );
 				}
 			}
+		}
+
+		/**
+		 * Function alg_orders_custom_statuses.
+		 *
+		 * @param string $value - string value.
+		 * @param string $type  - string value for type.
+		 * @param array  $args  - array of arguments.
+		 * @version 1.4.1
+		 * @since   1.2.0
+		 */
+		public function alg_orders_custom_statuses( $value, $type, $args = '' ) {
+			switch ( $type ) {
+				case 'settings':
+					return $value;
+				case 'value_column_colored':
+					return get_option( 'alg_orders_custom_statuses_enable_column_colored', 'no' );
+			}
+			return $value;
 		}
 
 		/**
