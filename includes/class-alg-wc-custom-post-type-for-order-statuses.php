@@ -38,6 +38,29 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 			add_action( 'manage_custom_order_status_posts_custom_column', array( $this, 'alg_add_data_custom_post_type_columns' ), 10, 2 );
 			add_filter( 'post_updated_messages', array( $this, 'alg_change_status_post_messages' ) );
 			add_action( 'parent_file', array( $this, 'alg_make_menu_active' ) );
+			add_action( 'admin_footer', array( $this, 'alg_status_name_check' ), 11 );
+		}
+
+		/**
+		 * This function is used to check custom order slug length and trim it if length is greater than 17.
+		 */
+		public function alg_status_name_check() {
+			if ( 'custom_order_status' === get_post_type() ) { // phpcs:ignore
+				?>
+				<script>
+				function check_status_slug( elem ) {
+					var text = jQuery(elem).val();
+					if ( text.length > 17 ) {
+						jQuery('.status_warning').remove();
+						jQuery(elem).after( '<span class="status_warning" style="color: red; margin-left: 10px;">17 characters max</span>' );
+						jQuery(elem).val( text.substring( 0, 17 ) );
+					} else {
+						jQuery('.status_warning').remove();
+					}
+				}
+				</script>
+				<?php
+			}
 		}
 
 		/**
@@ -157,6 +180,29 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 
 			}
 
+			$is_statuses_migrated_to_slug = get_option( 'is_statuses_migrated_to_slug' );
+
+			if ( ! $is_statuses_migrated_to_slug ) {
+				// Get the order statues.
+				$arg = array(
+					'numberposts' => -1,
+					'post_type'   => 'custom_order_status',
+				);
+
+				$custom_order_statuses = get_posts( $arg );
+				if ( ! empty( $custom_order_statuses ) ) {
+					foreach ( $custom_order_statuses as $post ) {
+						$status_slug = get_post_meta( $post->ID, 'status_slug', true );
+						if ( ! $status_slug ) {
+							$post_status_slug = substr( get_post_field( 'post_name', $post->ID ), 0, 17 );
+							$post_status_slug = rtrim( $post_status_slug, '-' );
+							update_post_meta( $post->ID, 'status_slug', $post_status_slug );
+						}
+					}
+				}
+				update_option( 'is_statuses_migrated_to_slug', 'yes' );
+			}
+
 		}
 
 		/**
@@ -269,7 +315,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 		 * @author  Tyche Softwares
 		 */
 		public function alg_register_meta_boxes() {
-			add_meta_box( 'custom_box', __( 'Appearance Settings', 'custom-order-statuses-woocommerce' ), array( $this, 'alg_my_display_callback' ), 'custom_order_status' );
+			add_meta_box( 'custom_box', __( 'Status details', 'custom-order-statuses-woocommerce' ), array( $this, 'alg_my_display_callback' ), 'custom_order_status' );
 			add_meta_box( 'custom_email_box', __( 'Email Settings', 'custom-order-statuses-woocommerce' ), array( $this, 'alg_email_setting_display_callback' ), 'custom_order_status' );
 		}
 
@@ -285,6 +331,13 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 			?>
 				<table class="form-table">
 					<tbody>
+						<tr>
+							<th><?php esc_html_e( 'Slug', 'custom-order-statuses-woocommerce' ); ?></th>
+							<td><input required="" type="text" onkeyup="check_status_slug(this);" name="new_status_slug" value="<?php echo esc_attr( get_post_meta( $post->ID, 'status_slug', true ) ); ?>">
+							<br><em><?php /* translators: $s: wc string */ printf( esc_attr__( '* Without %s prefix,', 'custom-order-statuses-woocommerce' ), '<code>wc-</code>' ); ?>
+							<?php esc_html_e( '17 characters max.', 'custom-order-statuses-woocommerce' ); ?></em>
+							</td>
+						</tr>
 						<tr>
 							<th><?php esc_html_e( 'Icon Code', 'custom-order-statuses-woocommerce' ); ?></th>
 							<td><input required="" type="text" name="new_status_icon_content" maxlength="4" pattern="[e]{1,1}[a-fA-F\d]{3,3}" value="<?php echo esc_attr( get_post_meta( $post->ID, 'content', true ) ); ?>">
@@ -401,9 +454,14 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 		public function alg_save_meta_box( $post_id ) {
 			$_nonce = isset( $_POST['custom_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['custom_nonce'] ) ) : '';
 			if ( wp_verify_nonce( $_nonce, 'custom_post_type_nonce' ) ) {
+				$new_status_slug = ( isset( $_POST['new_status_slug'] ) && ! empty( $_POST['new_status_slug'] ) ) ? sanitize_key( wp_unslash( $_POST['new_status_slug'] ) ) : '';
+				if ( empty( $new_status_slug ) ) {
+					$new_status_slug = substr( get_post_field( 'post_name', $post_id ), 0, 17 );
+				}
 				$_icon_content = ( isset( $_POST['new_status_icon_content'] ) && ! empty( $_POST['new_status_icon_content'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_content'] ) ) : 'e011';
 				$_text_color   = ( isset( $_POST['new_status_text_color'] ) && ! empty( $_POST['new_status_text_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_text_color'] ) ) : '#000000';
 				$_color        = ( isset( $_POST['new_status_icon_color'] ) && ! empty( $_POST['new_status_icon_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_color'] ) ) : '#999999';
+				update_post_meta( $post_id, 'status_slug', $new_status_slug );
 				update_post_meta( $post_id, 'color', $_color );
 				update_post_meta( $post_id, 'content', $_icon_content );
 				update_post_meta( $post_id, 'text_color', $_text_color );
