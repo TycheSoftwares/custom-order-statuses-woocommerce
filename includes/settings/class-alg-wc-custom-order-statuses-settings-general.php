@@ -45,8 +45,8 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_General' ) ) :
 					'desc'  => sprintf(
 						// translators: Link to the page to create custom statuses.
 						__( 'Use %s to create, edit and delete custom statuses.', 'custom-order-statuses-woocommerce' ),
-						'<a href="' . admin_url( 'admin.php?page=alg-custom-order-statuses-tool' ) . '">' .
-						__( 'custom order statuses tool', 'custom-order-statuses-woocommerce' ) . '</a>'
+						'<a href="' . admin_url( 'edit.php?post_type=custom_order_status' ) . '">' .
+						__( 'custom order statuses page', 'custom-order-statuses-woocommerce' ) . '</a>'
 					),
 					'id'    => 'alg_orders_custom_statuses_general_options',
 				),
