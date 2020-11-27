@@ -130,12 +130,17 @@ if ( ! function_exists( 'alg_get_custom_order_statuses_from_cpt' ) ) {
 
 				foreach ( $custom_order_statuses as $post ) {
 
-					$custom_order_statuses_no_prefix[ $prefix . $post->post_name ] = $post->ID;
+					$status_slug = get_post_meta( $post->ID, 'status_slug', true );
+					if ( $status_slug ) {
+						$custom_order_statuses_no_prefix[ $prefix . $status_slug ] = $post->ID;
+					}
 				}
 			} else {
 				foreach ( $custom_order_statuses as $post ) {
-
-					$custom_order_statuses_no_prefix[ $prefix . $post->post_name ] = $post->post_title;
+					$status_slug = get_post_meta( $post->ID, 'status_slug', true );
+					if ( $status_slug ) {
+						$custom_order_statuses_no_prefix[ $prefix . $status_slug ] = $post->post_title;
+					}
 				}
 			}
 		}
