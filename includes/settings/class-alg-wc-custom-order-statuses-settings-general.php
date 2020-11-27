@@ -102,6 +102,16 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_General' ) ) :
 					'options'  => array_merge( alg_get_order_statuses(), array( 'alg_none' => __( 'No fallback', 'custom-order-statuses-woocommerce' ) ) ),
 				),
 				array(
+					'title'             => __( 'Enable colors in status column', 'custom-order-statuses-woocommerce' ),
+					'desc'              => __( 'Enable', 'custom-order-statuses-woocommerce' ),
+					'id'                => 'alg_orders_custom_statuses_enable_column_colored',
+					'default'           => 'no',
+					'type'              => 'checkbox',
+					// translators: Link to the Pro version.
+					'desc_tip'          => apply_filters( 'alg_orders_custom_statuses', '', 'settings' ),
+					'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', '', 'settings' ),
+				),
+				array(
 					'title'             => __( 'Add custom statuses to admin order list action buttons', 'custom-order-statuses-woocommerce' ),
 					'desc'              => __( 'Add', 'custom-order-statuses-woocommerce' ),
 					'id'                => 'alg_orders_custom_statuses_add_to_order_list_actions',
@@ -120,16 +130,6 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_General' ) ) :
 					// translators: Link to the Pro version.
 					'desc_tip'          => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=cosupgradetopro&utm_medium=link&utm_campaign=CustomOrderStatusLite' ), 'settings' ),
 					'checkboxgroup'     => 'end',
-					'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
-				),
-				array(
-					'title'             => __( 'Enable colors in status column', 'custom-order-statuses-woocommerce' ),
-					'desc'              => __( 'Enable', 'custom-order-statuses-woocommerce' ),
-					'id'                => 'alg_orders_custom_statuses_enable_column_colored',
-					'default'           => 'no',
-					'type'              => 'checkbox',
-					// translators: Link to the Pro version.
-					'desc_tip'          => apply_filters( 'alg_orders_custom_statuses', sprintf( __( 'Get <a href="%s" target="_blank">Custom Order Status for WooCommerce Pro</a> to enable this option.', 'custom-order-statuses-woocommerce' ), 'https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=cosupgradetopro&utm_medium=link&utm_campaign=CustomOrderStatusLite' ), 'settings' ),
 					'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 				),
 				array(
