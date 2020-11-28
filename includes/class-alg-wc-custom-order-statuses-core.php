@@ -548,7 +548,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 					}
 				}
 
-				$output .= '.status-' . $status . ' { position: relative; }';
+				$output .= '.status-' . $status . ' { position: relative; color: ' . $text_color . '; }';
 				$output .= 'mark.status-' . $status . ':after { content: "\\' . $content . '"; color: ' . $text_color . '; }';
 				$output .= 'mark.status-' . $status . ':after { font-family: WooCommerce; speak: none; font-weight: 400; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; margin: 0; text-indent: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center }';
 			}
