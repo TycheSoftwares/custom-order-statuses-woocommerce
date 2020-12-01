@@ -80,6 +80,14 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
+= 2.0.1 - 01/12/2020 = 
+* Enhancement - Added new setting "Enable color" to show background color for the statuses in the order page.
+* Fix - When we click on the "Custom Order Status Tool" link from the plugin, it shows an error. This has been fixed.
+* Fix - After deleting the plugin old data does not get removed. This has been fixed.
+* Fix - Orders are getting deleted which has the custom order status when the plugin is deleted. This has been fixed.
+* Fix - The status is not getting changed to the custom one when the status is created with 3 words. This has been fixed.
+* Fix - Added icons to the labels. This has been fixed.
+
 = 2.0.0 - 05/11/2020 = 
 * Feature - Added Custom Post Type for custom statuses with the support of previous tool page.
 * Feature - Added Global level email function to send the email to customer & admin on change of custom order status.
