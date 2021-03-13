@@ -40,7 +40,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			add_action( 'admin_head', array( $this, 'hook_statuses_icons_css' ), 11 );
 
 			// Default Status.
-			add_filter( 'woocommerce_thankyou', array( $this, 'set_default_order_status' ), $filters_priority );
+			add_filter( 'woocommerce_new_order', array( $this, 'set_default_order_status' ), $filters_priority ); // using woocommerce_new_order hook because it is called only once when the order is placed.
 
 			// Reports.
 			if ( 'yes' === get_option( 'alg_orders_custom_statuses_add_to_reports', 'yes' ) ) {
