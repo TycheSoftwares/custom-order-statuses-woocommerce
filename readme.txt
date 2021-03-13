@@ -2,7 +2,7 @@
 Contributors: tychesoftwares
 Tags: woocommerce, order status, woo commerce, custom status
 Requires at least: 4.4
-Tested up to: 5.5
+Tested up to: 5.7
 Stable tag: trunk
 Requires PHP: 5.6
 License: GNU General Public License v3.0
