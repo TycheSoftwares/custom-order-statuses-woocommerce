@@ -329,16 +329,16 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 		 */
 		public function alg_my_display_callback( $post ) {
 			if ( '' !== get_post_meta( $post->ID, 'status_slug', true ) ) {
-				$readonly = 'readonly';
+				$slug_readonly = 'readonly';
 			} else {
-				$readonly = '';
+				$slug_readonly = '';
 			}
 			?>
 				<table class="form-table">
 					<tbody>
 						<tr>
 							<th><?php esc_html_e( 'Slug', 'custom-order-statuses-woocommerce' ); ?></th>
-							<td><input required="" type="text" onkeyup="check_status_slug(this);" name="new_status_slug" value="<?php echo esc_attr( get_post_meta( $post->ID, 'status_slug', true ) ); ?>" <?php echo esc_attr( $readonly ); ?>>
+							<td><input required="" type="text" onkeyup="check_status_slug(this);" name="new_status_slug" value="<?php echo esc_attr( get_post_meta( $post->ID, 'status_slug', true ) ); ?>" <?php echo esc_attr( $slug_readonly ); ?>>
 							<br><em><?php /* translators: $s: wc string */ printf( esc_attr__( '* Without %s prefix,', 'custom-order-statuses-woocommerce' ), '<code>wc-</code>' ); ?>
 							<?php esc_html_e( '17 characters max.', 'custom-order-statuses-woocommerce' ); ?></em>
 							</td>
