@@ -463,10 +463,14 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			}
 			$order          = wc_get_order( $order_id );
 			$payment_method = $order->get_payment_method();
-			if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) ) {
-				$order->update_status( get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) );
-			} elseif ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) ) {
-				$order->update_status( get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) );
+			if ( 'yes' !== get_post_meta( $order_id, 'alg_cos_updated', true ) ) {
+				if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) ) {
+					$order->update_status( get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) );
+					update_post_meta( $order_id, 'alg_cos_updated', 'yes' );
+				} elseif ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) ) {
+					$order->update_status( get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) );
+					update_post_meta( $order_id, 'alg_cos_updated', 'yes' );
+				}
 			}
 		}
 
