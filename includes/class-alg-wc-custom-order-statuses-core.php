@@ -40,7 +40,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			add_action( 'admin_head', array( $this, 'hook_statuses_icons_css' ), 11 );
 
 			// Default Status.
-			add_filter( 'woocommerce_new_order', array( $this, 'set_default_order_status' ), $filters_priority ); // using woocommerce_new_order hook because it is called only once when the order is placed.
+			add_filter( 'woocommerce_thankyou', array( $this, 'set_default_order_status' ), $filters_priority );
 
 			// Reports.
 			if ( 'yes' === get_option( 'alg_orders_custom_statuses_add_to_reports', 'yes' ) ) {
@@ -463,10 +463,14 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			}
 			$order          = wc_get_order( $order_id );
 			$payment_method = $order->get_payment_method();
-			if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) ) {
-				$order->update_status( get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) );
-			} elseif ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) ) {
-				$order->update_status( get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) );
+			if ( 'yes' !== get_post_meta( $order_id, 'alg_cos_updated', true ) ) {
+				if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) ) {
+					$order->update_status( get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) );
+					update_post_meta( $order_id, 'alg_cos_updated', 'yes' );
+				} elseif ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) ) {
+					$order->update_status( get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) );
+					update_post_meta( $order_id, 'alg_cos_updated', 'yes' );
+				}
 			}
 		}
 
