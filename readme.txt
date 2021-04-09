@@ -80,6 +80,10 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
+= 2.0.2 - 09/04/2021 = 
+* Fix - Order status was getting changed when we refresh the Thankyou page. This has been fixed.
+* Fix - When we change the slug of the custom order status, orders having that custom status was not seen on the orders page. This has been fixed.
+
 = 2.0.1 - 01/12/2020 = 
 * Enhancement - Added new setting "Enable color" to show background color for the statuses in the order page.
 * Fix - When we click on the "Custom Order Status Tool" link from the plugin, it shows an error. This has been fixed.
