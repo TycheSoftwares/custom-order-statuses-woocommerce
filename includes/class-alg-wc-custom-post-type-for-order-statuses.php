@@ -39,6 +39,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 			add_filter( 'post_updated_messages', array( $this, 'alg_change_status_post_messages' ) );
 			add_action( 'parent_file', array( $this, 'alg_make_menu_active' ) );
 			add_action( 'admin_footer', array( $this, 'alg_status_name_check' ), 11 );
+			add_action( 'admin_init', array( $this, 'alg_update_status_slug_if_empty' ) );
 		}
 
 		/**
@@ -219,6 +220,34 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 		public function alg_migration_success_admin_notice() {
             if ( isset( $_GET['imported'] ) && 'succesfully' == $_GET['imported'] ) { // phpcs:ignore
 				echo ( '<div class="updated"><p>' . wp_kses_post( 'All custom statuses has been successfully converted to custom post types. You can edit them from the list below & access them from the <a href="' . esc_url( 'edit.php?post_type=custom_order_status' ) . '">WooCommerce -> Custom Order Status page</a>', 'custom-order-statuses-woocommerce' ) . '</p></div>' );
+			}
+		}
+
+		/**
+		 * Function to update the slug field of the custom order status if it is empty.
+		 */
+		public function alg_update_status_slug_if_empty() {
+			$is_migrated         = get_option( 'is_statuses_migrated' );
+			$no_empty_slug_field = get_option( 'alg_custom_order_status_no_empty_slug_field' );
+			if ( $is_migrated && 'true' !== $no_empty_slug_field ) {
+				$arg                   = array(
+					'numberposts' => -1,
+					'post_type'   => 'custom_order_status',
+				);
+				$custom_order_statuses = get_posts( $arg );
+				if ( ! empty( $custom_order_statuses ) ) {
+					foreach ( $custom_order_statuses as $post ) {
+						$status_slug = get_post_meta( $post->ID, 'status_slug', true );
+						if ( ! $status_slug || '' === $status_slug ) {
+							$post_status_slug = get_post_meta( $post->ID, 'slug', true );
+							if ( ! $post_status_slug || '' === $post_status_slug ) {
+								$post_status_slug = substr( get_post_field( 'post_name', $post->ID ), 0, 17 );
+							}
+							update_post_meta( $post->ID, 'status_slug', $post_status_slug );
+						}
+					}
+					update_option( 'alg_custom_order_status_no_empty_slug_field', 'true' );
+				}
 			}
 		}
 
