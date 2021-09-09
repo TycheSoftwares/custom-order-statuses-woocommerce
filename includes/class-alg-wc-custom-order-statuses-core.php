@@ -550,8 +550,10 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 					if ( $status_data['color'] ) {
 						$icon_color = $status_data['color'];
 					}
-					if ( 'yes' === get_option( 'alg_orders_custom_statuses_enable_column_colored', 'no' ) ) {
-						$text_color = $status_data['text_color'];
+					if ( $status_data['text_color'] ) {
+						if ( 'yes' === get_option( 'alg_orders_custom_statuses_enable_column_colored', 'no' ) ) {
+							$text_color = $status_data['text_color'];
+						}
 					}
 				}
 
