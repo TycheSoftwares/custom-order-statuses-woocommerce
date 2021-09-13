@@ -527,7 +527,10 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			foreach ( $statuses as $status => $status_id ) {
 				$content    = get_post_meta( $status_id, 'content', true );
 				$icon_color = get_post_meta( $status_id, 'color', true );
-				$text_color = get_post_meta( $status_id, 'text_color', true );
+				$text_color = '';
+				if ( 'yes' === get_option( 'alg_orders_custom_statuses_enable_column_colored', 'no' ) ) {
+					$text_color = get_post_meta( $status_id, 'text_color', true );
+				}
 				if ( ! $content ) {
 					$content = 'e011';
 				}
@@ -548,7 +551,9 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 						$icon_color = $status_data['color'];
 					}
 					if ( $status_data['text_color'] ) {
-						$text_color = $status_data['text_color'];
+						if ( 'yes' === get_option( 'alg_orders_custom_statuses_enable_column_colored', 'no' ) ) {
+							$text_color = $status_data['text_color'];
+						}
 					}
 				}
 
