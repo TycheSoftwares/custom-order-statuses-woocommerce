@@ -51,6 +51,14 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 				<script>
 				function check_status_slug( elem ) {
 					var text = jQuery(elem).val();
+					jQuery('.slug_warning').remove();
+					if( text.length > 2 ) {
+						if ( 'wc-' === text ) {
+							jQuery('.slug_warning').remove();
+							jQuery(elem).after('<span class="slug_warning" style="color: red; margin-left: 10px;">Add slug without \'wc-\' prefix</span>');
+							jQuery(elem).val( text.substring( 0, 2 ) );
+						}
+					}
 					if ( text.length > 17 ) {
 						jQuery('.status_warning').remove();
 						jQuery(elem).after( '<span class="status_warning" style="color: red; margin-left: 10px;">17 characters max</span>' );
@@ -492,9 +500,10 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 				if ( empty( $new_status_slug ) ) {
 					$new_status_slug = substr( get_post_field( 'post_name', $post_id ), 0, 17 );
 				}
-				$_icon_content = ( isset( $_POST['new_status_icon_content'] ) && ! empty( $_POST['new_status_icon_content'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_content'] ) ) : 'e011';
-				$_text_color   = ( isset( $_POST['new_status_text_color'] ) && ! empty( $_POST['new_status_text_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_text_color'] ) ) : '#000000';
-				$_color        = ( isset( $_POST['new_status_icon_color'] ) && ! empty( $_POST['new_status_icon_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_color'] ) ) : '#999999';
+				$_icon_content   = ( isset( $_POST['new_status_icon_content'] ) && ! empty( $_POST['new_status_icon_content'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_content'] ) ) : 'e011';
+				$_text_color     = ( isset( $_POST['new_status_text_color'] ) && ! empty( $_POST['new_status_text_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_text_color'] ) ) : '#000000';
+				$_color          = ( isset( $_POST['new_status_icon_color'] ) && ! empty( $_POST['new_status_icon_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_color'] ) ) : '#999999';
+				$new_status_slug = 'wc-' === substr( $new_status_slug, 0, 3 ) ? substr( $new_status_slug, 3 ) : $new_status_slug;
 				update_post_meta( $post_id, 'status_slug', $new_status_slug );
 				update_post_meta( $post_id, 'color', $_color );
 				update_post_meta( $post_id, 'content', $_icon_content );
