@@ -80,6 +80,12 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
+= 2.0.3 - 14/09/2021 = 
+* Enhancement - Added an option to select the default status for Cheque and Paypal payment methods.
+* Fix - After migration, slugs were coming empty in some site. This is fixed now.
+* Fix - When slug in custom order status starts with wc- then order status don't gets changed to that custom order status. This is fixed now.
+* Fix - Text color for the custom order status was coming on the orders page even if the settings for enabling color option is kept disabled. This is fixed now.
+
 = 2.0.2 - 09/04/2021 = 
 * Fix - Order status was getting changed when we refresh the Thankyou page. This has been fixed.
 * Fix - When we change the slug of the custom order status, orders having that custom status was not seen on the orders page. This has been fixed.
