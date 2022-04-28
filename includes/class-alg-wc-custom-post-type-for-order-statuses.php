@@ -397,7 +397,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 							<td><input required="" type="color" name="new_status_text_color" value="<?php echo esc_attr( get_post_meta( $post->ID, 'text_color', true ) ); ?>"></td>
 						</tr>
 						<tr>
-							<td colspan='2'><?php _e( '*Please enable colors for status column from <a href="' . $setting_page_url . '">here</a> if it is not enabled', 'custom-order-statuses-woocommerce' ); ?></td> // phpcs:ignore
+							<td colspan='2'><?php _e( '*Please enable colors for status column from <a href="' . $setting_page_url . '">here</a> if it is not enabled', 'custom-order-statuses-woocommerce' ); ?></td> //phpcs:ignore
 							<td></td>
 						</tr>
 					</tbody>
