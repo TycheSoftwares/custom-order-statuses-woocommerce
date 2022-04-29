@@ -96,7 +96,6 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 			// Admin.
 			if ( is_admin() ) {
 				add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
-				add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 				// Register Custom Post Type for custom order status.
 				require_once 'includes/class-alg-wc-custom-post-type-for-order-statuses.php';
 				// Tool.
@@ -130,24 +129,6 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 					return get_option( 'alg_orders_custom_statuses_enable_column_colored', 'no' );
 			}
 			return $value;
-		}
-
-		/**
-		 * Show action links on the plugin screen.
-		 *
-		 * @param mixed $links - Links to be displayed for the plugin in WP Dashboard->Plugins.
-		 * @return  array
-		 *
-		 * @version 1.3.5
-		 * @since   1.0.0
-		 */
-		public function action_links( $links ) {
-			$custom_links   = array();
-			$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_custom_order_statuses' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
-			if ( 'custom-order-statuses-for-woocommerce.php' === basename( __FILE__ ) ) {
-				$custom_links[] = '<a href="https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=cosupgradetopro&utm_medium=unlockall&utm_campaign=CustomOrderStatusLite">' . __( 'Unlock All', 'custom-order-statuses-woocommerce' ) . '</a>';
-			}
-			return array_merge( $custom_links, $links );
 		}
 
 		/**
