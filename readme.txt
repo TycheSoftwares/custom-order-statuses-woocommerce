@@ -2,7 +2,7 @@
 Contributors: tychesoftwares
 Tags: woocommerce, order status, woo commerce, custom status
 Requires at least: 4.4
-Tested up to: 5.8
+Tested up to: 5.9.3
 Stable tag: trunk
 Requires PHP: 5.6
 License: GNU General Public License v3.0
@@ -79,6 +79,11 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 2. Order with custom status.
 
 == Changelog ==
+
+= 2.1.0 - 03/05/2022 = 
+* Fix - Duplicate Queries on Custom Order Status page.
+* Fix - Plugin setting link was missing on the plugin page.
+* Fix - Notice to enable color setting was missing.
 
 = 2.0.3 - 14/09/2021 = 
 * Enhancement - Added an option to select the default status for Cheque and Paypal payment methods.

@@ -46,7 +46,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.0.3';
+		public $version = '2.1.0';
 
 		/**
 		 * Plugin instance.
