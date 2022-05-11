@@ -80,6 +80,9 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
+= 2.1.1 - 11/05/2022 = 
+* Fix - Custom Order Status plugin conflict with Custom order number plugin due to same function name.
+
 = 2.1.0 - 03/05/2022 = 
 * Fix - Duplicate Queries on Custom Order Status page.
 * Fix - Plugin setting link was missing on the plugin page.
