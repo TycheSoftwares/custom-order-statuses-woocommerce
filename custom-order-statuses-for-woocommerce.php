@@ -33,7 +33,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) {
  * @version 1.3.5
  * @since   1.0.0
  */
-function action_links( $links ) {
+function cos_action_links( $links ) {
 	$custom_links   = array();
 	$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_custom_order_statuses' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
 	if ( 'custom-order-statuses-for-woocommerce.php' === basename( __FILE__ ) ) {
@@ -41,4 +41,4 @@ function action_links( $links ) {
 	}
 	return array_merge( $custom_links, $links );
 }
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'action_links' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'cos_action_links' );
