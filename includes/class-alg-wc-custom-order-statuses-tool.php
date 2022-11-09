@@ -411,23 +411,43 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 			$offset               = 0;
 			$block_size           = 1024;
 			while ( true ) {
-				$args_orders = array(
-					'post_type'      => 'shop_order',
-					'post_status'    => $old_status,
-					'posts_per_page' => $block_size,
-					'offset'         => $offset,
-					'fields'         => 'ids',
-				);
-				$loop_orders = new WP_Query( $args_orders );
-				if ( ! $loop_orders->have_posts() ) {
-					break;
+				if ( cos_wc_hpos_enabled() ) {
+					$args_orders = array(
+						'post_type'      => 'shop_order',
+						'status'         => $old_status,
+						'posts_per_page' => $block_size,
+						'offset'         => $offset,
+						'fields'         => 'ids',
+					);
+					$loop_orders = wc_get_orders( $args );
+					if ( count( $loop_orders ) <= 0 ) {
+						break;
+					}
+					foreach ( $loop_orders as $order_id ) {
+						$order = wc_get_order( $order_id );
+						$order->update_status( $new_status_without_wc_prefix );
+						$total_orders_changed++;
+					}
+					$offset += $block_size;
+				} else {
+					$args_orders = array(
+						'post_type'      => 'shop_order',
+						'post_status'    => $old_status,
+						'posts_per_page' => $block_size,
+						'offset'         => $offset,
+						'fields'         => 'ids',
+					);
+					$loop_orders = new WP_Query( $args_orders );
+					if ( ! $loop_orders->have_posts() ) {
+						break;
+					}
+					foreach ( $loop_orders->posts as $order_id ) {
+						$order = wc_get_order( $order_id );
+						$order->update_status( $new_status_without_wc_prefix );
+						$total_orders_changed++;
+					}
+					$offset += $block_size;
 				}
-				foreach ( $loop_orders->posts as $order_id ) {
-					$order = wc_get_order( $order_id );
-					$order->update_status( $new_status_without_wc_prefix );
-					$total_orders_changed++;
-				}
-				$offset += $block_size;
 			}
 			return $total_orders_changed;
 		}

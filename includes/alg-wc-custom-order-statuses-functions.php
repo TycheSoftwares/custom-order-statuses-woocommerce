@@ -154,3 +154,19 @@ if ( ! function_exists( 'alg_get_custom_order_statuses_from_cpt' ) ) {
 		return $custom_order_statuses_no_prefix;
 	}
 }
+if ( ! function_exists( 'cos_wc_hpos_enabled' ) ) {
+	/**
+	 * Check if HPOS is enabled or not.
+	 *
+	 * @since 2.2.0
+	 * return boolean true if enabled else false
+	 */
+	function cos_wc_hpos_enabled() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\OrderUtil' ) ) {
+			if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
