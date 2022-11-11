@@ -413,13 +413,13 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 			while ( true ) {
 				if ( cos_wc_hpos_enabled() ) {
 					$args_orders = array(
-						'post_type'      => 'shop_order',
+						'type'           => 'shop_order',
 						'status'         => $old_status,
 						'posts_per_page' => $block_size,
 						'offset'         => $offset,
 						'fields'         => 'ids',
 					);
-					$loop_orders = wc_get_orders( $args );
+					$loop_orders = wc_get_orders( $args_orders );
 					if ( count( $loop_orders ) <= 0 ) {
 						break;
 					}
