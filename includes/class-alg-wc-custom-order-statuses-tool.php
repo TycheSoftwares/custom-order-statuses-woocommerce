@@ -412,17 +412,17 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 			$block_size           = 1024;
 			while ( true ) {
 				$args_orders = array(
-					'post_type'      => 'shop_order',
-					'post_status'    => $old_status,
-					'posts_per_page' => $block_size,
-					'offset'         => $offset,
-					'fields'         => 'ids',
+					'type'   => 'shop_order',
+					'status' => $old_status,
+					'limit'  => $block_size,
+					'offset' => $offset,
+					'return' => 'ids',
 				);
-				$loop_orders = new WP_Query( $args_orders );
-				if ( ! $loop_orders->have_posts() ) {
+				$loop_orders = wc_get_orders( $args_orders );
+				if ( count( $loop_orders ) <= 0 ) {
 					break;
 				}
-				foreach ( $loop_orders->posts as $order_id ) {
+				foreach ( $loop_orders as $order_id ) {
 					$order = wc_get_order( $order_id );
 					$order->update_status( $new_status_without_wc_prefix );
 					$total_orders_changed++;
