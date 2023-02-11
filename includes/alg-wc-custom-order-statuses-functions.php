@@ -173,7 +173,7 @@ if ( ! function_exists( 'cos_wc_hpos_enabled' ) ) {
 }
 if ( ! function_exists( 'cos_get_custom_statuses' ) ) {
 	/**
-	 * Check if HPOS is enabled or not.
+	 * Get custom order status slugs.
 	 *
 	 * @since 2.2.0
 	 * return boolean true if enabled else false
