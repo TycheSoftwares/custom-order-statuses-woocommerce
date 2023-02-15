@@ -171,3 +171,27 @@ if ( ! function_exists( 'cos_wc_hpos_enabled' ) ) {
 		return false;
 	}
 }
+if ( ! function_exists( 'cos_get_custom_statuses' ) ) {
+	/**
+	 * Get custom order status slugs.
+	 *
+	 * @since 2.2.0
+	 * return boolean true if enabled else false
+	 */
+	function cos_get_custom_statuses() {
+		$custom_post_slug      = array();
+		$query                 = array(
+			'post_type'      => 'custom_order_status',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+		);
+		$custom_order_statuses = get_posts( $query );
+		foreach ( $custom_order_statuses as $custom_order_status ) {
+			$post_id            = $custom_order_status->ID;
+			$custom_post_meta   = get_post_meta( $post_id );
+			$custom_post_slug[] = $custom_post_meta['status_slug'][0];
+		}
+
+		return $custom_post_slug;
+	}
+}
