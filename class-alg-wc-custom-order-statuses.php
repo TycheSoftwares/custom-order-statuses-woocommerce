@@ -140,10 +140,22 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @since   1.0.0
 		 */
 		public function includes() {
+			$cos_plugin_url = plugins_url() . '/custom-order-statuses-woocommerce';
 			// Functions.
 			require_once 'includes/alg-wc-custom-order-statuses-functions.php';
 			// Core.
 			require_once 'includes/class-alg-wc-custom-order-statuses-core.php';
+			// plugin deactivation.
+			require_once 'includes/class-tyche-plugin-deactivation.php';
+			new Tyche_Plugin_Deactivation(
+				array(
+					'plugin_name'       => 'Custom Order Status for WooCommerce',
+					'plugin_base'       => 'custom-order-statuses-woocommerce/custom-order-statuses-for-woocommerce.php',
+					'script_file'       => $cos_plugin_url . '/includes/js/plugin-deactivation.js',
+					'plugin_short_name' => 'cos_lite',
+					'version'           => $this->version,
+				)
+			);
 		}
 
 		/**
