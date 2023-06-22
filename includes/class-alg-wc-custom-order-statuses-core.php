@@ -116,6 +116,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			if ( 'yes' === get_option( 'alg_orders_custom_statuses_emails_enabled', 'no' ) ) {
 				add_action( 'woocommerce_order_status_changed', array( $this, 'send_email_on_order_status_changed' ), PHP_INT_MAX, 4 );
 			}
+			add_action( 'admin_enqueue_scripts', array( $this, 'alg_custom_order_status_setting_script' ) );
 
 		}
 
@@ -148,6 +149,24 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 */
 		public function get_custom_order_statuses_action_url( $status, $order_id ) {
 			return wp_nonce_url( admin_url( 'admin-ajax.php?action=woocommerce_mark_order_status&status=' . $status . '&order_id=' . $order_id ), 'woocommerce-mark-order-status' );
+		}
+		/**
+		 * Enqueue JS script for showing fields as per the changes made in the settings.
+		 *
+		 * @version 2.3.0
+		 * @since   2.3.0
+		 */
+		public static function alg_custom_order_status_setting_script() {
+			$plugin_url = plugins_url() . '/custom-order-statuses-woocommerce';
+			$version    = alg_wc_custom_order_statuses();
+			wp_register_script(
+				'tyche',
+				$plugin_url . '/includes/js/tyche.js',
+				array( 'jquery' ),
+				$version->version,
+				true
+			);
+			wp_enqueue_script( 'tyche' );
 		}
 
 		/**
