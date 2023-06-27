@@ -40,6 +40,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 			add_action( 'parent_file', array( $this, 'alg_make_menu_active' ) );
 			add_action( 'admin_footer', array( $this, 'alg_status_name_check' ), 11 );
 			add_action( 'admin_init', array( $this, 'alg_update_status_slug_if_empty' ) );
+			add_action( 'wp_trash_post', array( $this, 'delete_custom_status' ) );
 		}
 
 		/**
@@ -560,6 +561,83 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 					echo ( $text_color ); // phpcs:ignore
 					break;
 			}
+		}
+
+		/**
+		 * Delete_custom_status.
+		 *
+		 * @param string $post_id - Slug of the status being deleted.
+		 *
+		 * @version 1.3.0
+		 * @since   1.2.0
+		 * @todo    [dev] check (e.g. temporary remove) emails (and possibly other triggers) on fallback status
+		 * @todo    [dev] fix "Order Notes"
+		 */
+		public function delete_custom_status( $post_id ) {
+			// Statuses data.
+			$post             = get_post( $post_id );
+			$custom_post_meta = get_post_meta( $post_id );
+			$delete_status    = $custom_post_meta['status_slug'][0];
+			$statuses_updated = cos_get_custom_statuses();
+			if ( count( $statuses_updated ) > 0 && 'custom_order_status' === $post->post_type ) {
+				// Fallback.
+				$new_status_without_wc_prefix = get_option( 'alg_orders_custom_statuses_fallback_delete_status', 'on-hold' );
+				if ( 'alg_none' !== $new_status_without_wc_prefix ) {
+					$total_orders_changed = $this->change_orders_status( $delete_status, $new_status_without_wc_prefix );
+				} else {
+					$total_orders_changed = 0;
+				}
+				// Delete icon data.
+				$result_icon_data = delete_option( 'alg_orders_custom_status_icon_data_' . substr( $delete_status, 3 ) );
+				// Result message.
+				if ( true === $result && true === $result_icon_data ) {
+					$result_message = __( 'Status has been successfully deleted.', 'custom-order-statuses-woocommerce' );
+					if ( $total_orders_changed > 0 ) {
+						// translators: number of orders for which status has been changed.
+						$result_message .= sprintf( __( 'Status has been changed for %d orders.', 'custom-order-statuses-woocommerce' ), $total_orders_changed );
+					}
+				} else {
+					$result_message = __( 'Delete failed.', 'custom-order-statuses-woocommerce' );
+				}
+			} else {
+				$result_message = __( 'Delete failed (status not found).', 'custom-order-statuses-woocommerce' );
+			}
+			return $result_message;
+		}
+
+		/**
+		 * Change_orders_status.
+		 *
+		 * @param string $old_status - Old custom status.
+		 * @param string $new_status_without_wc_prefix - New status.
+		 *
+		 * @version 1.2.0
+		 * @since   1.2.0
+		 */
+		public function change_orders_status( $old_status, $new_status_without_wc_prefix ) {
+			$total_orders_changed = 0;
+			$offset               = 0;
+			$block_size           = 1024;
+			while ( true ) {
+				$args_orders = array(
+					'type'   => 'shop_order',
+					'status' => $old_status,
+					'limit'  => $block_size,
+					'offset' => $offset,
+					'return' => 'ids',
+				);
+				$loop_orders = wc_get_orders( $args_orders );
+				if ( count( $loop_orders ) <= 0 ) {
+					break;
+				}
+				foreach ( $loop_orders as $order_id ) {
+					$order = wc_get_order( $order_id );
+					$order->update_status( $new_status_without_wc_prefix );
+					$total_orders_changed++;
+				}
+				$offset += $block_size;
+			}
+			return $total_orders_changed;
 		}
 	}
 }

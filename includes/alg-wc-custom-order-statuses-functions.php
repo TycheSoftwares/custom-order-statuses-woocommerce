@@ -11,6 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+use Automattic\WooCommerce\Utilities\OrderUtil;
 
 if ( ! function_exists( 'alg_get_order_statuses' ) ) {
 
@@ -152,5 +153,45 @@ if ( ! function_exists( 'alg_get_custom_order_statuses_from_cpt' ) ) {
 		}
 
 		return $custom_order_statuses_no_prefix;
+	}
+}
+if ( ! function_exists( 'cos_wc_hpos_enabled' ) ) {
+	/**
+	 * Check if HPOS is enabled or not.
+	 *
+	 * @since 2.2.0
+	 * return boolean true if enabled else false
+	 */
+	function cos_wc_hpos_enabled() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\OrderUtil' ) ) {
+			if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
+if ( ! function_exists( 'cos_get_custom_statuses' ) ) {
+	/**
+	 * Get custom order status slugs.
+	 *
+	 * @since 2.2.0
+	 * return boolean true if enabled else false
+	 */
+	function cos_get_custom_statuses() {
+		$custom_post_slug      = array();
+		$query                 = array(
+			'post_type'      => 'custom_order_status',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+		);
+		$custom_order_statuses = get_posts( $query );
+		foreach ( $custom_order_statuses as $custom_order_status ) {
+			$post_id            = $custom_order_status->ID;
+			$custom_post_meta   = get_post_meta( $post_id );
+			$custom_post_slug[] = $custom_post_meta['status_slug'][0];
+		}
+
+		return $custom_post_slug;
 	}
 }

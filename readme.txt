@@ -80,6 +80,12 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
+= 2.2.1 - 29/11/2022 =
+* Fix - Fatal error on the Order Received page.
+
+= 2.2.0 - 29/11/2022 =
+* Enhancement - Introduced compatibility with WooCommerce High Performance Order Storage.
+
 = 2.1.1 - 11/05/2022 = 
 * Fix - Custom Order Status plugin conflict with Custom order number plugin due to same function name.
 

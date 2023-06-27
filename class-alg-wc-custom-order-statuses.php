@@ -8,6 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+use Automattic\WooCommerce\Utilities\OrderUtil;
 
 // Check if WooCommerce is active.
 $plugin_name = 'woocommerce/woocommerce.php';
@@ -46,7 +47,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.1.1';
+		public $version = '2.2.1';
 
 		/**
 		 * Plugin instance.
@@ -88,6 +89,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 			if ( is_admin() ) {
 				// The Filter.
 				add_filter( 'alg_orders_custom_statuses', array( $this, 'alg_orders_custom_statuses' ), PHP_INT_MAX, 3 );
+				add_action( 'before_woocommerce_init', array( &$this, 'cos_lite_custom_order_tables_compatibility' ), 999 );
 			}
 
 			// Include required files.
@@ -138,10 +140,22 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @since   1.0.0
 		 */
 		public function includes() {
+			$cos_plugin_url = plugins_url() . '/custom-order-statuses-woocommerce';
 			// Functions.
 			require_once 'includes/alg-wc-custom-order-statuses-functions.php';
 			// Core.
 			require_once 'includes/class-alg-wc-custom-order-statuses-core.php';
+			// plugin deactivation.
+			require_once 'includes/class-tyche-plugin-deactivation.php';
+			new Tyche_Plugin_Deactivation(
+				array(
+					'plugin_name'       => 'Custom Order Status for WooCommerce',
+					'plugin_base'       => 'custom-order-statuses-woocommerce/custom-order-statuses-for-woocommerce.php',
+					'script_file'       => $cos_plugin_url . '/includes/js/plugin-deactivation.js',
+					'plugin_short_name' => 'cos_lite',
+					'version'           => $this->version,
+				)
+			);
 		}
 
 		/**
@@ -211,6 +225,18 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 */
 		public function plugin_path() {
 			return untrailingslashit( plugin_dir_path( __FILE__ ) );
+		}
+		/**
+		 * Sets the compatibility with Woocommerce HPOS.
+		 *
+		 * @since 2.2.0
+		 */
+		public function cos_lite_custom_order_tables_compatibility() {
+
+			if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'orders_cache', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
+			}
 		}
 
 	}

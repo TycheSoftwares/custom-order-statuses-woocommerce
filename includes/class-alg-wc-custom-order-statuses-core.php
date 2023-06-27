@@ -80,6 +80,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			if ( 'yes' === get_option( 'alg_orders_custom_statuses_add_to_bulk_actions', 'yes' ) ) {
 				if ( version_compare( get_bloginfo( 'version' ), '4.7' ) >= 0 ) {
 					add_filter( 'bulk_actions-edit-shop_order', array( $this, 'register_order_custom_status_bulk_actions' ), $filters_priority );
+					add_filter( 'bulk_actions-woocommerce_page_wc-orders', array( $this, 'register_order_custom_status_bulk_actions' ), $filters_priority );
 				} else {
 					add_action( 'admin_footer', array( $this, 'bulk_admin_footer' ), 11 );
 				}
@@ -115,6 +116,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			if ( 'yes' === get_option( 'alg_orders_custom_statuses_emails_enabled', 'no' ) ) {
 				add_action( 'woocommerce_order_status_changed', array( $this, 'send_email_on_order_status_changed' ), PHP_INT_MAX, 4 );
 			}
+			add_action( 'admin_enqueue_scripts', array( $this, 'alg_custom_order_status_setting_script' ) );
 
 		}
 
@@ -147,6 +149,24 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 */
 		public function get_custom_order_statuses_action_url( $status, $order_id ) {
 			return wp_nonce_url( admin_url( 'admin-ajax.php?action=woocommerce_mark_order_status&status=' . $status . '&order_id=' . $order_id ), 'woocommerce-mark-order-status' );
+		}
+		/**
+		 * Enqueue JS script for showing fields as per the changes made in the settings.
+		 *
+		 * @version 2.3.0
+		 * @since   2.3.0
+		 */
+		public static function alg_custom_order_status_setting_script() {
+			$plugin_url = plugins_url() . '/custom-order-statuses-woocommerce';
+			$version    = alg_wc_custom_order_statuses();
+			wp_register_script(
+				'tyche',
+				$plugin_url . '/includes/js/tyche.js',
+				array( 'jquery' ),
+				$version->version,
+				true
+			);
+			wp_enqueue_script( 'tyche' );
 		}
 
 		/**
@@ -482,15 +502,26 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			if ( ! $order_id ) {
 				return;
 			}
-			$order          = wc_get_order( $order_id );
-			$payment_method = $order->get_payment_method();
-			if ( 'yes' !== get_post_meta( $order_id, 'alg_cos_updated', true ) ) {
+			$order           = wc_get_order( $order_id );
+			$payment_method  = $order->get_payment_method();
+			$alg_cos_updated = cos_wc_hpos_enabled() ? $order->get_meta( 'alg_cos_updated' ) : get_post_meta( $order_id, 'alg_cos_updated', true );
+			if ( 'yes' !== $alg_cos_updated ) {
 				if ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) ) {
 					$order->update_status( get_option( 'alg_orders_custom_statuses_default_status_' . $payment_method, 'alg_disabled' ) );
-					update_post_meta( $order_id, 'alg_cos_updated', 'yes' );
+					if ( cos_wc_hpos_enabled() ) {
+						$order->update_meta_data( 'alg_cos_updated', 'yes' );
+						$order->save();
+					} else {
+						update_post_meta( $order_id, 'alg_cos_updated', 'yes' );
+					}
 				} elseif ( 'alg_disabled' !== get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) ) {
 					$order->update_status( get_option( 'alg_orders_custom_statuses_default_status', 'alg_disabled' ) );
-					update_post_meta( $order_id, 'alg_cos_updated', 'yes' );
+					if ( cos_wc_hpos_enabled() ) {
+						$order->update_meta_data( 'alg_cos_updated', 'yes' );
+						$order->save();
+					} else {
+						update_post_meta( $order_id, 'alg_cos_updated', 'yes' );
+					}
 				}
 			}
 		}
