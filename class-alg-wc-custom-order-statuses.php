@@ -236,6 +236,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 			if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
 				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
 				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'orders_cache', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'product_block_editor', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
 			}
 		}
 
