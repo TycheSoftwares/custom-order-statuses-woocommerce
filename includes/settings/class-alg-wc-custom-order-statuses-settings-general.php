@@ -18,6 +18,20 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_General' ) ) :
 	 * General Settings.
 	 */
 	class Alg_WC_Custom_Order_Statuses_Settings_General extends Alg_WC_Custom_Order_Statuses_Settings_Section {
+		/**
+		 * ID
+		 *
+		 * @var $id
+		 * @since 2.3.0
+		 */
+		public $id = '';
+		/**
+		 * Desc
+		 *
+		 * @var $desc
+		 * @since 2.3.0
+		 */
+		public $desc = '';
 
 		/**
 		 * Constructor.

@@ -20,6 +20,20 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_Emails' ) ) :
 	class Alg_WC_Custom_Order_Statuses_Settings_Emails extends Alg_WC_Custom_Order_Statuses_Settings_Section {
 
 		/**
+		 * ID
+		 *
+		 * @var $id
+		 * @since 2.3.0
+		 */
+		public $id = '';
+		/**
+		 * Desc
+		 *
+		 * @var $desc
+		 * @since 2.3.0
+		 */
+		public $desc = '';
+		/**
 		 * Constructor.
 		 *
 		 * @version 1.4.0
