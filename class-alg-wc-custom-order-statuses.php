@@ -50,6 +50,13 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		public $version = '2.2.1';
 
 		/**
+		 * Setting.
+		 *
+		 * @var $setting
+		 */
+		public $settings = '';
+
+		/**
 		 * Plugin instance.
 		 *
 		 * @var   Alg_WC_Custom_Order_Statuses The single instance of the class
