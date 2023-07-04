@@ -80,6 +80,14 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Changelog ==
 
+= 2.3.0 - 04/07/2023 =
+* Enhancement - Added deactivation survey v2.
+* Fix - Compatibility with PHP 8.2.2.
+* Fix - Compatibility declaration for WooCommerce Product Editor option.
+* Fix - Compatibility with High-Performance Order Storage (COT).
+* Fix - "Fallback delete order status" setting was not working.
+* Fix - Fatal error upon activation of the plugin when Custom Order Number plugin was installed and activated.
+
 = 2.2.1 - 29/11/2022 =
 * Fix - Fatal error on the Order Received page.
 
