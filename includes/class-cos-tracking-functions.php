@@ -67,7 +67,7 @@ if ( ! class_exists( 'Cos_Tracking_Functions' ) ) :
 				'alg_orders_custom_statuses_enable_column_colored'  => get_option( 'alg_orders_custom_statuses_enable_column_colored' ),
 
 			);
-			return wp_json_encode( $global_settings );
+			return $global_settings;
 		}
 
 		/**
@@ -82,7 +82,7 @@ if ( ! class_exists( 'Cos_Tracking_Functions' ) ) :
 				$count                  = self::cos_get_orders_status_count( $status );
 				$order_count[ $status ] = $count;
 			}
-			return wp_json_encode( $order_count );
+			return $order_count;
 		}
 
 		/**
@@ -115,7 +115,7 @@ if ( ! class_exists( 'Cos_Tracking_Functions' ) ) :
 				'alg_orders_custom_statuses_emails_heading'     => get_option( 'alg_orders_custom_statuses_emails_heading' ),
 				'alg_orders_custom_statuses_emails_content'     => get_option( 'alg_orders_custom_statuses_emails_content' ),
 			);
-			return wp_json_encode( $email_settings );
+			return $email_settings;
 		}
 
 		/**
@@ -130,7 +130,7 @@ if ( ! class_exists( 'Cos_Tracking_Functions' ) ) :
 					'alg_orders_custom_statuses_default_status_' . $key  => get_option( 'alg_orders_custom_statuses_default_status_' . $key ),
 				);
 			}
-			return wp_json_encode( $payment_gateways );
+			return $payment_gateways;
 		}
 	}
 
