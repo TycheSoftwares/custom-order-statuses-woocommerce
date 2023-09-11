@@ -161,6 +161,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 					'script_file'       => $cos_plugin_url . '/includes/js/plugin-deactivation.js',
 					'plugin_short_name' => 'cos_lite',
 					'version'           => $this->version,
+					'plugin_locale'     => 'custom-order-statuses-woocommerce',
 				)
 			);
 		}
