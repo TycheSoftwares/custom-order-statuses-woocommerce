@@ -37,7 +37,7 @@ if ( ! class_exists( 'Cos_Tracking_Functions' ) ) :
 		 * @since 1.5.0
 		 */
 		public static function cos_lite_plugin_tracking_data( $data ) {
-			$plugin_data = array(
+			$plugin_data         = array(
 				'ts_meta_data_table_name'   => 'ts_tracking_cos_meta_data',
 				'ts_plugin_name'            => 'Custom Order Status for WooCommerce',
 				'global_settings'           => self::cos_get_global_settings(),
@@ -57,8 +57,8 @@ if ( ! class_exists( 'Cos_Tracking_Functions' ) ) :
 		public static function cos_get_global_settings() {
 			$global_settings = array(
 				'alg_orders_custom_statuses_add_to_bulk_actions'    => get_option( 'alg_orders_custom_statuses_add_to_bulk_actions' ),
-				'alg_orders_custom_statuses_add_to_reports' 	    => get_option( 'alg_orders_custom_statuses_add_to_reports' ),
-				'alg_orders_custom_statuses_default_status' 	    => get_option( 'alg_orders_custom_statuses_default_status' ),
+				'alg_orders_custom_statuses_add_to_reports'         => get_option( 'alg_orders_custom_statuses_add_to_reports' ),
+				'alg_orders_custom_statuses_default_status'         => get_option( 'alg_orders_custom_statuses_default_status' ),
 				'alg_orders_custom_statuses_default_status_bacs'    => get_option( 'alg_orders_custom_statuses_default_status_bacs' ),
 				'alg_orders_custom_statuses_default_status_cheque'  => get_option( 'alg_orders_custom_statuses_default_status_cheque' ),
 				'alg_orders_custom_statuses_default_status_cod'     => get_option( 'alg_orders_custom_statuses_default_status_cod' ),
