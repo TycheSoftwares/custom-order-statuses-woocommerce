@@ -169,7 +169,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 				)
 			);
 
-			$doc_link = 'https://www.tychesoftwares.com/docs/docs/custom-order-status-for-woocommerce/custom-order-status-usage-tracking';                
+			$doc_link = 'https://www.tychesoftwares.com/docs/docs/custom-order-status-for-woocommerce/custom-order-status-usage-tracking';
 			require_once 'includes/component/plugin-tracking/class-tyche-plugin-tracking.php';
 			require_once 'includes/class-cos-tracking-functions.php';
 			new Tyche_Plugin_Tracking(
@@ -266,8 +266,8 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		}
 
 		/**
-	         * This function includes js files required for admin side.
-	         */
+		 * This function includes js files required for admin side.
+		 */
 		public function ts_admin_notices_scripts() {
 			wp_enqueue_script(
 				'cos_lite_ts_dismiss_notice',
@@ -276,7 +276,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 				$this->version,
 				false
 			);
-		
+
 			wp_localize_script(
 				'cos_lite_ts_dismiss_notice',
 				'cos_lite_ts_dismiss_notice',
@@ -291,7 +291,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * Function remove query argument when click on allow button on opt banner.
 		 */
 		public static function ts_reset_tracking_setting() {
-			if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' == $_GET ['ts_action'] ) {
+			if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' === $_GET ['ts_action'] ) {// phpcs:ignore WordPress.Security.NonceVerification
 				Tyche_Plugin_Tracking::reset_tracker_setting( 'cos_lite' );
 				$ts_url = remove_query_arg( 'ts_action' );
 				wp_safe_redirect( $ts_url );
