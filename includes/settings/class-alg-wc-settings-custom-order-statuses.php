@@ -70,6 +70,13 @@ if ( ! class_exists( 'Alg_WC_Settings_Custom_Order_Statuses' ) ) :
 						'type'    => 'checkbox',
 					),
 					array(
+						'title'   => __( 'Reset Usage Tracking', 'custom-order-statuses-woocommerce' ),
+						'desc'    => __( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.', 'custom-order-statuses-woocommerce' ),
+						'id'      => $this->id . '_reset_usage_tracking',
+						'default' => 'no',
+						'type'    => 'checkbox',
+					),
+					array(
 						'type' => 'sectionend',
 						'id'   => $this->id . '_' . $current_section . '_reset_options',
 					),
@@ -93,6 +100,11 @@ if ( ! class_exists( 'Alg_WC_Settings_Custom_Order_Statuses' ) ) :
 						add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
 					}
 				}
+			}
+			if ( 'yes' === get_option( $this->id . '_reset_usage_tracking', '' ) ) {
+				delete_option( 'cos_lite_allow_tracking' );
+				delete_option( $this->id . '_reset_usage_tracking' );
+				Tyche_Plugin_Tracking::reset_tracker_setting( 'cos_lite' );
 			}
 		}
 

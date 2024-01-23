@@ -1,3 +1,10 @@
+/**
+ * Data Tracking notice.
+ *
+ * @namespace custom_order_numbers_pro
+ * @since 1.3.0
+ */
+// Tracking Notice dismissed.
 jQuery(document).ready( function() {
 	jQuery( '.notice.is-dismissible' ).each( function() {
 		var $this = jQuery( this ),
@@ -23,7 +30,7 @@ jQuery(document).ready( function() {
 					jQuery.post(
 						cos_lite_ts_dismiss_notice.ts_admin_url,
 						{
-							action: cos_lite_ts_dismiss_notice.ts_prefix_of_plugin + "_admin_notices"
+							action: cos_lite_ts_dismiss_notice.ts_prefix_of_plugin + "_tracker_dismiss_notice"
 						},
 						function( response ) {}
 					);

@@ -157,7 +157,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 			// Core.
 			require_once 'includes/class-alg-wc-custom-order-statuses-core.php';
 			// plugin deactivation.
-			require_once 'includes/class-tyche-plugin-deactivation.php';
+			require_once 'includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php';
 			new Tyche_Plugin_Deactivation(
 				array(
 					'plugin_name'       => 'Custom Order Status for WooCommerce',
@@ -165,11 +165,12 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 					'script_file'       => $cos_plugin_url . '/includes/js/plugin-deactivation.js',
 					'plugin_short_name' => 'cos_lite',
 					'version'           => $this->version,
+					'plugin_locale'     => 'custom-order-statuses-woocommerce',
 				)
 			);
 
 			$doc_link = 'https://www.tychesoftwares.com/docs/docs/custom-order-status-for-woocommerce/custom-order-status-usage-tracking';                
-			require_once 'includes/class-tyche-plugin-tracking.php';
+			require_once 'includes/component/plugin-tracking/class-tyche-plugin-tracking.php';
 			require_once 'includes/class-cos-tracking-functions.php';
 			new Tyche_Plugin_Tracking(
 				array(
