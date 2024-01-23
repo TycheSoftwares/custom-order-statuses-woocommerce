@@ -43,6 +43,7 @@ var tyche = {
 			}
 		}
 	},
+	wcap: {}, // Abandoned Cart Pro for WooCommerce.
 	orddd: {}, // Order Delivery Date Pro for WooCommerce.
 	bkap: {}, // Booking & Appointment Plugin for WooCommerce.
 	ac: {}, // Abandoned Cart Pro for WooCommerce.
