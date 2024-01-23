@@ -172,7 +172,7 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 					'deactivation_data'    => $data,
 					'ajax_url'             => admin_url( 'admin-ajax.php' ),
 					'nonce'                => wp_create_nonce( 'tyche_plugin_deactivation_submit_action' ),
-					'deactivation_req_msg' => __( 'Please select a reason for deactivation!', $this->plugin_locale ),//phpcs:ignore
+					'deactivation_req_msg' => __( 'Please select a reason for deactivation!', 'custom-order-statuses-woocommerce' ),
 				)
 			);
 

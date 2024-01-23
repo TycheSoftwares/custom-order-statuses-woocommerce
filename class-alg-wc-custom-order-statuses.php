@@ -97,6 +97,10 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 				// The Filter.
 				add_filter( 'alg_orders_custom_statuses', array( $this, 'alg_orders_custom_statuses' ), PHP_INT_MAX, 3 );
 				add_action( 'before_woocommerce_init', array( &$this, 'cos_lite_custom_order_tables_compatibility' ), 999 );
+				add_action( 'admin_footer', array( $this, 'ts_admin_notices_scripts' ) );
+				add_action( 'admin_init', array( $this, 'ts_reset_tracking_setting' ) );
+				add_action( 'cos_lite_init_tracker_completed', array( __CLASS__, 'init_tracker_completed' ), 10, 2 );
+				add_filter( 'ts_tracker_data', array( 'Cos_Tracking_Functions', 'cos_lite_plugin_tracking_data' ), 10, 1 );
 			}
 
 			// Include required files.
@@ -153,7 +157,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 			// Core.
 			require_once 'includes/class-alg-wc-custom-order-statuses-core.php';
 			// plugin deactivation.
-			require_once 'includes/class-tyche-plugin-deactivation.php';
+			require_once 'includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php';
 			new Tyche_Plugin_Deactivation(
 				array(
 					'plugin_name'       => 'Custom Order Status for WooCommerce',
@@ -162,6 +166,19 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 					'plugin_short_name' => 'cos_lite',
 					'version'           => $this->version,
 					'plugin_locale'     => 'custom-order-statuses-woocommerce',
+				)
+			);
+
+			$doc_link = 'https://www.tychesoftwares.com/docs/docs/custom-order-status-for-woocommerce/custom-order-status-usage-tracking';
+			require_once 'includes/component/plugin-tracking/class-tyche-plugin-tracking.php';
+			require_once 'includes/class-cos-tracking-functions.php';
+			new Tyche_Plugin_Tracking(
+				array(
+					'plugin_name'       => 'Custom Order Status for WooCommerce',
+					'plugin_locale'     => 'custom-order-statuses-woocommerce',
+					'plugin_short_name' => 'cos_lite',
+					'version'           => $this->version,
+					'blog_link'         => $doc_link,
 				)
 			);
 		}
@@ -246,6 +263,47 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'orders_cache', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
 				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'product_block_editor', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
 			}
+		}
+
+		/**
+		 * This function includes js files required for admin side.
+		 */
+		public function ts_admin_notices_scripts() {
+			wp_enqueue_script(
+				'cos_lite_ts_dismiss_notice',
+				plugins_url() . '/custom-order-statuses-woocommerce/includes/js/tyche-dismiss-tracking-notice.js',
+				'',
+				$this->version,
+				false
+			);
+
+			wp_localize_script(
+				'cos_lite_ts_dismiss_notice',
+				'cos_lite_ts_dismiss_notice',
+				array(
+					'ts_prefix_of_plugin' => 'cos_lite',
+					'ts_admin_url'        => admin_url( 'admin-ajax.php' ),
+				)
+			);
+		}
+
+		/**
+		 * Function remove query argument when click on allow button on opt banner.
+		 */
+		public static function ts_reset_tracking_setting() {
+			if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' === $_GET ['ts_action'] ) {// phpcs:ignore WordPress.Security.NonceVerification
+				Tyche_Plugin_Tracking::reset_tracker_setting( 'cos_lite' );
+				$ts_url = remove_query_arg( 'ts_action' );
+				wp_safe_redirect( $ts_url );
+			}
+		}
+
+		/**
+		 * Function located on settings page after tracking completed.
+		 */
+		public static function init_tracker_completed() {
+			header( 'Location: ' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_custom_order_statuses' ) );
+			exit;
 		}
 
 	}

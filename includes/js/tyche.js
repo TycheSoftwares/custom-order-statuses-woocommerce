@@ -1,7 +1,7 @@
 "use strict";
 
 var tyche = {
-	version: '1.1.2', // version of tyche constructor.
+	version: '1.1.3', // version of tyche constructor.
 	constructor: tyche,
 	extend: function() {
 		let target = arguments[ 0 ] || {},
@@ -43,6 +43,7 @@ var tyche = {
 			}
 		}
 	},
+	wcap: {}, // Abandoned Cart Pro for WooCommerce.
 	orddd: {}, // Order Delivery Date Pro for WooCommerce.
 	bkap: {}, // Booking & Appointment Plugin for WooCommerce.
 	ac: {}, // Abandoned Cart Pro for WooCommerce.
