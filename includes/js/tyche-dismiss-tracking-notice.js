@@ -30,7 +30,8 @@ jQuery(document).ready( function() {
 					jQuery.post(
 						cos_lite_ts_dismiss_notice.ts_admin_url,
 						{
-							action: cos_lite_ts_dismiss_notice.ts_prefix_of_plugin + "_tracker_dismiss_notice"
+							action: cos_lite_ts_dismiss_notice.ts_prefix_of_plugin + "_tracker_dismiss_notice",
+							tracking_notice : cos_lite_ts_dismiss_notice.tracking_notice
 						},
 						function( response ) {}
 					);

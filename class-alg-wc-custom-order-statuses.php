@@ -47,7 +47,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.3.0';
+		public $version = '2.4.0';
 
 		/**
 		 * Setting.
@@ -269,6 +269,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * This function includes js files required for admin side.
 		 */
 		public function ts_admin_notices_scripts() {
+			$nonce = wp_create_nonce( 'tracking_notice' );
 			wp_enqueue_script(
 				'cos_lite_ts_dismiss_notice',
 				plugins_url() . '/custom-order-statuses-woocommerce/includes/js/tyche-dismiss-tracking-notice.js',
@@ -283,6 +284,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 				array(
 					'ts_prefix_of_plugin' => 'cos_lite',
 					'ts_admin_url'        => admin_url( 'admin-ajax.php' ),
+					'tracking_notice'     => $nonce,
 				)
 			);
 		}
