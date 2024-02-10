@@ -100,7 +100,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 				add_action( 'admin_footer', array( $this, 'ts_admin_notices_scripts' ) );
 				add_action( 'admin_init', array( $this, 'ts_reset_tracking_setting' ) );
 				add_action( 'cos_lite_init_tracker_completed', array( __CLASS__, 'init_tracker_completed' ), 10, 2 );
-				add_filter( 'ts_tracker_data', array( 'Cos_Tracking_Functions', 'cos_lite_plugin_tracking_data' ), 10, 1 );
+				add_filter( 'cos_lite_ts_tracker_data', array( 'Cos_Tracking_Functions', 'cos_lite_plugin_tracking_data' ), 10, 1 );
 			}
 
 			// Include required files.
