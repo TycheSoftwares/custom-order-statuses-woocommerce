@@ -534,16 +534,18 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 */
 		public function register_custom_post_statuses() {
 			foreach ( $this->alg_orders_custom_statuses_array as $slug => $label ) {
+				// Escape % symbol in label.
+				$escaped_label = str_replace( '%', '%%', $label );
 				register_post_status(
 					$slug,
 					array(
-						'label'                     => $label,
+						'label'                     => $escaped_label,
 						'public'                    => true,
 						'exclude_from_search'       => false,
 						'show_in_admin_all_list'    => true,
 						'show_in_admin_status_list' => true,
 						// translators: Count of orders with the custom status.
-						'label_count'               => _n_noop( "$label <span class='count'>(%s)</span>", "$label <span class='count'>(%s)</span>" ), // phpcs:ignore
+						'label_count'               => _n_noop( "$escaped_label <span class='count'>(%s)</span>", "$escaped_label <span class='count'>(%s)</span>" ), // phpcs:ignore
 					)
 				);
 			}
