@@ -2,7 +2,7 @@
 Contributors: tychesoftwares
 Tags: woocommerce, order status, woo commerce, custom status
 Requires at least: 4.4
-Tested up to: 6.4.2
+Tested up to: 6.5.0
 Stable tag: trunk
 Requires PHP: 7.3
 License: GNU General Public License v3.0
@@ -79,6 +79,12 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 2. Order with custom status.
 
 == Changelog ==
+
+= 2.4.1 - 03/04/2024 =
+* Fix - Cross Site Request Forgery (CSRF) vulnerability.
+* Fix - The order page is crashed if the Custom Order Status has "%" sign included.
+* Tweak - Update compatibility with WordPress 6.5
+* Tweak - Update compatibility with WooCommerce 8.7
 
 = 2.4.0 - 30/01/2024 =
 * Fix - Fixed Cross Site Request Forgery (CSRF) vulnerability. 

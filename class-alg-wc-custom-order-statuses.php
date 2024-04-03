@@ -47,7 +47,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.4.0';
+		public $version = '2.4.1';
 
 		/**
 		 * Setting.
