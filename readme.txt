@@ -89,8 +89,14 @@ This plugin lets you create, edit and delete [custom order statuses](https://www
 
 == Screenshots ==
 
-1. Custom order status tool.
-2. Order with custom status.
+1. Orders List with Custom Order Status.
+2. Set Default Order Status.
+3. General Settings Section.
+4. Email Notifications.
+5. Email Settings Section.
+6. Custom Status List Overview.
+7. Bulk Status Change.
+8. Add New Custom Status.
 
 == Changelog ==
 
