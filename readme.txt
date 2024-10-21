@@ -8,44 +8,56 @@ Requires PHP: 7.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Add custom order statuses to WooCommerce.
+Custom Order Status for WooCommerce allows you to create and manage order statuses. It improves order management & overall order workflow.
 
 == Description ==
 
-This plugin lets you add [custom order statuses](https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=wprepo&utm_medium=topprolink&utm_campaign=CustomStatus) to WooCommerce. When adding status, you can set:
+> ###🚀&nbsp;&nbsp;New Launch: Flexi BOGO for WooCommerce
+>
+> The only BOGO plugin with a revenue tracking feature. **Now, at an attractive introductory price**. [Check out our new plugin here](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=pluginpagetop&utm_campaign=CustomStatus).
 
-* Custom status **slug**.
-* Custom status **label**.
-* Custom status **icon**.
-* Custom status **icon and column color**.
+####Custom Order Status Main Features####
 
-### Check out the PRO version of [Custom Order Status for WooCommerce plugin](https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=wprepo&utm_medium=prolink&utm_campaign=CustomStatus).
+This plugin lets you create, edit and delete [custom order statuses](https://www.tychesoftwares.com/products/woocommerce-custom-order-status-plugin/?utm_source=wprepo&utm_medium=topprolink&utm_campaign=CustomStatus) in WooCommerce. Below are some features of the Lite plugin:
 
-Added custom statuses can be added to admin order list **bulk actions** and to admin **reports**.
+* When adding custom status, you can set a label, slug, icon and color.
+* Select the default status for Cheque and Paypal payment methods.
+* Send email notification to customer & admin on change of custom order status.
+
+### Check out the PRO version of [Custom Order Status for WooCommerce plugin](https://www.tychesoftwares.com/products/woocommerce-custom-order-status-plugin/?utm_source=wprepo&utm_medium=prolink&utm_campaign=CustomStatus).
+
+* Custom Order Status Rules - Set orders to automatically update their status after a certain time or number of days.
+* Send email if an order has been in one particular status for more than a pre defined time period.
+* Ability to modify labels of default WooCommerce statuses.
+* Add bcc email to outgoing order status emails.
+* Multi-lingual compatibility.
+* Added custom statuses can be added to admin order list bulk actions and to admin reports.
 
 ### Some of our Pro plugins
 
-1. **[Abandoned Cart Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-abandoned-cart-pro/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Abandoned Cart Pro for WooCommerce")**
+1. **[Flexi BOGO for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=pluginpagetop&utm_campaign=CustomStatus "Flexi BOGO for WooCommerce")**
 
-2. **[Booking & Appointment Plugin for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-booking-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Booking & Appointment Plugin for WooCommerce")**
+2. **[Abandoned Cart Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-abandoned-cart-pro/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Abandoned Cart Pro for WooCommerce")**
 
-3. **[Order Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Order Delivery Date Pro for WooCommerce")**
+3. **[Booking & Appointment Plugin for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-booking-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Booking & Appointment Plugin for WooCommerce")**
 
-4. **[Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Product Delivery Date Pro for WooCommerce")**
+4. **[Order Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Order Delivery Date Pro for WooCommerce")**
 
-5. **[Deposits For WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/deposits-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Deposits For WooCommerce")**
+5. **[Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Product Delivery Date Pro for WooCommerce")**
 
-6. **[Payment Gateway Based Fees and Discounts for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/payment-gateway-based-fees-and-discounts-for-woocommerce-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Payment Gateway Based Fees and Discounts for WooCommerce - Pro")**
+6. **[Deposits For WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/deposits-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Deposits For WooCommerce")**
 
-7. **[Custom Order Numbers for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/custom-order-numbers-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Custom Order Numbers for WooCommerce - Pro")**
+7. **[Payment Gateway Based Fees and Discounts for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/payment-gateway-based-fees-and-discounts-for-woocommerce-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Payment Gateway Based Fees and Discounts for WooCommerce - Pro")**
 
-8. **[Product Input Fields for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/product-input-fields-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCPGBasedFees "Product Input Fields for WooCommerce - Pro")**
+8. **[Custom Order Numbers for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/custom-order-numbers-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=CustomStatus "Custom Order Numbers for WooCommerce - Pro")**
 
-9. **[Call for Price for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-call-for-price-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCPGBasedFees "Call for Price for WooCommerce - Pro")**
+9. **[Product Input Fields for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/product-input-fields-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCPGBasedFees "Product Input Fields for WooCommerce - Pro")**
 
-10. **[Price based on User Role for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/price-user-role-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCPGBasedFees "Price based on User Role for WooCommerce - Pro")**
+10. **[Call for Price for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-call-for-price-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCPGBasedFees "Call for Price for WooCommerce - Pro")**
 
-11. **[Currency per Product for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/currency-per-product-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCPGBasedFees "Currency per Product for WooCommerce - Pro")**
+11. **[Price based on User Role for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/price-user-role-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCPGBasedFees "Price based on User Role for WooCommerce - Pro")**
+
+12. **[Currency per Product for WooCommerce - Pro](https://www.tychesoftwares.com/store/premium-plugins/currency-per-product-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCPGBasedFees "Currency per Product for WooCommerce - Pro")**
 
 ### Some of our other free plugins
 
@@ -53,19 +65,21 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 2. **[Order Delivery Date for WooCommerce - Lite](https://wordpress.org/plugins/order-delivery-date-for-woocommerce/ "Order Delivery Date for WooCommerce - Lite")**
 
-3. **[Product Delivery Date for WooCommerce - Lite](https://wordpress.org/plugins/product-delivery-date-for-woocommerce-lite/ "Product Delivery Date for WooCommerce")**
+3. **[Print Invoice & Delivery Notes for WooCommerce](https://wordpress.org/plugins/woocommerce-delivery-notes/ "Print Invoice & Delivery Notes for WooCommerce")**
 
-4. **[Payment Gateway Based Fees and Discounts for WooCommerce](https://wordpress.org/plugins/checkout-fees-for-woocommerce/ "Payment Gateway Based Fees and Discounts for WooCommerce")**
+4. **[Product Delivery Date for WooCommerce - Lite](https://wordpress.org/plugins/product-delivery-date-for-woocommerce-lite/ "Product Delivery Date for WooCommerce")**
 
-5. **[Custom Order Numbers for WooCommerce](https://wordpress.org/plugins/custom-order-numbers-for-woocommerce/ "Custom Order Numbers for WooCommerce")**
+5. **[Payment Gateway Based Fees and Discounts for WooCommerce](https://wordpress.org/plugins/checkout-fees-for-woocommerce/ "Payment Gateway Based Fees and Discounts for WooCommerce")**
 
-6. **[Product Input Fields for WooCommerce](https://wordpress.org/plugins/product-input-fields-for-woocommerce/ "Product Input Fields for WooCommerce")**
+6. **[Custom Order Numbers for WooCommerce](https://wordpress.org/plugins/custom-order-numbers-for-woocommerce/ "Custom Order Numbers for WooCommerce")**
 
-7. **[Call for Price for WooCommerce](https://wordpress.org/plugins/woocommerce-call-for-price/ "Call for Price for WooCommerce")**
+7. **[Product Input Fields for WooCommerce](https://wordpress.org/plugins/product-input-fields-for-woocommerce/ "Product Input Fields for WooCommerce")**
 
-8. **[Price based on User Role for WooCommerce](https://wordpress.org/plugins/price-by-user-role-for-woocommerce/ "Price based on User Role for WooCommerce")**
+8. **[Call for Price for WooCommerce](https://wordpress.org/plugins/woocommerce-call-for-price/ "Call for Price for WooCommerce")**
 
-9. **[Currency per Product for WooCommerce](https://wordpress.org/plugins/currency-per-product-for-woocommerce/ "Currency per Product for WooCommerce")**
+9. **[Price based on User Role for WooCommerce](https://wordpress.org/plugins/price-by-user-role-for-woocommerce/ "Price based on User Role for WooCommerce")**
+
+10. **[Currency per Product for WooCommerce](https://wordpress.org/plugins/currency-per-product-for-woocommerce/ "Currency per Product for WooCommerce")**
 
 == Installation ==
 
@@ -75,8 +89,14 @@ Added custom statuses can be added to admin order list **bulk actions** and to a
 
 == Screenshots ==
 
-1. Custom order status tool.
-2. Order with custom status.
+1. Orders List with Custom Order Status.
+2. Set Default Order Status.
+3. General Settings Section.
+4. Email Notifications.
+5. Email Settings Section.
+6. Custom Status List Overview.
+7. Bulk Status Change.
+8. Add New Custom Status.
 
 == Changelog ==
 
