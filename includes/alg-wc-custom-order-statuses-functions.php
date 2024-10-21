@@ -109,6 +109,9 @@ if ( ! function_exists( 'alg_get_custom_order_statuses_from_cpt' ) ) {
 	 * @since   1.3.5
 	 */
 	function alg_get_custom_order_statuses_from_cpt( $cut_prefix = false, $get_post_ids = false ) {
+		if ( class_exists( 'ActiveMember360' ) ) {
+			require_once ABSPATH . 'wp-includes/pluggable.php';
+		}
 		// Get the order statues.
 		$arg = array(
 			'numberposts' => -1,
