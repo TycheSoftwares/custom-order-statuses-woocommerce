@@ -3,7 +3,7 @@ Contributors: tychesoftwares
 Tags: woocommerce, order status, woo commerce, custom status
 Requires at least: 4.4
 Tested up to: 6.6.2
-Stable tag: 2.4.1
+Stable tag: 2.5.0
 Requires PHP: 7.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
