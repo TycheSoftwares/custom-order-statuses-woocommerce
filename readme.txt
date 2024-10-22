@@ -99,6 +99,9 @@ This plugin lets you create, edit and delete [custom order statuses](https://www
 8. Add New Custom Status.
 
 == Changelog ==
+= 2.5.0 - 22/10/2024 =
+* Fix - Deactivation survey request was being sent even though 'Skip & deactivate' was selected while deactivating the plugin.
+* Fix - Compatibility issue with "ActiveMember360" plugin causing fatal error on frontend.
 
 = 2.4.1 - 03/04/2024 =
 * Fix - Cross Site Request Forgery (CSRF) vulnerability.
