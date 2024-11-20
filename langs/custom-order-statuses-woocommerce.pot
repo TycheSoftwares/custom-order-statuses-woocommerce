@@ -8,64 +8,64 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-03 17:25+0530\n"
+"POT-Creation-Date: 2024-11-20 12:41+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: custom-order-statuses-for-woocommerce.php:38
+#: custom-order-statuses-for-woocommerce.php:42
 msgid "Settings"
 msgstr ""
 
-#: custom-order-statuses-for-woocommerce.php:40
+#: custom-order-statuses-for-woocommerce.php:44
 msgid "Unlock All"
 msgstr ""
 
-#: includes/class-alg-wc-custom-order-statuses-core.php:172
+#: includes/class-alg-wc-custom-order-statuses-core.php:192
 #, php-format
 msgid "Change order status to %s"
 msgstr ""
 
-#: includes/class-alg-wc-custom-order-statuses-core.php:182
+#: includes/class-alg-wc-custom-order-statuses-core.php:202
 msgid "Change status: "
 msgstr ""
 
-#: includes/class-alg-wc-custom-order-statuses-core.php:230
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:454
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:90
+#: includes/class-alg-wc-custom-order-statuses-core.php:250
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:455
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:104
 #, php-format
 msgid "[%1$s] Order #%2$s status changed to %3$s - %4$s"
 msgstr ""
 
-#: includes/class-alg-wc-custom-order-statuses-core.php:235
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:470
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:104
+#: includes/class-alg-wc-custom-order-statuses-core.php:255
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:471
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:118
 #, php-format
 msgid "Order status changed to %s"
 msgstr ""
 
-#: includes/class-alg-wc-custom-order-statuses-core.php:241
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:486
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:113
+#: includes/class-alg-wc-custom-order-statuses-core.php:261
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:487
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:127
 #, php-format
 msgid "Order #%1$s status changed from %2$s to %3$s"
 msgstr ""
 
-#: includes/class-alg-wc-custom-order-statuses-core.php:401
+#: includes/class-alg-wc-custom-order-statuses-core.php:421
 msgid "Complete"
 msgstr ""
 
-#: includes/class-alg-wc-custom-order-statuses-core.php:596
+#: includes/class-alg-wc-custom-order-statuses-core.php:629
 #, php-format
 msgid "Change status to %s"
 msgstr ""
 
-#: includes/class-alg-wc-custom-order-statuses-core.php:624
-#: includes/class-alg-wc-custom-order-statuses-core.php:631
+#: includes/class-alg-wc-custom-order-statuses-core.php:657
+#: includes/class-alg-wc-custom-order-statuses-core.php:664
 #, php-format
 msgid "Mark %s"
 msgstr ""
@@ -78,7 +78,7 @@ msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:95
 #: includes/class-alg-wc-custom-order-statuses-tool.php:215
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:379
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:380
 msgid "Slug"
 msgstr ""
 
@@ -89,22 +89,22 @@ msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:97
 #: includes/class-alg-wc-custom-order-statuses-tool.php:217
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:386
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:533
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:387
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:534
 msgid "Icon Code"
 msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:98
 #: includes/class-alg-wc-custom-order-statuses-tool.php:218
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:392
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:534
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:393
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:535
 msgid "Color"
 msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:99
 #: includes/class-alg-wc-custom-order-statuses-tool.php:219
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:396
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:535
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:397
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:536
 msgid "Text Color"
 msgstr ""
 
@@ -156,10 +156,10 @@ msgid ""
 msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:190
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:55
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:62
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:134
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:155
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:69
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:76
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:148
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:169
 msgid "Add"
 msgstr ""
 
@@ -248,19 +248,23 @@ msgid "Status was not edited!"
 msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:386
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:594
 msgid "Status has been successfully deleted."
 msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:389
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:597
 #, php-format
 msgid "Status has been changed for %d orders."
 msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:392
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:600
 msgid "Delete failed."
 msgstr ""
 
 #: includes/class-alg-wc-custom-order-statuses-tool.php:395
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:603
 msgid "Delete failed (status not found)."
 msgstr ""
 
@@ -299,341 +303,434 @@ msgctxt "Order status"
 msgid "Failed"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:103
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:104
 msgid "Custom status has been updated."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:152
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:153
 msgid ""
 "Custom Order Status Lite plugin has been updated to use custom post types. "
 "We highly recommend you to update the database so you can take advantage of "
 "the new features like setting a different email for each custom status."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:156
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:157
 msgid "Update Now"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:264
-msgctxt "custom_order_status"
-msgid "Custom Order Status"
-msgstr ""
-
 #: includes/class-alg-wc-custom-post-type-for-order-statuses.php:265
-msgctxt "post type singular name"
+msgctxt "custom_order_status"
 msgid "Custom Order Status"
 msgstr ""
 
 #: includes/class-alg-wc-custom-post-type-for-order-statuses.php:266
-msgctxt "admin menu"
+msgctxt "post type singular name"
 msgid "Custom Order Status"
 msgstr ""
 
 #: includes/class-alg-wc-custom-post-type-for-order-statuses.php:267
-msgctxt "add new on admin bar"
+msgctxt "admin menu"
 msgid "Custom Order Status"
 msgstr ""
 
 #: includes/class-alg-wc-custom-post-type-for-order-statuses.php:268
+msgctxt "add new on admin bar"
+msgid "Custom Order Status"
+msgstr ""
+
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:269
 msgctxt "custom_order_status"
 msgid "Add New"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:269
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:270
 msgid "Add New Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:270
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:271
 msgid "New Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:271
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:272
 msgid "Edit Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:272
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:273
 msgid "View Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:273
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:274
 msgid "All Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:274
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:275
 msgid "Search Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:275
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:276
 msgid "Parent Custom Order Status:"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:276
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:277
 msgid "No Custom Order Status found."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:277
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:278
 msgid "No Custom Order Status found in Trash."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:282
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:283
 msgid "Description."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:355
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:356
 msgid "Status details"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:356
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:357
 msgid "Email Settings"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:381
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:382
 #, php-format
 msgid "* Without %s prefix,"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:382
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:383
 msgid "17 characters max."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:388
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:389
 msgid "* You can check icon codes"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:388
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:389
 msgid "here"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:402
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:403
 msgid "*Please enable colors for status column from <a href=\""
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:427
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:30
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:54
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:428
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:44
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:68
 msgid "Emails"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:432
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:55
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:433
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:69
 msgid "Enable section"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:438
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:70
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:439
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:84
 msgid "Email address"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:441
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:72
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:442
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:86
 #, php-format
 msgid ""
 "Comma separated list of emails. Leave blank to send emails to admin (%s)."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:442
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:75
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:443
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:89
 #, php-format
 msgid ""
 "Use %1$s to send email to the customer's billing email; %2$s to the admin's "
 "email."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:446
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:85
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:447
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:99
 msgid "Email subject"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:450
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:466
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:482
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:43
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:451
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:467
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:483
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:57
 #, php-format
 msgid "Replaced values: %s."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:450
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:466
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:482
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:46
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:451
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:467
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:483
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:60
 msgid "You can also use shortcodes here."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:462
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:100
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:463
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:114
 msgid "Email heading"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:478
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:109
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:479
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:123
 msgid "Email content"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:532
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:533
 msgid "Title"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:536
+#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:537
 msgid "Date"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:30
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:172
+msgid "I only needed the plugin for a short period."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:178
+msgid "I found a better plugin."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:180
+msgid "Please let us have the plugin's name so that we can make improvements"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
+msgid "The plugin is not working."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:186
+msgid ""
+"Please share what was faulty with the plugin so that we may get the issue "
+"fixed."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
+msgid "The plugin is causing issues on my site"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:192
+msgid ""
+"We’re sorry! Please tell us about the issues so that we can get them fixed."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
+msgid "Some features I need are not working as per my expectations"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:198
+msgid "Please tell us about these features."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
+msgid "The plugin is not compatible with another plugin/theme"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:204
+msgid ""
+"We’re sorry! We would like you to tell us the plugin/theme so that we can "
+"work on the compatibility."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
+msgid "Other"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:214
+msgid "I can’t customize order status emails."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:228
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:239
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:240
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:241
+msgid "Cancel"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:254
+msgid "Please select a reason for deactivation!"
+msgstr ""
+
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:121
+msgid "Once in a Week"
+msgstr ""
+
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:255
+msgid "Want to help make "
+msgstr ""
+
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:258
+msgid "Allow"
+msgstr ""
+
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:259
+msgid "No thanks"
+msgstr ""
+
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:44
 msgid "Advanced"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:43
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:57
 msgid "Advanced Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:48
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:62
 msgid "Filters priority"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:49
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:63
 msgid ""
 "This will set priority for WooCommerce filters used in plugin. Leave zero, "
 "if not sure."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:49
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:63
 msgid "Emails Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:61
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:75
 msgid "Statuses"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:62
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:76
 msgid ""
 "Custom statuses to send emails. Leave blank to send emails on all custom "
 "statuses."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:30
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:44
 msgid "General"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:43
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:57
 msgid "General Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:47
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:61
 #, php-format
 msgid "Use %s to create, edit and delete custom statuses."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:49
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:63
 msgid "custom order statuses page"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:54
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:68
 msgid "Add custom statuses to admin order bulk actions"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:61
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:75
 msgid "Add custom statuses to admin reports"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:68
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:82
 msgid "Default order status"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:69
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:83
 msgid ""
 "You can change the default order status here. However some payment gateways "
 "may change this status immediately on order creation. E.g. BACS gateway will "
 "change status to On-hold."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:70
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:79
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:88
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:97
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:106
-msgid "Plugin must be enabled to add custom statuses to the list."
-msgstr ""
-
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:75
 #: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:84
 #: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:93
 #: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:102
 #: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:111
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:120
+msgid "Plugin must be enabled to add custom statuses to the list."
+msgstr ""
+
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:89
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:98
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:107
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:116
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:125
 msgid "No changes"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:78
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:92
 msgid "Default order status for BACS (Direct bank transfer) payment method"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:87
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:101
 msgid "Default order status for Check payment method"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:96
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:110
 msgid "Default order status for COD (Cash on delivery) payment method"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:105
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:119
 msgid "Default order status for Paypal payment method"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:114
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:128
 msgid "Fallback delete order status"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:115
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:129
 msgid ""
 "When you delete some custom status with \"Custom Order Statuses Tool\", all "
 "orders with that status will be updated to this fallback status. Please note "
 "that all fallback status triggers (email etc.) will be activated."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:120
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:134
 msgid "No fallback"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:123
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:137
 msgid "Enable colors in status column"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:124
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:165
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:175
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:138
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:179
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:189
 msgid "Enable"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:133
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:147
 msgid "Add custom statuses to admin order list action buttons"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:139
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:149
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:160
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:170
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:182
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:153
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:163
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:174
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:184
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:196
 #, php-format
 msgid ""
 "Get <a href=\"%s\" target=\"_blank\">Custom Order Status for WooCommerce "
 "Pro</a> to enable this option."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:144
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:158
 msgid "Enable colors"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:154
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:168
 msgid "Add custom statuses to admin order preview action buttons"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:164
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:178
 msgid "Make custom status orders editable"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:174
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:188
 msgid "Make custom status orders paid"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:180
+#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:194
 #, php-format
 msgid "By default paid statuses are: %s."
 msgstr ""
@@ -648,4 +745,14 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-settings-custom-order-statuses.php:67
 msgid "Reset"
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-custom-order-statuses.php:73
+msgid "Reset Usage Tracking"
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-custom-order-statuses.php:74
+msgid ""
+"This will reset your usage tracking settings, causing it to show the opt-in "
+"banner again and not sending any data."
 msgstr ""
