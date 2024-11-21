@@ -91,7 +91,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		public function __construct() {
 
 			// Set up localisation.
-			load_plugin_textdomain( 'custom-order-statuses-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
+			add_action( 'init', array( $this, 'cos_load_text_domain' ) );
 
 			if ( is_admin() ) {
 				// The Filter.
@@ -123,6 +123,13 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 					add_action( 'admin_init', array( $this, 'version_updated' ) );
 				}
 			}
+		}
+
+		/**
+		 * Added plugin text domain.
+		 */
+		public function cos_load_text_domain() {
+			load_plugin_textdomain( 'custom-order-statuses-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 		}
 
 		/**
