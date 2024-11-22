@@ -40,9 +40,16 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_Emails' ) ) :
 		 * @since   1.4.0
 		 */
 		public function __construct() {
-			$this->id   = 'emails';
-			$this->desc = __( 'Emails', 'custom-order-statuses-woocommerce' );
+			$this->id = 'emails';
+			add_action( 'init', array( &$this, 'add_desc_email' ) );
 			parent::__construct();
+		}
+
+		/**
+		 * Add desc to setting page.
+		 */
+		public function add_desc_email() {
+			$this->desc = __( 'Emails', 'custom-order-statuses-woocommerce' );
 		}
 
 		/**

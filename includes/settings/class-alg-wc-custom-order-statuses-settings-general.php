@@ -40,9 +40,16 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_General' ) ) :
 		 * @since   1.0.0
 		 */
 		public function __construct() {
-			$this->id   = '';
-			$this->desc = __( 'General', 'custom-order-statuses-woocommerce' );
+			$this->id = '';
+			add_action( 'init', array( &$this, 'add_desc_general' ) );
 			parent::__construct();
+		}
+
+		/**
+		 * Add desc to setting page.
+		 */
+		public function add_desc_general() {
+			$this->desc = __( 'General', 'custom-order-statuses-woocommerce' );
 		}
 
 		/**
