@@ -117,7 +117,6 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 				add_action( 'woocommerce_order_status_changed', array( $this, 'send_email_on_order_status_changed' ), PHP_INT_MAX, 4 );
 			}
 			add_action( 'admin_enqueue_scripts', array( $this, 'alg_custom_order_status_setting_script' ) );
-
 		}
 
 		/**
@@ -672,7 +671,6 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 				<?php
 			}
 		}
-
 	}
 
 endif;

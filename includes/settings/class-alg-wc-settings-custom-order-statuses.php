@@ -118,7 +118,6 @@ if ( ! class_exists( 'Alg_WC_Settings_Custom_Order_Statuses' ) ) :
 			parent::save();
 			$this->maybe_reset_settings();
 		}
-
 	}
 
 endif;

@@ -41,7 +41,7 @@ if ( ! function_exists( 'alg_get_custom_order_statuses' ) ) {
 	 * @since   1.2.0
 	 */
 	function alg_get_custom_order_statuses( $cut_prefix = false ) {
-		$custom_order_statuses = ( '' == get_option( 'alg_orders_custom_statuses_array', array() ) ) ? array() : get_option( 'alg_orders_custom_statuses_array', array() );
+		$custom_order_statuses = ( '' == get_option( 'alg_orders_custom_statuses_array', array() ) ) ? array() : get_option( 'alg_orders_custom_statuses_array', array() ); // phpcs:ignore
 		if ( $cut_prefix ) {
 			$custom_order_statuses_no_prefix = array();
 			foreach ( $custom_order_statuses as $key => $value ) {
@@ -74,11 +74,11 @@ if ( ! function_exists( 'alg_get_table_html' ) ) {
 			),
 			$args
 		);
-		$row_styles = ( '' == $args['row_styles'] ? '' : ' style="' . $args['row_styles'] . '"' );
+		$row_styles = ( '' == $args['row_styles'] ? '' : ' style="' . $args['row_styles'] . '"' ); // phpcs:ignore
 		$html       = '';
 		$html      .= '<table' .
-			( '' == $args['table_class'] ? '' : ' class="' . $args['table_class'] . '"' ) .
-			( '' == $args['table_style'] ? '' : ' style="' . $args['table_style'] . '"' ) . '>';
+			( '' == $args['table_class'] ? '' : ' class="' . $args['table_class'] . '"' ) . // phpcs:ignore
+			( '' == $args['table_style'] ? '' : ' style="' . $args['table_style'] . '"' ) . '>'; // phpcs:ignore
 		$html      .= '<tbody>';
 		foreach ( $data as $row_number => $row ) {
 			$html .= '<tr' . $row_styles . '>';

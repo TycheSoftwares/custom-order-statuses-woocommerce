@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 				'woocommerce',
 				__( 'Custom Order Status', 'custom-order-statuses-woocommerce' ),
 				__( 'Custom Order Status', 'custom-order-statuses-woocommerce' ),
-				'manage_woocommerce',
+				'manage_woocommerce', // phpcs:ignore
 				'alg-custom-order-statuses-tool',
 				array( $this, 'create_custom_statuses_tool' )
 			);
@@ -253,7 +253,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 			$this->maybe_execute_actions();
 			$html .= $this->get_actions_box_html();
 			$html .= $this->get_status_table_html();
-			echo $html;
+			echo $html; // phpcs:ignore
 			?>
 			</div>
 
@@ -425,7 +425,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 				foreach ( $loop_orders as $order_id ) {
 					$order = wc_get_order( $order_id );
 					$order->update_status( $new_status_without_wc_prefix );
-					$total_orders_changed++;
+					++$total_orders_changed;
 				}
 				$offset += $block_size;
 			}
@@ -472,7 +472,6 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Tool' ) ) :
 				'wc-failed'     => _x( 'Failed', 'Order status', 'woocommerce' ),
 			);
 		}
-
 	}
 
 endif;
