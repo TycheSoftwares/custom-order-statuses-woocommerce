@@ -4,14 +4,12 @@
  *
  * @version 1.0.0
  * @since   1.5.0
- * @package Custom Order Numbers/Data Tracking
+ * @package Custom Order status/Data Tracking
  * @author  Tyche Softwares
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-
 	exit; // Exit if accessed directly.
-
 }
 
 if ( ! class_exists( 'Cos_Tracking_Functions' ) ) :
@@ -20,14 +18,6 @@ if ( ! class_exists( 'Cos_Tracking_Functions' ) ) :
 	 * Custom Order Status Data Tracking Functions.
 	 */
 	class Cos_Tracking_Functions {
-		/**
-		 * Construct.
-		 *
-		 * @since 1.5.0
-		 */
-		public function __construct() {
-
-		}
 
 		/**
 		 * Returns plugin data for tracking.

@@ -42,7 +42,6 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_Section' ) ) :
 			$sections[ $this->id ] = $this->desc;
 			return $sections;
 		}
-
 	}
 
 endif;

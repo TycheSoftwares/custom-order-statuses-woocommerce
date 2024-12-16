@@ -141,7 +141,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 		 * @version 1.4.1
 		 * @since   1.2.0
 		 */
-		public function alg_orders_custom_statuses( $value, $type, $args = '' ) {
+		public function alg_orders_custom_statuses( $value, $type, $args = '' ) { // phpcs:ignore
 			switch ( $type ) {
 				case 'settings':
 					return $value;
@@ -318,7 +318,6 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 			header( 'Location: ' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_custom_order_statuses' ) );
 			exit;
 		}
-
 	}
 
 endif;
@@ -331,7 +330,7 @@ if ( ! function_exists( 'alg_wc_custom_order_statuses' ) ) {
 	 * @since   1.0.0
 	 * @return  Alg_WC_Custom_Order_Statuses
 	 */
-	function alg_wc_custom_order_statuses() {
+	function alg_wc_custom_order_statuses() { // phpcs:ignore
 		return Alg_WC_Custom_Order_Statuses::instance();
 	}
 }

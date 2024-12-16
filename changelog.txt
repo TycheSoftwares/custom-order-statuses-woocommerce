@@ -1,0 +1,157 @@
+*** Custom Order Status for WooCommerce ***
+2024-11-22 - version 2.6.0
+* Fix - Translation loading was triggered too early, causing errors when changing the site language in WordPress 6.7.
+* Tweak - Removed the call to our tracking server to fetch the deactivation reasons and added them in the plugin itself.
+
+2024-10-22 - version 2.5.0
+* Fix - Deactivation survey request was being sent even though 'Skip & deactivate' was selected while deactivating the plugin.
+* Fix - Compatibility issue with "ActiveMember360" plugin causing fatal error on frontend.
+
+2024-04-03 - version 2.4.1
+* Fix - Cross Site Request Forgery (CSRF) vulnerability.
+* Fix - The order page crashes if the Custom Order Status has a "%" sign included.
+* Tweak - Update compatibility with WordPress 6.5.
+* Tweak - Update compatibility with WooCommerce 8.7.
+
+2024-01-30 - version 2.4.0
+* Fix - Fixed Cross Site Request Forgery (CSRF) vulnerability.
+
+2023-07-04 - version 2.3.0
+* Enhancement - Added deactivation survey v2.
+* Fix - Compatibility with PHP 8.2.2.
+* Fix - Compatibility declaration for WooCommerce Product Editor option.
+* Fix - Compatibility with High-Performance Order Storage (COT).
+* Fix - "Fallback delete order status" setting was not working.
+* Fix - Fatal error upon activation of the plugin when Custom Order Number plugin was installed and activated.
+
+2022-11-29 - version 2.2.1
+* Fix - Fatal error on the Order Received page.
+
+2022-11-29 - version 2.2.0
+* Enhancement - Introduced compatibility with WooCommerce High Performance Order Storage.
+
+2022-05-11 - version 2.1.1
+* Fix - Custom Order Status plugin conflict with Custom Order Number plugin due to the same function name.
+
+2022-05-03 - version 2.1.0
+* Fix - Duplicate Queries on Custom Order Status page.
+* Fix - Plugin setting link was missing on the plugin page.
+* Fix - Notice to enable color setting was missing.
+
+2021-09-14 - version 2.0.3
+* Enhancement - Added an option to select the default status for Cheque and PayPal payment methods.
+* Fix - After migration, slugs were coming empty on some sites. This is fixed now.
+* Fix - When slug in custom order status starts with wc- then the order status doesn't get changed to that custom order status. This is fixed now.
+* Fix - Text color for the custom order status was visible on the orders page even if the settings for enabling the color option were disabled.
+
+2021-04-09 - version 2.0.2
+* Fix - Order status was getting changed when refreshing the Thank You page. This has been fixed.
+* Fix - When changing the slug of the custom order status, orders with that custom status were not visible on the orders page. This has been fixed.
+
+2020-12-01 - version 2.0.1
+* Enhancement - Added new setting "Enable color" to show background color for the statuses on the order page.
+* Fix - Clicking on the "Custom Order Status Tool" link from the plugin caused an error. This has been fixed.
+* Fix - After deleting the plugin, old data was not removed. This has been fixed.
+* Fix - Orders were getting deleted when the plugin was deleted if they had a custom order status. This has been fixed.
+* Fix - The status was not getting changed to the custom one when the status was created with 3 words. This has been fixed.
+* Fix - Added icons to the labels. This has been fixed.
+
+2020-11-05 - version 2.0.0
+* Feature - Added Custom Post Type for custom statuses with the support of the previous tool page.
+* Feature - Added Global level email function to send emails to customers & admin on the change of custom order status.
+
+2020-09-10 - version 1.4.11
+* Updated compatibility with WordPress 5.5.
+* Updated compatibility with WooCommerce 4.5.
+
+2020-03-19 - version 1.4.9
+* Updated compatibility with WooCommerce 4.0.0.
+
+2019-09-23 - version 1.4.8
+* Made the plugin code compliant with WPCS standards.
+
+2019-03-27 - version 1.4.7
+* Added uninstall.php to ensure the plugin settings are removed from the database when the plugin is deleted.
+* Added check to ensure slugs from WooCommerce core cannot be added as custom statuses. This has been done to avoid conflicts.
+* Applied some bug fixes to ensure the plugin is in sync with the PRO version.
+
+2018-11-16 - version 1.4.6
+* Author name and URL updated due to the handover of the plugins.
+
+2018-10-31 - version 1.4.5
+* Compatibility with WooCommerce 3.5.0 tested.
+
+2018-10-16 - version 1.4.4
+* Feature - Emails - Email content - `{order_details}` replaced value added.
+* Feature - Default order status - "Default order status for BACS / COD" options added (instead of forcing BACS and COD to "default order status", as was added in the previous plugin version 1.4.3).
+
+2018-10-16 - version 1.4.4
+* New - Updated changelog format to use ISO date format and standardized version placement.
+
+2018-10-15 - version 1.4.3
+* Dev - Default order status - Forcing BACS and COD payment gateways to "default order status".
+
+2018-09-27 - version 1.4.2
+* Dev - WPML / Polylang plugins compatibility (`wpml-config.xml` file) added.
+
+2018-09-23 - version 1.4.1
+* Feature - "Add custom statuses to admin order preview action buttons" option added.
+* Dev - Code refactoring.
+* Dev - Minor admin settings restyling.
+
+2018-09-03 - version 1.4.0
+* Feature - "Emails" section added.
+* Feature - "Make custom status orders paid" option added.
+* Dev - Code refactoring.
+* Dev - Admin settings divided into sections, restyled and descriptions updated.
+* Dev - "Enable plugin" option removed.
+
+2018-06-22 - version 1.3.5
+* Feature - "Make custom status orders editable" option added.
+* Dev - Plugin URI updated to wpfactory.com.
+* Dev - Settings are saved as main class property.
+
+2018-05-24 - version 1.3.4
+* Dev - "Advanced: Filters priority" option added.
+
+2018-05-15 - version 1.3.3
+* Dev - "Text Color" option added.
+
+2018-05-15 - version 1.3.2
+* Dev - "Enable Colors in Status Column" option added.
+* Dev - "WC tested up to" added to the plugin header.
+
+2017-05-10 - version 1.3.1
+* Fix - `Too few arguments to function Alg_WC_Custom_Order_Statuses_Settings_Section::get_settings()` fixed.
+
+2017-04-30 - version 1.3.0
+* Dev - WooCommerce 3.x.x compatibility - Order ID.
+* Dev - Custom Order Status Tool - Sanitizing slug before adding new status.
+* Dev - Custom Order Status Tool - "Delete with fallback" separate button added. Simple "Delete" button now deletes statuses without any fallback.
+* Dev - Custom Order Status Tool - "Edit" functionality moved from Pro to free version.
+* Tweak - readme.txt and plugin header updated.
+* Tweak - Custom Order Status Tool - Restyled.
+* Tweak - Custom Order Status Tool - Code refactoring.
+* Tweak - Link changed from `coder.fm` to `wpcodefactory.com`.
+
+2017-01-23 - version 1.2.1
+* Dev - "Reset settings" button added.
+* Tweak - readme.txt fixed.
+
+2017-01-17 - version 1.2.0
+* Fix - Tool - Add - Checking for duplicate default WooCommerce status added.
+* Dev - Tool - "Edit" custom status button added.
+* Dev - Fallback status on delete.
+* Dev - "Add Custom Statuses to Admin Order List Action Buttons" options added.
+* Dev - Extended (paid) version added.
+* Tweak - Plugin "Tags" updated.
+
+2016-12-14 - version 1.1.0
+* Fix - `load_plugin_textdomain()` moved from `init` hook to constructor.
+* Fix - All `get_option` calls have default value now.
+* Dev - Language (POT) file added. Domain 'custom-order-statuses-for-woocommerce' changed to 'custom-order-statuses-woocommerce'.
+* Dev - Bulk actions added in proper way for WordPress version >= 4.7.
+* Tweak - Donate link updated.
+
+2016-11-12 - version 1.0.0
+* Initial Release.
