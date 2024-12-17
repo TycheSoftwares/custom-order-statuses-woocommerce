@@ -588,7 +588,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 				// Delete icon data.
 				$result_icon_data = delete_option( 'alg_orders_custom_status_icon_data_' . substr( $delete_status, 3 ) );
 				// Result message.
-				if ( true === $result && true === $result_icon_data ) {
+				if ( true === $result_icon_data ) {
 					$result_message = __( 'Status has been successfully deleted.', 'custom-order-statuses-woocommerce' );
 					if ( $total_orders_changed > 0 ) {
 						// translators: number of orders for which status has been changed.
