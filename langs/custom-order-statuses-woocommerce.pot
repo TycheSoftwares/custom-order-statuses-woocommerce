@@ -756,3 +756,11 @@ msgid ""
 "This will reset your usage tracking settings, causing it to show the opt-in "
 "banner again and not sending any data."
 msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Custom Order Status for WooCommerce"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add custom order statuses to WooCommerce."
+msgstr ""
