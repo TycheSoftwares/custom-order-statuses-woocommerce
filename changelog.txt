@@ -1,4 +1,11 @@
 *** Custom Order Status for WooCommerce ***
+2025-04-15 - version 2.7.0
+* Fix - Added Plugin Name and Plugin Description strings for translation.
+* Fix - PHP Warning: Undefined variable $result when custom status is deleted.
+* Fix - Resolved all PHPCS warnings and aligned the code with WordPress Coding Standards to enhance quality and maintainability.
+* Tweak - Updated for compatibility with WordPress 6.8.
+* Tweak - Updated for compatibility with WooCommerce 9.8.1.
+
 2024-11-22 - version 2.6.0
 * Fix - Translation loading was triggered too early, causing errors when changing the site language in WordPress 6.7.
 * Tweak - Removed the call to our tracking server to fetch the deactivation reasons and added them in the plugin itself.
