@@ -575,7 +575,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 			// Statuses data.
 			$post             = get_post( $post_id );
 			$custom_post_meta = get_post_meta( $post_id );
-			$delete_status    = $custom_post_meta['status_slug'][0];
+			$delete_status    = isset( $custom_post_meta['status_slug'][0] ) ? $custom_post_meta['status_slug'][0] : '';
 			$statuses_updated = cos_get_custom_statuses();
 			if ( count( $statuses_updated ) > 0 && 'custom_order_status' === $post->post_type ) {
 				// Fallback.
