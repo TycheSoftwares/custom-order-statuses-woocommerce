@@ -54,33 +54,40 @@ if ( ! class_exists( 'Alg_WC_Settings_Custom_Order_Statuses' ) ) :
 		 */
 		public function get_settings() {
 			global $current_section;
+			$settings = array(
+				array(
+					'title' => __( 'Reset Settings', 'custom-order-statuses-woocommerce' ),
+					'type'  => 'title',
+					'id'    => $this->id . '_' . $current_section . '_reset_options',
+				),
+				array(
+					'title'   => __( 'Reset section settings', 'custom-order-statuses-woocommerce' ),
+					'desc'    => '<strong>' . __( 'Reset', 'custom-order-statuses-woocommerce' ) . '</strong>',
+					'id'      => $this->id . '_' . $current_section . '_reset',
+					'default' => 'no',
+					'type'    => 'checkbox',
+				),
+			);
+
+			// Add Reset Usage Tracking only for the General section.
+			if ( '' === $current_section ) {
+				$settings[] = array(
+					'title'   => __( 'Reset Usage Tracking', 'custom-order-statuses-woocommerce' ),
+					'desc'    => __( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.', 'custom-order-statuses-woocommerce' ),
+					'id'      => $this->id . '_reset_usage_tracking',
+					'default' => 'no',
+					'type'    => 'checkbox',
+				);
+			}
+
+			$settings[] = array(
+				'type' => 'sectionend',
+				'id'   => $this->id . '_' . $current_section . '_reset_options',
+			);
+
 			return array_merge(
 				apply_filters( 'woocommerce_get_settings_' . $this->id . '_' . $current_section, array() ),
-				array(
-					array(
-						'title' => __( 'Reset Settings', 'custom-order-statuses-woocommerce' ),
-						'type'  => 'title',
-						'id'    => $this->id . '_' . $current_section . '_reset_options',
-					),
-					array(
-						'title'   => __( 'Reset section settings', 'custom-order-statuses-woocommerce' ),
-						'desc'    => '<strong>' . __( 'Reset', 'custom-order-statuses-woocommerce' ) . '</strong>',
-						'id'      => $this->id . '_' . $current_section . '_reset',
-						'default' => 'no',
-						'type'    => 'checkbox',
-					),
-					array(
-						'title'   => __( 'Reset Usage Tracking', 'custom-order-statuses-woocommerce' ),
-						'desc'    => __( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.', 'custom-order-statuses-woocommerce' ),
-						'id'      => $this->id . '_reset_usage_tracking',
-						'default' => 'no',
-						'type'    => 'checkbox',
-					),
-					array(
-						'type' => 'sectionend',
-						'id'   => $this->id . '_' . $current_section . '_reset_options',
-					),
-				)
+				$settings
 			);
 		}
 
