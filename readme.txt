@@ -2,8 +2,8 @@
 Contributors: tychesoftwares
 Tags: woocommerce, order status, woo commerce, custom status
 Requires at least: 4.4
-Tested up to: 6.8.0
-Stable tag: 2.7.0
+Tested up to: 6.8.1
+Stable tag: 2.8.0
 Requires PHP: 7.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -103,6 +103,10 @@ This plugin lets you create, edit and delete [custom order statuses](https://www
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/docs/custom-order-status-for-woocommerce/custom-order-status-usage-tracking/).
 
 == Changelog ==
+= 2.8.0 - 24/06/2025 =
+* Fix - PHP warning: Undefined array key "status_slug" when a custom order status is moved to trash or deleted.
+* Tweak - Updated for compatibility with WooCommerce 9.9.4.
+
 = 2.7.0 - 15/04/2025 =
 * Fix - Added Plugin Name and Plugin Description strings for translation.
 * Fix - PHP Warning: Undefined variable $result when custom status is deleted.
