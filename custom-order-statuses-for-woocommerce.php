@@ -9,8 +9,8 @@
  * Text Domain: custom-order-statuses-woocommerce
  * Domain Path: /langs
  * Copyright: © 2021 Tyche Softwares
- * WC tested up to: 9.8.1
- * Tested up to: 6.8.0
+ * WC tested up to: 9.9.4
+ * Tested up to: 6.8.1
  * Requires PHP: 7.4
  * WC requires at least: 5.0.0
  * Requires Plugins: woocommerce
