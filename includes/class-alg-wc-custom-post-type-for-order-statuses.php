@@ -352,6 +352,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 		 */
 		public function alg_register_meta_boxes() {
 			add_meta_box( 'custom_box', __( 'Status details', 'custom-order-statuses-woocommerce' ), array( $this, 'alg_my_display_callback' ), 'custom_order_status' );
+			add_meta_box( 'custom_general_box', __( 'General Settings ', 'custom-order-statuses-woocommerce' ), array( $this, 'alg_general_setting_callback' ), 'custom_order_status' );
 			add_meta_box( 'custom_email_box', __( 'Email Settings', 'custom-order-statuses-woocommerce' ), array( $this, 'alg_email_setting_display_callback' ), 'custom_order_status' );
 		}
 
@@ -402,6 +403,51 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 								?>
 							</td>
 							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			<?php
+			wp_nonce_field( 'custom_post_type_nonce', 'custom_nonce' );
+		}
+
+		/**
+		 * Meta box display for General settings.
+		 *
+		 * @param WP_Post $post Current post object.
+		 * @version 1.4.0
+		 * @since   1.4.0
+		 * @author  Tyche Softwares
+		 */
+		public function alg_general_setting_callback( $post ) {
+			if ( 'yes' === get_option( 'alg_orders_custom_statuses_enable_paid', 'no' ) && '' === get_post_meta( $post->ID, 'alg_orders_individual_custom_status_enable_paid', true ) ) {
+				$checked = 'checked';
+			} else {
+				$checked = '';
+			}
+			if ( '' !== get_post_meta( $post->ID, 'alg_orders_individual_custom_status_enable_paid', true ) && 'yes' === get_post_meta( $post->ID, 'alg_orders_individual_custom_status_enable_paid', true ) ) {
+				$checked = 'checked';
+			}
+			$user_cancel_checked = '';
+			if ( '' !== get_post_meta( $post->ID, 'alg_orders_individual_custom_status_user_cancel', true ) && 'yes' === get_post_meta( $post->ID, 'alg_orders_individual_custom_status_user_cancel', true ) ) {
+				$user_cancel_checked = 'checked';
+			}
+			?>
+				<table class="form-table">
+					<tbody>
+						<tr>
+							<th><?php esc_html_e( 'Make custom status orders paid', 'custom-order-statuses-woocommerce' ); ?></th>
+							<td>
+								<input type="checkbox" name="alg_orders_individual_custom_status_enable_paid" <?php echo esc_attr( $checked ); ?> value='yes'>
+								<?php
+								echo esc_html_e( 'Enable', 'custom-order-statuses-woocommerce' );
+								?>
+								<p class="description">
+								<?php
+								/* translators: %s: Processing and Completed status. */
+								echo sprintf( esc_attr__( 'By default paid statuses are: %s.', 'custom-order-statuses-woocommerce' ), '<code>processing</code>, <code>completed</code>' ); // phpcs:ignore
+								?>
+								</p>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -513,6 +559,8 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 				$_text_color     = ( isset( $_POST['new_status_text_color'] ) && ! empty( $_POST['new_status_text_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_text_color'] ) ) : '#000000';
 				$_color          = ( isset( $_POST['new_status_icon_color'] ) && ! empty( $_POST['new_status_icon_color'] ) ) ? sanitize_text_field( wp_unslash( $_POST['new_status_icon_color'] ) ) : '#999999';
 				$new_status_slug = 'wc-' === substr( $new_status_slug, 0, 3 ) ? substr( $new_status_slug, 3 ) : $new_status_slug;
+				$alg_orders_individual_custom_status_enable_paid = ( isset( $_POST['alg_orders_individual_custom_status_enable_paid'] ) && ! empty( $_POST['alg_orders_individual_custom_status_enable_paid'] ) ) ? sanitize_text_field( wp_unslash( $_POST['alg_orders_individual_custom_status_enable_paid'] ) ) : 'no';
+				update_post_meta( $post_id, 'alg_orders_individual_custom_status_enable_paid', $alg_orders_individual_custom_status_enable_paid );
 				update_post_meta( $post_id, 'status_slug', $new_status_slug );
 				update_post_meta( $post_id, 'color', $_color );
 				update_post_meta( $post_id, 'content', $_icon_content );

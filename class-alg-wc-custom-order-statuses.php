@@ -147,6 +147,10 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses' ) ) :
 					return $value;
 				case 'value_column_colored':
 					return get_option( 'alg_orders_custom_statuses_enable_column_colored', 'no' );
+				case 'value_is_paid':
+					return get_option( 'alg_orders_custom_statuses_enable_paid', 'no' );
+				case 'value_is_editable':
+					return get_option( 'alg_orders_custom_statuses_enable_editable', 'no' );
 			}
 			return $value;
 		}
