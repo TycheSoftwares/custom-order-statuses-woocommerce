@@ -182,11 +182,12 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Settings_General' ) ) :
 					'custom_attributes' => apply_filters( 'alg_orders_custom_statuses', array( 'disabled' => 'disabled' ), 'settings' ),
 				),
 				array(
-					'title'             => __( 'Make custom status orders editable', 'custom-order-statuses-woocommerce' ),
-					'desc'              => __( 'Enable', 'custom-order-statuses-woocommerce' ),
-					'id'                => 'alg_orders_custom_statuses_enable_editable',
-					'default'           => 'no',
-					'type'              => 'checkbox',
+					'title'    => __( 'Make custom status orders editable', 'custom-order-statuses-woocommerce' ),
+					'desc'     => __( 'Enable', 'custom-order-statuses-woocommerce' ),
+					'id'       => 'alg_orders_custom_statuses_enable_editable',
+					'default'  => 'no',
+					'type'     => 'checkbox',
+					'desc_tip' =>  __( 'Allows editing orders that have custom order statuses.', 'custom-order-statuses-woocommerce' ),
 				),
 				array(
 					'title'             => __( 'Make custom status orders paid', 'custom-order-statuses-woocommerce' ),
