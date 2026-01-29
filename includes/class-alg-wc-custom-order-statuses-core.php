@@ -111,7 +111,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			if ( 'yes' === apply_filters( 'alg_orders_custom_statuses', 'no', 'value_is_paid' ) ) {
 				add_filter( 'woocommerce_order_is_paid_statuses', array( $this, 'add_custom_order_statuses_to_order_paid' ), PHP_INT_MAX );
 			}
-
+			add_action( 'woocommerce_order_status_changed', array( $this, 'alg_cos_paid_status_and_update_stock_levels' ), 20, 4 );
 			// Emails.
 			if ( 'yes' === get_option( 'alg_orders_custom_statuses_emails_enabled', 'no' ) ) {
 				add_action( 'woocommerce_order_status_changed', array( $this, 'send_email_on_order_status_changed' ), PHP_INT_MAX, 4 );
@@ -359,6 +359,30 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 		 */
 		public function add_custom_order_statuses_to_order_editable( $is_editable, $_order ) {
 			return ( in_array( 'wc-' . $_order->get_status(), array_keys( alg_get_custom_order_statuses_from_cpt() ), true ) ? true : $is_editable );
+		}
+
+		/**
+		 * Function for showing the Paid statment on the edit order page for the paid statement and for updating the stock levels on status change.
+		 *
+		 * @param array  $order_id - order ID.
+		 * @param string $old_status - Old status.
+		 * @param string $new_status - New status.
+		 * @param object $order - Order object.
+		 * @version 2.20.0
+		 * @since   2.20.0
+		 */
+		public function alg_cos_paid_status_and_update_stock_levels( $order_id, $old_status, $new_status, $order ) {
+			global $wpdb;
+			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses_from_cpt();
+			if ( in_array( 'wc-' . $new_status, array_keys( $alg_orders_custom_statuses_array ), true ) ) {
+				$post_id             = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='status_slug' AND meta_value=%s LIMIT 1", $new_status ) ); //phpcs:ignore
+				$individual_paid_cos = get_post_meta( $post_id, 'alg_orders_individual_custom_status_enable_paid', true );
+				if ( 'yes' === $individual_paid_cos || ( '' === $individual_paid_cos && get_option( 'alg_orders_custom_statuses_enable_paid', 'no' ) === 'yes' ) ) {
+					// Add the paid time in the order object to show the the Paid statement.
+					$order->set_date_paid( time() );
+					$order->save();
+				}
+			}
 		}
 
 		/**
