@@ -376,11 +376,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 			$alg_orders_custom_statuses_array = alg_get_custom_order_statuses_from_cpt();
 			if ( in_array( 'wc-' . $new_status, array_keys( $alg_orders_custom_statuses_array ), true ) ) {
 				$post_id             = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='status_slug' AND meta_value=%s LIMIT 1", $new_status ) ); //phpcs:ignore
-				if ( cos_wc_hpos_enabled() ) {
-					$individual_paid_cos = $order->get_meta( 'alg_orders_individual_custom_status_enable_paid' );
-				} else {
-					$individual_paid_cos = get_post_meta( $post_id, 'alg_orders_individual_custom_status_enable_paid', true );
-				}
+				$individual_paid_cos = get_post_meta( $post_id, 'alg_orders_individual_custom_status_enable_paid', true );
 				if ( 'yes' === $individual_paid_cos || ( '' === $individual_paid_cos && get_option( 'alg_orders_custom_statuses_enable_paid', 'no' ) === 'yes' ) ) {
 					// Add the paid time in the order object to show the the Paid statement.
 					$order->set_date_paid( time() );
