@@ -112,6 +112,8 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 				add_filter( 'woocommerce_order_is_paid_statuses', array( $this, 'add_custom_order_statuses_to_order_paid' ), PHP_INT_MAX );
 			}
 			add_action( 'woocommerce_order_status_changed', array( $this, 'alg_cos_paid_status_and_update_stock_levels' ), 20, 4 );
+			add_action( 'woocommerce_payment_complete', array( $this, 'alg_cos_paid_on_order_creation' ), 20, 1 );
+
 			// Emails.
 			if ( 'yes' === get_option( 'alg_orders_custom_statuses_emails_enabled', 'no' ) ) {
 				add_action( 'woocommerce_order_status_changed', array( $this, 'send_email_on_order_status_changed' ), PHP_INT_MAX, 4 );
@@ -383,6 +385,19 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 					$order->save();
 				}
 			}
+		}
+
+		/**
+		 * Function for showing the Paid statment on the edit order page for the paid statement on order creation for custom order statuses.
+		 *
+		 * @param int $order_id Order ID.
+		 */
+		public function alg_cos_paid_on_order_creation( $order_id ) {
+			$order = wc_get_order( $order_id );
+			if ( ! $order ) {
+				return;
+			}
+			$this->alg_cos_paid_status_and_update_stock_levels( $order_id, '', $order->get_status(), $order );
 		}
 
 		/**
