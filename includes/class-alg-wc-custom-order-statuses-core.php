@@ -112,7 +112,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Order_Statuses_Core' ) ) :
 				add_filter( 'woocommerce_order_is_paid_statuses', array( $this, 'add_custom_order_statuses_to_order_paid' ), PHP_INT_MAX );
 			}
 			add_action( 'woocommerce_order_status_changed', array( $this, 'alg_cos_paid_status_and_update_stock_levels' ), 20, 4 );
-			add_action( 'woocommerce_checkout_order_processed', array( $this, 'alg_cos_paid_on_order_creation' ), 20, 1 );
+			add_action( 'woocommerce_payment_complete', array( $this, 'alg_cos_paid_on_order_creation' ), 20, 1 );
 
 			// Emails.
 			if ( 'yes' === get_option( 'alg_orders_custom_statuses_emails_enabled', 'no' ) ) {
