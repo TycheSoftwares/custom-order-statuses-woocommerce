@@ -105,7 +105,7 @@ This plugin communicates with our tracking server to send usage data **only** if
 == Changelog ==
 
 = 2.10.0 - 03/02/2026 =
-* Enhancement - Added options to make custom order status orders editable and to mark them as paid.
+* Enhancement: Added options to make orders with custom order statuses editable and allow them to be marked as paid.
 
 = 2.9.0 - 06/01/2026 =
 * Tweak - Updated for compatibility with WordPress 6.9.0.
