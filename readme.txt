@@ -23,6 +23,7 @@ This plugin lets you create, edit and delete [custom order statuses](https://www
 * When adding custom status, you can set a label, slug, icon and color.
 * Select the default status for Cheque and Paypal payment methods.
 * Send email notification to customer & admin on change of custom order status.
+* Allow store owners to edit orders with custom order statuses and mark them as paid.
 
 ### Check out the PRO version of [Custom Order Status for WooCommerce plugin](https://www.tychesoftwares.com/products/woocommerce-custom-order-status-plugin/?utm_source=wprepo&utm_medium=prolink&utm_campaign=CustomStatus).
 
