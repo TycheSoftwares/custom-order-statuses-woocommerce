@@ -385,7 +385,7 @@ if ( ! class_exists( 'Alg_WC_Custom_Post_Type_For_Order_Statuses' ) ) {
 						<tr>
 							<th><?php esc_html_e( 'Icon Code', 'custom-order-statuses-woocommerce' ); ?></th>
 							<td><input required="" type="text" name="new_status_icon_content" maxlength="4" pattern="[e]{1,1}[a-fA-F\d]{3,3}" value="<?php echo esc_attr( get_post_meta( $post->ID, 'content', true ) ); ?>">
-							<br><em><?php esc_html_e( '* You can check icon codes', 'custom-order-statuses-woocommerce' ); ?> <a target="_blank" href="https://rawgit.com/woothemes/woocommerce-icons/master/demo.html"><?php esc_html_e( 'here', 'custom-order-statuses-woocommerce' ); ?></a></em>
+							<br><em><?php esc_html_e( '* You can check icon codes', 'custom-order-statuses-woocommerce' ); ?> <a target="_blank" href="<?php echo plugin_dir_url( __FILE__ ); ?>assets/woocommerce-icons-master/demo.html"><?php esc_html_e( 'here', 'custom-order-statuses-woocommerce' ); // phpcs ignore ?></a></em>
 							</td>
 						</tr>
 						<tr>
