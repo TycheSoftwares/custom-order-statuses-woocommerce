@@ -129,6 +129,7 @@ function cos_delete_blog_data( $blog_id = 0, $prefix = '' ) {
 	$wpdb->delete( $prefix . 'posts', array( 'post_type' => 'custom_order_status' ) );
 
 	// Delete icon data.
+	// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 	$wpdb->query( "DELETE FROM {$prefix}options WHERE option_name LIKE 'alg_orders_custom_status_icon_data_%'" );
 }
 
