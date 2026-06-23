@@ -1,13 +1,13 @@
 <?php
 /**
- * Custom Order Status for WooCommerce
+ * Custom Order Status for WooCommerce - Lite
  *
  * Uninstalling Custom Order Status for WooCommerce Plugin delete settings.
  *
  * @author      Tyche Softwares
  * @category    Core
  * @version     1.4.6
- * @package     Custom-Order-Statuses
+ * @package     Custom-Order-Statuses-Lite
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
@@ -22,7 +22,7 @@ if ( file_exists( WP_PLUGIN_DIR . '/custom-order-statuses-for-woocommerce-pro/cu
 global $wpdb;
 
 require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-require_once 'includes/alg-wc-custom-order-statuses-functions.php';
+require_once 'includes/functions/functions.php';
 
 /**
  * Delete all plugin data for a specific blog (site) – handles both old and new formats.

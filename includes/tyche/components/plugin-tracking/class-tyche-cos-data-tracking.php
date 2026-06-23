@@ -88,7 +88,7 @@ if ( ! class_exists( 'Tyche_COS_Data_Tracking' ) ) :
 		 * Add admin notice script.
 		 */
 		public static function ts_admin_notices_scripts() {
-			$plugin_url = plugins_url() . '/custom-order-statuses-for-woocommerce';
+			$plugin_url = plugins_url() . '/custom-order-statuses-woocommerce';
 			$version    = get_option( 'alg_custom_order_statuses_version' );
 			$nonce      = wp_create_nonce( 'tracking_notice' );
 			wp_enqueue_script(

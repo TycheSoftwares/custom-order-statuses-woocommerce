@@ -11,6 +11,10 @@
  */
 
 
+namespace TycheSoftwares\CustomOrderStatus\Lite;
+
+use WP_Query;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -41,7 +45,7 @@ if (
 	}
 } */
 
-if ( ! class_exists( 'Custom_Order_Status' ) ) :
+if ( ! class_exists( __NAMESPACE__ . '\\Custom_Order_Status' ) ) :
 
 	/**
 	 * Main Custom_Order_Status Class
@@ -167,7 +171,7 @@ if ( ! class_exists( 'Custom_Order_Status' ) ) :
          */
         private function setup() {
 
-            add_action( 'alg_cos_order_status_notify', array( 'Custom_Order_Status', 'alg_cos_order_status_notify_event_func' ), PHP_INT_MAX );
+            add_action( 'alg_cos_order_status_notify', array( __CLASS__, 'alg_cos_order_status_notify_event_func' ), PHP_INT_MAX );
 
             self::handle_localization();
 
@@ -203,8 +207,8 @@ if ( ! class_exists( 'Custom_Order_Status' ) ) :
             register_deactivation_hook( COS_PLUGIN_FILE, array( __CLASS__, 'cos_pro_deactivate' ) );
 
             // COS Hooks.
-            self::include_file( 'class-cos-hooks.php' );
-            new COS_Hooks();
+            self::include_file( 'core/class-hooks.php' );
+            new Hooks();
         }
 
         /**
@@ -213,8 +217,8 @@ if ( ! class_exists( 'Custom_Order_Status' ) ) :
          * @since 1.0
          */
         public static function maybe_include_files() {
-            self::include_file( 'class-cos-files.php' );
-            new COS_Files();
+            self::include_file( 'core/class-files.php' );
+            new Files();
         }
 
         /**
@@ -331,13 +335,13 @@ if ( ! class_exists( 'Custom_Order_Status' ) ) :
 			if ( false === get_option( 'cos_pro_settings' ) ) {
 				// Migration handles seeding defaults on fresh install.
 				// Require migration class.
-				require_once plugin_dir_path( COS_PLUGIN_FILE ) . 'includes/class-cos-migration.php';
-				COS_Migration::run();
+				require_once plugin_dir_path( COS_PLUGIN_FILE ) . 'includes/admin/class-migration.php';
+				Migration::run();
 
 				// Load the controller to access get_defaults()
-				require_once plugin_dir_path( COS_PLUGIN_FILE ) . 'includes/api/class-cos-rest-controller-base.php';
-				require_once plugin_dir_path( COS_PLUGIN_FILE ) . 'includes/api/class-cos-rest-settings-controller.php';
-				$controller = new COS_REST_Settings_Controller();
+				require_once plugin_dir_path( COS_PLUGIN_FILE ) . 'includes/api/class-api-base.php';
+				require_once plugin_dir_path( COS_PLUGIN_FILE ) . 'includes/api/class-api-settings.php';
+				$controller = new Api_Settings();
 				add_option( 'cos_pro_settings', $controller->get_defaults(), '', false );
 				flush_rewrite_rules();
 			}	
@@ -367,8 +371,8 @@ if ( ! class_exists( 'Custom_Order_Status' ) ) :
 		 */
 		public function alg_cos_order_status_notify( $schedules ) {
 			// Interval time period options.
-			$int_period   = COS_Hooks::cos_get_setting( 'admin_email', 'interval',      'days' );
-			$int_time     = COS_Hooks::cos_get_setting( 'admin_email', 'interval_time', 1 );
+			$int_period   = Hooks::cos_get_setting( 'admin_email', 'interval',      'days' );
+			$int_time     = Hooks::cos_get_setting( 'admin_email', 'interval_time', 1 );
 			$schedule_key = 'every_' . cos_pro_convert_number( $int_time ) . '_' . $int_period;
 			$sche_display = 'Every ' . cos_pro_convert_number( $int_time ) . ' ' . $int_period;
 			$interval     = 0;
@@ -513,7 +517,7 @@ if ( ! class_exists( 'Custom_Order_Status' ) ) :
 						'{order_number}'     => $order->get_order_number(),
 						'{order_status}'     => wc_get_order_status_name( $order->get_status() ),
 						'{order_date}'       => gmdate( get_option( 'date_format' ), strtotime( $order->get_date_created() ) ),
-						'{order_details}'    => ( false !== strpos( $email_content, '{order_details}' ) ? COS_Hooks::get_wc_order_details_template( $order ) : '' ),
+						'{order_details}'    => ( false !== strpos( $email_content, '{order_details}' ) ? Hooks::get_wc_order_details_template( $order ) : '' ),
 						'{site_title}'       => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
 						'{first_name}'       => $order->get_billing_first_name(),
 						'{last_name}'        => $order->get_billing_last_name(),
@@ -550,7 +554,7 @@ if ( ! class_exists( 'Custom_Order_Status' ) ) :
 					$email_address = ( '' === $email_address ? get_option( 'admin_email' ) : str_replace( array_keys( $email_replaced_values ), $email_replaced_values, $email_address ) );
 					$email_subject = do_shortcode( str_replace( array_keys( $replaced_values ), $replaced_values, $email_subject ) );
 					$email_heading = do_shortcode( str_replace( array_keys( $replaced_values ), $replaced_values, $email_heading ) );
-					$cos_core      = new COS_Hooks();
+					$cos_core      = new Hooks();
 					$email_content = do_shortcode( str_replace( array_keys( $replaced_values ), $replaced_values, $cos_core->wrap_in_wc_email_template( $email_content, $email_heading ) ) );
 					// Send mail.
 					if ( $alg_send_emails ) {
@@ -652,9 +656,9 @@ if ( ! class_exists( 'Custom_Order_Status' ) ) :
 				as_unschedule_action( 'ts_send_data_tracking_usage' ); // Remove the scheduled action.
 			}
 			do_action( 'cos_deactivate' );
-			if ( COS_Hooks::cos_get_setting( 'general', 'enable_fallback', false ) ) {
+			if ( Hooks::cos_get_setting( 'general', 'enable_fallback', false ) ) {
 				$alg_orders_custom_statuses_array = alg_get_custom_order_statuses_from_cpt();
-				$fallback_status                  = COS_Hooks::cos_get_setting( 'general', 'fallback_delete_status', 'on-hold' );
+				$fallback_status                  = Hooks::cos_get_setting( 'general', 'fallback_delete_status', 'on-hold' );
 				foreach ( $alg_orders_custom_statuses_array as $slug => $alg_orders_custom_status ) {
 					$custom_statuses_slug[] = $slug;
 				}
