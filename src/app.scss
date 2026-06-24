@@ -1,0 +1,534 @@
+body {
+    background: #f6f5fb;
+}
+
+:root {
+  --cos-purple-color: #58419c;
+  --cos-green-color: #1a8d34;
+  --cos-red-color: #d72c0d;
+  --cos-blue-color: #2271b1;
+}
+
+#product-input-fields-for-woocommerce {
+    margin: 80px 20px 80px 0;
+}
+
+.cos-dashboard-tabs .components-tab-panel__tabs {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.cos-header-dashboard-tabs {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cos-dashboard-tab {
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 16px;
+  color: inherit;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cos-dashboard-tab.is-active {
+  border-bottom: 2px solid var(--wp-components-color-accent,var(--wp-admin-theme-color,#3858e9));
+  box-shadow: none;
+}
+
+.cos_save {
+  background-color: var(--wp-admin-theme-color) !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+  justify-content: center;;
+
+  &:focus:not(:disabled) {
+    box-shadow:
+      inset 0 0 0 1px var(--wp-components-color-background, #fff),
+      0 0 0 var(--wp-admin-border-width-focus) var(--cos-green-color, var(--cos-green-color)) !important;
+  }
+}
+
+.cos_setting_section {
+
+    .components-input-control__input,
+    .components-select-control__input,
+    .components-form-token-field__input-container>.components-flex {
+      min-height: 38px !important;
+      height: 100% !important;
+    }
+  
+    .components-input-control__backdrop,
+    .components-form-token-field__input-container {
+      border-radius: 4px !important;
+    }
+  
+    .set_head_bar {
+      padding-top: calc(10px) !important;
+      padding-bottom: calc(10px) !important;
+    }
+  
+    .cos-token-field {
+  
+      &>div>div {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+  
+      &div:first-of-type {
+        border-color: #8c8f94;
+      }
+  
+      &div:first-of-type:hover {
+        border-color: #8c8f94;
+        border-width: 1px;
+      }
+  
+      input {
+        box-shadow: none;
+      }
+    }
+  }
+  
+.cos_license_settings table {
+  width: 50%;
+}
+
+.cos-field-builder table {
+  width: 100%;
+}
+
+tr:not(:last-child) td{
+  padding-bottom: 30px;
+}
+td:nth-child(2){
+  padding-left: 30px;
+}
+
+/** Field Card */
+
+.field-card {
+	position: relative;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	border: 1px solid #e0e0e0;
+  width: 100%;
+}
+
+.field-card__icon {
+	color: #7f3dff; /* purple like screenshot */
+}
+
+/* Actions hidden by default */
+.field-card__actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.2s ease;
+}
+
+.components-button.field-card__action-button {
+  min-width: 0;
+  padding: 4px;
+}
+
+/* Show actions on hover */
+.field-card:hover .field-card__actions {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Drag handle */
+.field-card__drag {
+	cursor: grab;
+	color: #8c8f94;
+	padding: 4px;
+}
+
+.field-card__drag:hover {
+	color: #1d2327;
+}
+
+.field_type-icon {
+  background-color: #16a34a;
+  border-radius: 5px;
+  fill: #fff;
+  padding: 2px;
+}
+
+.cos-file-upload {
+  border: 1px dashed #c9c9c9;
+  border-radius: .25rem;
+  width: 100%;
+}
+
+.cos-button-add-option {
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #c9c9c9;
+  font-weight: 500;
+}
+
+.cos-button-add-option:hover {
+  background-color: #e9ebef;
+  color: inherit;
+}
+
+.show_error {
+
+  & input:focus,
+  .components-input-control__backdrop {
+    border-color: #d72c0d !important;
+    box-shadow: none !important;
+  }
+}
+
+/** loader */
+.cos_loader {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.cos_loader {
+  background: #00000052;
+}
+
+.woocommerce-save-button.components-button.is-primary {
+  display: none;
+}
+
+#cos-settings-root .cos-settings-label {
+  font-weight: 600;
+}
+
+.cos-image-wrapper {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.cos-image-preview {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cos-image-delete {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 4px;
+  cursor: pointer;
+  display: none;
+}
+
+.cos-image-wrapper:hover .cos-image-delete {
+  display: flex;
+}
+
+.cos-field-builder .active-field-card {
+  border: 1px solid var(--wp-admin-theme-color);
+  box-shadow: 0 2px 8px rgba(34, 113, 177, 0.3);
+}
+
+/** react-select — match WP admin input style */
+.cos-select {
+    &__control {
+        border-color : #8c8f94 !important;
+        border-radius: 4px !important;
+        min-height   : 38px !important;
+        box-shadow   : none !important;
+
+        &--is-focused {
+            border-color: #2271b1 !important;
+            box-shadow  : 0 0 0 1px #2271b1 !important;
+        }
+    }
+
+    &__multi-value {
+        background-color: #e8f0f9;
+        border-radius   : 3px;
+    }
+
+    &__multi-value__label  { color: #2271b1; font-size: 12px; }
+    &__multi-value__remove {
+        color: #2271b1;
+        &:hover { background-color: #2271b1; color: #fff; }
+    }
+
+    &__menu { border-radius: 4px !important; z-index: 9999 !important; }
+    &__option { font-size: 13px; }
+    &__option--is-focused  { background-color: #e8f0f9; }
+    &__option--is-selected { background-color: #2271b1; }
+}
+
+/** Inline shortcode code tags */
+.cos-code-tag {
+    display      : inline-block;
+    font-family  : monospace;
+    font-size    : 11px;
+    background   : #f0f0f0;
+    border       : 1px solid #ddd;
+    border-radius: 3px;
+    padding      : 1px 5px;
+    color        : #1d2327;
+    margin       : 1px 2px;
+}
+
+
+/** ── COS Settings Table ─────────────────────────────────────────────────── */
+/**
+ * Fixed two-column layout used by SettingsCard.
+ * Label column: fixed 220px.  Field column: remaining, capped at 480px.
+ * Ensures consistent alignment across all screens regardless of label length.
+ */
+
+.cos-general-settings {
+    .cos-settings-table__label-col {
+        width: 320px;  // Custom width for General page only
+    }
+}
+
+.woocommerce_page_wc-settings-custom-order-statuses-for-woocommerce .components-toggle-control__help {
+  margin-inline-start: 0px !important;
+}
+
+.cos-help-tip {
+    cursor: help;
+    margin-left: 8px;
+    color: #787c82;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: normal;
+    
+    &:hover {
+        color: #2271b1;
+    }
+}
+
+.components-tooltip {
+    max-width: 250px !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    text-align: left;
+    line-height: 1.4;
+    padding: 6px 12px;
+}
+
+.cos-select-helptip {
+  margin-top: 8px;
+}
+
+.cos-settings-table {
+    width           : 100%;
+    border-collapse : collapse;
+    table-layout    : fixed;   // ← key: ignores content width, uses col widths
+
+    /** Label column — fixed width */
+    &__label-col { width: 220px; }
+
+    /** Field column — takes remaining space */
+    &__field-col { width: auto; }
+
+    /** Row spacing */
+    &__row td {
+        padding-top    : 0;
+        padding-bottom : 24px;
+        vertical-align : top;
+    }
+
+    /** Last row — no bottom padding */
+    &__row:last-child td { padding-bottom: 0; }
+
+    /** Label cell */
+    &__label {
+        padding-right  : 24px;
+        padding-top    : 6px;   // align label baseline with input top
+        font-size      : 13px;
+        color          : #1d2327;
+        word-break     : break-word;
+    }
+
+    /** Field cell — cap width so inputs don't stretch to full card width */
+    &__field {
+        max-width      : 480px;
+
+        // All WP inputs inside field cell — consistent sizing
+        .components-input-control,
+        .components-select-control,
+        .components-textarea-control,
+        .components-text-control {
+            max-width: 100%;
+        }
+
+        .components-input-control__input,
+        .components-select-control__input,
+        .components-textarea-control__input {
+            width        : 100%;
+            max-width    : 100%;
+            box-sizing   : border-box;
+        }
+
+        // react-select — full width within field cell
+        .cos-select { max-width: 100%; }
+
+        // Number control — narrower
+        .components-number-control { max-width: 140px; }
+
+        .components-select-control, .components-input-control { max-width: 340px; }
+
+        .cos-select__control { max-width: 340px !important }
+
+        // Color pickers stay small
+        input[type="color"] { width: 60px; }
+    }
+}
+
+#cos-settings-root .components-modal__frame {
+  max-height: 85% !important;
+}
+
+/** ── Responsive ─────────────────────────────────────────────────────────── */
+
+/** Tablet ≤ 960px — tighter margins, tab wrap */
+@media screen and ( max-width: 960px ) {
+
+    #cos-settings-root {
+        margin: 20px 10px 40px 0;
+    }
+
+    .cos-header-dashboard-tabs {
+        flex-wrap   : wrap;
+        gap         : 2px;
+        padding-top : 6px;
+    }
+
+    .cos-dashboard-tab {
+        padding    : 8px 10px;
+        font-size  : 13px;
+        margin-right: 2px;
+    }
+
+    .cos_license_settings .cos-settings-table__label-col {
+        width: 160px;
+    }
+}
+
+/** Tablet ≤ 782px — stack label above field */
+/**
+ * WordPress admin collapses its sidebar at 782px, giving more horizontal
+ * space — but plugin settings are still cramped at this width.
+ * Stack label above field so neither gets squeezed.
+ */
+@media screen and ( max-width: 782px ) {
+
+    .cos-settings-table {
+        table-layout: auto;  // let browser reflow
+
+        // Hide colgroup widths — irrelevant when stacked
+        &__label-col,
+        &__field-col { width: auto; }
+
+        // Convert to block layout — each td becomes full-width
+        &__row,
+        &__label,
+        &__field {
+            display : block;
+            width   : 100%;
+            max-width: 100%;
+        }
+
+        &__label {
+            padding-right  : 0;
+            padding-top    : 0;
+            padding-bottom : 4px;
+            font-weight    : 500;
+            color          : #50575e;
+            font-size      : 12px;
+            text-transform : uppercase;
+            letter-spacing : 0.02em;
+        }
+
+        &__field {
+            padding-bottom : 20px;
+            max-width      : 100%;
+
+            // Fields go full width when stacked
+            .components-number-control { max-width: 100%; }
+        }
+
+        &__row:last-child &__field { padding-bottom: 0; }
+    }
+
+    // Card padding — tighter on small screens
+    .components-card__body {
+        padding: 16px !important;
+    }
+    .components-card__header {
+        padding: 12px 16px !important;
+    }
+}
+
+/** Mobile ≤ 600px */
+@media screen and ( max-width: 600px ) {
+
+    #cos-settings-root {
+        margin: 8px 6px 24px 0;
+    }
+
+    .cos-dashboard-tab {
+        padding  : 6px 8px;
+        font-size: 12px;
+    }
+
+    // Tables in StatusManager / Rules — horizontal scroll
+    .cos-table-scroll {
+        overflow-x               : auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    // Filter bar — stack filter links and search vertically
+    .cos-filter-bar {
+        flex-direction : column !important;
+        align-items    : flex-start !important;
+        gap            : 8px !important;
+    }
+
+    .cos-filter-bar input[type="text"] {
+        width : 100% !important;
+        flex  : none !important;
+        min-width: 0 !important;
+    }
+
+    // Modal — full screen on phone
+    .components-modal__frame {
+        width        : 100vw !important;
+        max-width    : 100vw !important;
+        margin       : 0    !important;
+        border-radius: 0    !important;
+        max-height   : 100vh !important;
+    }
+
+    // react-select dropdown above keyboard
+    .cos-select__menu { z-index: 99999 !important; }
+
+    // Save button — full width
+    .components-h-stack .cos_save { width: 100%; }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "custom-order-status-pro-settings",
+  "version": "1.0.0",
+  "description": "React settings UI for Custom Order Status for WooCommerce",
+  "author": "Tyche Softwares",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "start":           "wp-scripts start",
+    "build":           "wp-scripts build",
+    "format":          "wp-scripts format",
+    "lint:css":        "wp-scripts lint-style",
+    "lint:js":         "wp-scripts lint-js",
+    "lint:pkg-json":   "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip":      "wp-scripts plugin-zip"
+  },
+  "dependencies": {
+    "@wordpress/api-fetch":  "^6.2.0",
+    "@wordpress/components": "^28.2.0",
+    "@wordpress/compose":    "^7.2.0",
+    "@wordpress/core-data":  "^7.2.0",
+    "@wordpress/data":       "^10.2.0",
+    "@wordpress/element":    "^6.2.0",
+    "@wordpress/i18n":       "^5.2.0",
+    "@wordpress/icons":      "^10.2.0",
+    "react-hook-form":       "^7.52.1",
+    "react-router-dom":      "^6.23.1",
+    "react-select":          "^5.8.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^28.2.0"
+  }
+}

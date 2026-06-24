@@ -14,7 +14,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// check if the Pro version file is present. If yes, do not delete any settings irrespective of whether the plugin is active or no.
+// If Pro version is installed (even if inactive), do not delete any data.
 if ( file_exists( WP_PLUGIN_DIR . '/custom-order-statuses-for-woocommerce-pro/custom-order-statuses-for-woocommerce-pro.php' ) ) {
 	return;
 }
@@ -22,131 +22,127 @@ if ( file_exists( WP_PLUGIN_DIR . '/custom-order-statuses-for-woocommerce-pro/cu
 global $wpdb;
 
 require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-require_once 'includes/alg-wc-custom-order-statuses-functions.php';
+require_once 'includes/functions/functions.php';
 
 /**
- * Delete the data for the WordPress Multisite.
+ * Delete all plugin data for a specific blog (site) – handles both old and new formats.
+ *
+ * @param int    $blog_id Blog ID (0 for non‑multisite or main site).
+ * @param string $prefix  Table prefix for the blog.
  */
-if ( is_multisite() ) {
+function cos_delete_blog_data( $blog_id = 0, $prefix = '' ) {
+	global $wpdb;
 
-	$cos_blog_list = get_sites();
+	$prefix = $prefix ? $prefix : $wpdb->prefix;
 
-	foreach ( $cos_blog_list as $cos_blog_list_key => $cos_blog_list_value ) {
+	// Read fallback settings from new or legacy options.
+	$new_settings = $blog_id
+		? get_blog_option( $blog_id, 'cos_pro_settings', array() )
+		: get_option( 'cos_pro_settings', array() );
 
+	$enable_fallback = isset( $new_settings['general']['enable_fallback'] )
+		? (bool) $new_settings['general']['enable_fallback']
+		: false;
 
-		$cos_blog_id = $cos_blog_list_value->blog_id;
+	$fallback_status = isset( $new_settings['general']['fallback_delete_status'] )
+		? $new_settings['general']['fallback_delete_status']
+		: 'on-hold';
 
-		/**
-		 * It stores the value of Fallback status.
-		 */
-		$fallback_delete_status = get_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_fallback_delete_status', 'on-hold' );
+	// Fall back to legacy option if new setting is not set.
+	if ( ! $enable_fallback ) {
+		$legacy_fallback = $blog_id
+			? get_blog_option( $blog_id, 'alg_orders_custom_statuses_fallback_delete_status', 'on-hold' )
+			: get_option( 'alg_orders_custom_statuses_fallback_delete_status', 'on-hold' );
 
-		/**
-		 * It indicates the sub site id.
-		 */
-		$cos_multisite_prefix = $cos_blog_id > 1 ? $wpdb->prefix . "$cos_blog_id_" : $wpdb->prefix;
-
-		// General Settings.
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_add_to_bulk_actions' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_add_to_reports' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_default_status' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_default_status_bacs' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_default_status_cod' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_fallback_delete_status' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_add_to_order_list_actions' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_add_to_order_list_actions_colored' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_enable_column_colored' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_add_to_order_preview_actions' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_enable_editable' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_enable_paid' );
-		delete_blog_option( $cos_blog_id, 'is_statuses_migrated_to_slug' );
-
-		// Email Settings.
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_emails_enabled' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_emails_statuses' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_emails_address' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_emails_subject' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_emails_heading' );
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_emails_content' );
-
-		// Advanced Settings.
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_filters_priority' );
-
-		// Set default order status to all custom order status of this plugin.
-		$get_all_status = get_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_array', array() );
-		if ( empty( $alg_get_custom_order_statuses_from_cpt ) ) {
-			$get_all_status = alg_get_custom_order_statuses_from_cpt( false, true );
-		}
-		if ( ! empty( $get_all_status ) ) {
-			foreach ( $get_all_status as $custom_status_key => $custom_status_id ) {
-				$wpdb->update( $cos_multisite_prefix . 'posts', array( 'post_status' => 'wc-' . $fallback_delete_status ), array( 'post_status' => $custom_status_key ) ); // phpcs:ignore
-				wp_delete_post( $custom_status_id );
-			}
-		}
-
-		// License.
-		delete_blog_option( $cos_blog_id, 'edd_license_key_cos' );
-
-		// custom status array.
-		delete_blog_option( $cos_blog_id, 'alg_orders_custom_statuses_array' );
-
-		// delete the custom order statuses.
-		$wpdb->query( 'DELETE FROM ' . $cos_multisite_prefix . 'options WHERE option_name LIKE "alg_orders_custom_status_icon_data_%"' ); // phpcs:ignore
+		$enable_fallback = ! empty( $legacy_fallback ) && 'on-hold' !== $legacy_fallback;
+		$fallback_status = $legacy_fallback;
 	}
-} else {
 
-	/**
-	 * It stores the value of Fallback status.
-	 */
-	$fallback_delete_status = get_option( 'alg_orders_custom_statuses_fallback_delete_status', 'on-hold' );
+	// Legacy options to delete.
+	$legacy_options = array(
+		'alg_orders_custom_statuses_add_to_bulk_actions',
+		'alg_orders_custom_statuses_add_to_reports',
+		'alg_orders_custom_statuses_default_status',
+		'alg_orders_custom_statuses_default_status_bacs',
+		'alg_orders_custom_statuses_default_status_cod',
+		'alg_orders_custom_statuses_fallback_delete_status',
+		'alg_orders_custom_statuses_add_to_order_list_actions',
+		'alg_orders_custom_statuses_add_to_order_list_actions_colored',
+		'alg_orders_custom_statuses_enable_column_colored',
+		'alg_orders_custom_statuses_add_to_order_preview_actions',
+		'alg_orders_custom_statuses_enable_editable',
+		'alg_orders_custom_statuses_enable_paid',
+		'is_statuses_migrated_to_slug',
+		'alg_orders_custom_statuses_emails_enabled',
+		'alg_orders_custom_statuses_emails_statuses',
+		'alg_orders_custom_statuses_emails_address',
+		'alg_orders_custom_statuses_emails_subject',
+		'alg_orders_custom_statuses_emails_heading',
+		'alg_orders_custom_statuses_emails_content',
+		'alg_orders_custom_statuses_filters_priority',
+		'edd_license_key_cos',
+		'alg_orders_custom_statuses_array',
+	);
 
-	// General Settings.
-	delete_option( 'alg_orders_custom_statuses_add_to_bulk_actions' );
-	delete_option( 'alg_orders_custom_statuses_add_to_reports' );
-	delete_option( 'alg_orders_custom_statuses_default_status' );
-	delete_option( 'alg_orders_custom_statuses_default_status_bacs' );
-	delete_option( 'alg_orders_custom_statuses_default_status_cod' );
-	delete_option( 'alg_orders_custom_statuses_fallback_delete_status' );
-	delete_option( 'alg_orders_custom_statuses_add_to_order_list_actions' );
-	delete_option( 'alg_orders_custom_statuses_add_to_order_list_actions_colored' );
-	delete_option( 'alg_orders_custom_statuses_enable_column_colored' );
-	delete_option( 'alg_orders_custom_statuses_add_to_order_preview_actions' );
-	delete_option( 'alg_orders_custom_statuses_enable_editable' );
-	delete_option( 'alg_orders_custom_statuses_enable_paid' );
-	delete_option( 'is_statuses_migrated_to_slug' );
+	foreach ( $legacy_options as $opt ) {
+		if ( $blog_id ) {
+			delete_blog_option( $blog_id, $opt );
+		} else {
+			delete_option( $opt );
+		}
+	}
 
-	// Email Settings.
-	delete_option( 'alg_orders_custom_statuses_emails_enabled' );
-	delete_option( 'alg_orders_custom_statuses_emails_statuses' );
-	delete_option( 'alg_orders_custom_statuses_emails_address' );
-	delete_option( 'alg_orders_custom_statuses_emails_subject' );
-	delete_option( 'alg_orders_custom_statuses_emails_heading' );
-	delete_option( 'alg_orders_custom_statuses_emails_content' );
+	// New consolidated settings.
+	if ( $blog_id ) {
+		delete_blog_option( $blog_id, 'cos_pro_settings' );
+	} else {
+		delete_option( 'cos_pro_settings' );
+	}
 
-	// Advanced Settings.
-	delete_option( 'alg_orders_custom_statuses_filters_priority' );
+	// Get all custom order statuses (posts).
+	$get_all_status = $blog_id
+		? get_blog_option( $blog_id, 'alg_orders_custom_statuses_array', array() )
+		: get_option( 'alg_orders_custom_statuses_array', array() );
 
-	// License.
-	delete_option( 'edd_license_key_cos' );
-
-	// Set default order status to all custom order status of this plugin.
-	$get_all_status = get_option( 'alg_orders_custom_statuses_array', array() );
-	if ( empty( $alg_get_custom_order_statuses_from_cpt ) ) {
+	if ( empty( $get_all_status ) ) {
 		$get_all_status = alg_get_custom_order_statuses_from_cpt( false, true );
 	}
+
 	if ( ! empty( $get_all_status ) ) {
-		foreach ( $get_all_status as $custom_status_key => $custom_status_id ) {
-			$wpdb->update( $wpdb->prefix . 'posts', array( 'post_status' => 'wc-' . $fallback_delete_status ), array( 'post_status' => $custom_status_key ) ); // phpcs:ignore
-			wp_delete_post( $custom_status_id );
+		// Update orders only if fallback is explicitly enabled.
+		if ( $enable_fallback ) {
+			foreach ( $get_all_status as $custom_status_key => $custom_status_id ) {
+				$wpdb->update(
+					$prefix . 'posts',
+					array( 'post_status' => 'wc-' . $fallback_status ),
+					array( 'post_status' => $custom_status_key )
+				);
+			}
+		}
+		// Always delete the custom status posts.
+		foreach ( $get_all_status as $custom_status_id ) {
+			wp_delete_post( $custom_status_id, true );
 		}
 	}
 
-	// custom status array.
-	delete_option( 'alg_orders_custom_statuses_array' );
+	// Delete any orphaned custom order status posts.
+	$wpdb->delete( $prefix . 'posts', array( 'post_type' => 'custom_order_status' ) );
 
-	// delete the custom order statuses.
-	$wpdb->query( 'DELETE FROM ' . $wpdb->prefix . 'options WHERE option_name LIKE "alg_orders_custom_status_icon_data_%"' ); // phpcs:ignore
-
+	// Delete icon data.
+	// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+	$wpdb->query( "DELETE FROM {$prefix}options WHERE option_name LIKE 'alg_orders_custom_status_icon_data_%'" );
 }
-// Clear any cached data that has been removed.
+
+// Handle multisite.
+if ( is_multisite() ) {
+	$sites = get_sites();
+	foreach ( $sites as $site ) {
+		$blog_id = $site->blog_id;
+		$prefix  = $blog_id > 1 ? $wpdb->prefix . "{$blog_id}_" : $wpdb->prefix;
+		cos_delete_blog_data( $blog_id, $prefix );
+	}
+} else {
+	cos_delete_blog_data();
+}
+
 wp_cache_flush();
