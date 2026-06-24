@@ -16,18 +16,23 @@
  * Requires Plugins: woocommerce
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ * Requires PHP: 7.4
+ * Requires Plugins: woocommerce
+ * WC requires at least: 5.0
  *
  * @package Custom-Order-Statuses
  */
 
 defined( 'ABSPATH' ) || exit;
 
+use TycheSoftwares\CustomOrderStatus\Lite\Custom_Order_Status;
+
 if ( ! defined( 'COS_PLUGIN_FILE' ) ) {
 	define( 'COS_PLUGIN_FILE', __FILE__ );
 }
 
 // Include the Product Input Fields class.
-if ( ! class_exists( 'Custom_Order_Status', false ) ) {
+if ( ! class_exists( Custom_Order_Status::class, false ) ) {
 	include_once dirname( COS_PLUGIN_FILE ) . '/includes/class-custom-order-status.php';
 }
 

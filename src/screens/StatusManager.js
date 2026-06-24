@@ -3,7 +3,7 @@
  * Free version – core status management is free; advanced features (stock, email, SMS, paid flag, customer cancellation) are Pro-only.
  */
 
-import { useState, useEffect, useCallback } from '@wordpress/element';
+import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import {
     Button,
@@ -25,7 +25,8 @@ import SettingsCard from '../components/SettingsCard';
 import ProNotice from '../components/ProNotice';
 import ShortcodeHelp from '../components/ShortcodeHelp';
 import IconPicker, { IconTableCell } from '../components/IconPicker';
-import { getStatuses, saveStatus, deleteStatus } from '../data/api';
+import { useSettings } from '../context/SettingsContext';
+import { saveStatus, deleteStatus } from '../data/api';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -114,7 +115,9 @@ function ColorSwatch({ color }) {
 
 // ── Main screen ────────────────────────────────────────────────────────────────
 function StatusManager({ noticeOperations, noticeUI }) {
-    const [statuses, setStatuses] = useState([]);
+
+    const { statuses, isLoading, refreshSection } = useSettings();
+
     const [showLoader, setShowLoader] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingId, setEditingId] = useState(null);
@@ -124,7 +127,6 @@ function StatusManager({ noticeOperations, noticeUI }) {
     const [statusFilter, setStatusFilter] = useState('all');
     const [sortField, setSortField] = useState('date');
     const [sortDir, setSortDir] = useState('desc');
-    const [isLoading, setIsLoading] = useState(true);
 
     const { control, handleSubmit, reset, watch, setValue } = useForm({
         defaultValues: BLANK_FORM,
@@ -133,7 +135,7 @@ function StatusManager({ noticeOperations, noticeUI }) {
     const watchTitle = watch('title');
 
     // Auto-generate slug from title (add only, don't change on edit)
-    useEffect(() => {
+    useCallback(() => {
         if (!editingId && watchTitle) {
             const slug = watchTitle.toLowerCase()
                 .replace(/[^a-z0-9]+/g, '-')
@@ -142,26 +144,6 @@ function StatusManager({ noticeOperations, noticeUI }) {
             setValue('slug', slug);
         }
     }, [watchTitle, editingId, setValue]);
-
-    const fetchAllStatuses = useCallback(async () => {
-        setIsLoading(true);
-        try {
-            const data = await getStatuses();
-            setStatuses(Array.isArray(data) ? data : []);
-        } catch (error) {
-            console.error('Fetch error:', error);
-            noticeOperations.createNotice({
-                status: 'error',
-                content: __('Failed to load statuses.', 'custom-order-statuses-woocommerce')
-            });
-        } finally {
-            setIsLoading(false);
-        }
-    }, [noticeOperations]);
-
-    useEffect(() => {
-        fetchAllStatuses();
-    }, [fetchAllStatuses]);
 
     const openAdd = () => {
         setEditingId(null);
@@ -238,7 +220,8 @@ function StatusManager({ noticeOperations, noticeUI }) {
             };
             await saveStatus(payload, editingId);
             closeModal();
-            await fetchAllStatuses();
+
+            await refreshSection('statuses');
             noticeOperations.removeAllNotices();
             noticeOperations.createNotice({
                 status: 'success',
@@ -264,7 +247,8 @@ function StatusManager({ noticeOperations, noticeUI }) {
             await Promise.all(ids.map(id => deleteStatus(id)));
             setDeleteTarget(null);
             setSelectedIds([]);
-            await fetchAllStatuses();
+
+            await refreshSection('statuses');
             noticeOperations.removeAllNotices();
             noticeOperations.createNotice({
                 status: 'success',

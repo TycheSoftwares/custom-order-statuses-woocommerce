@@ -1,4 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
+import { clearStatusesCache } from './getStatuses';
+import { clearOptionsCache } from './getOptions';
 
 const saveStatus = async ( statusData, id = null ) => {
     try {
@@ -7,6 +9,8 @@ const saveStatus = async ( statusData, id = null ) => {
             method: id ? 'PUT' : 'POST',
             data  : statusData,
         } );
+        clearStatusesCache();
+        clearOptionsCache();
         return response?.data ?? null;
     } catch ( error ) {
         throw error;

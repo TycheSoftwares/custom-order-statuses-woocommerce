@@ -53,6 +53,22 @@ const ADMIN_DISABLED_VALUES = {
     content: '',
 };
 
+const StatusSelect = ({ field, options }) => {
+    const value = field.value ?? [];
+    const selected = options.filter(opt => value.includes(opt.value));
+
+    return (
+        <Select
+            isMulti
+            options={options}
+            value={selected}
+            onChange={(sel) => field.onChange((sel ?? []).map(o => o.value))}
+            placeholder={__('Leave blank for all custom statuses…', 'custom-order-statuses-woocommerce')}
+            classNamePrefix="cos-select"
+        />
+    );
+};
+
 function OrderStatusEmails({ noticeOperations, noticeUI }) {
     const [showLoader, setShowLoader] = useState(false);
     const [statusOptions, setStatusOptions] = useState([]);
@@ -177,17 +193,6 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
         }
     };
 
-    const StatusSelect = ({ field }) => (
-        <Select 
-            isMulti 
-            options={customStatusOptions}
-            value={customStatusOptions.filter(o => (field.value ?? []).includes(o.value))}
-            onChange={(sel) => field.onChange((sel ?? []).map(o => o.value))}
-            placeholder={__('Leave blank for all custom statuses…', 'custom-order-statuses-woocommerce')}
-            classNamePrefix="cos-select" 
-        />
-    );
-
     const isLoading = globalLoading || !loadedSections.settings || !loadedSections.options || !isFormReady;
 
     return (
@@ -218,7 +223,7 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                                 render: (f) => (
                                     <div style={{ display: 'flex', marginLeft: '-32px' }}>
                                         <HelpTip message={__('Custom statuses to send emails. Leave blank to send emails on all custom statuses.', 'custom-order-statuses-woocommerce')} className={'cos-select-helptip'}/>
-                                        <StatusSelect field={f} />
+                                        <StatusSelect field={f} options={customStatusOptions} />
                                     </div>
                                 ),
                             },

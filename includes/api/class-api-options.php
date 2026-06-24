@@ -172,16 +172,7 @@ class Api_Options extends Api_Base {
 	 */
 	private function get_wc_order_statuses() : array {
 
-		$statuses = array(
-			'pending'    => _x( 'Pending Payment', 'Order status', 'woocommerce' ),
-			'processing' => _x( 'Processing',      'Order status', 'woocommerce' ),
-			'on-hold'    => _x( 'On Hold',          'Order status', 'woocommerce' ),
-			'completed'  => _x( 'Completed',        'Order status', 'woocommerce' ),
-			'cancelled'  => _x( 'Cancelled',        'Order status', 'woocommerce' ),
-			'refunded'   => _x( 'Refunded',         'Order status', 'woocommerce' ),
-			'failed'     => _x( 'Failed',           'Order status', 'woocommerce' ),
-		);
-
+		$statuses = wc_get_order_statuses();
 		$options  = [];
 
 		foreach ( $statuses as $value => $label ) {

@@ -3,7 +3,7 @@
  * Free version – original Pro styling, all fields disabled, no AsyncSelect.
  */
 
-import { useState, useEffect } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import {
     Button, Modal, SelectControl, ToggleControl, Spinner, withNotices, Notice,
@@ -20,7 +20,7 @@ import MultiDatePicker from '../components/MultiDatePicker';
 import ProNotice from '../components/ProNotice';
 import HelpTip from '../components/HelpTip';
 import SettingsCard from '../components/SettingsCard';
-import getOptions from '../data/api/getOptions';
+import { useSettings } from '../context/SettingsContext';
 
 // Constants
 const DAY_OPTIONS = [
@@ -71,8 +71,8 @@ const noopLoadOptions = () => Promise.resolve([]);
 
 function OrderStatusRules({ noticeOperations, noticeUI }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [options, setOptions] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+
+    const { options, isLoading, refreshSection } = useSettings();
 
     // Dummy form — only needed so SettingsCard's Controller has a valid control.
     // All render functions read from DUMMY_RULE directly; nothing is submitted.
@@ -97,42 +97,11 @@ function OrderStatusRules({ noticeOperations, noticeUI }) {
         },
     });
 
-    // Load options only once
-    useEffect(() => {
-        const fetchData = async () => {
-            setIsLoading(true);
-            try {
-                const data = await getOptions();
-                setOptions({
-                    order_statuses: data?.order_statuses ?? [],
-                    payment_methods: data?.payment_methods ?? [],
-                    shipping_methods: data?.shipping_methods ?? [],
-                    product_categories: data?.product_categories ?? [],
-                    user_roles: data?.user_roles ?? [],
-                    countries: data?.countries ?? [],
-                });
-            } catch (error) {
-                console.error('Fetch error:', error);
-                setOptions({
-                    order_statuses: [],
-                    payment_methods: [],
-                    shipping_methods: [],
-                    product_categories: [],
-                    user_roles: [],
-                    countries: [],
-                });
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchData();
-    }, []);
-
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    // Wait until options are loaded
-    if (isLoading || !options) {
+    // Wait until options are loaded from context
+    if (isLoading || !options || !options.order_statuses) {
         return (
             <VStack style={{ marginTop: '20px' }} spacing={4}>
                 <div style={{ padding: '40px', textAlign: 'center' }}>
@@ -160,7 +129,7 @@ function OrderStatusRules({ noticeOperations, noticeUI }) {
         <VStack style={{ marginTop: '20px' }} spacing={4}>
             {noticeUI}
 
-            <ProNotice feature={__('Custom Order Status Rules', '...')} />
+            <ProNotice feature={__('Custom Order Status Rules', 'custom-order-statuses-woocommerce')} />
 
             {/* Header with Add button disabled */}
             <HStack justify="space-between" alignment="center">
