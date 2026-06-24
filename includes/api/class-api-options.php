@@ -79,7 +79,7 @@ class Api_Options extends Api_Base {
 		return $this->success( [
 			'order_statuses'         => $this->get_all_order_statuses(),
 			'custom_order_statuses'  => $this->get_custom_order_statuses(),
-			'default_order_statuses' => $this->get_wc_order_statuses(),
+			'default_order_statuses' => $this->get_core_order_statuses(),
 			'payment_methods'        => $this->get_payment_methods(),
 			'shipping_methods'       => $this->get_shipping_methods(),
 			'product_categories'     => $this->get_product_categories(),
@@ -149,6 +149,11 @@ class Api_Options extends Api_Base {
 		return $options;
 	}
 
+	/**
+	 * Only custom order statuses created by this plugin.
+	 *
+	 * @return array
+	 */
 	private function get_custom_order_statuses(): array {
 		$statuses = alg_get_custom_order_statuses_from_cpt();
 		$options  = [];
@@ -166,18 +171,22 @@ class Api_Options extends Api_Base {
 	
 
 	/**
-	 * WooCommerce Default Order Status
+	 * Only the core WooCommerce statuses (excluding any custom ones).
+	 * Used for the "default order status" dropdown in settings.
 	 *
 	 * @return array
 	 */
-	private function get_wc_order_statuses() : array {
+	private function get_core_order_statuses(): array {
+		$all_statuses = wc_get_order_statuses(); // includes all statuses (core + custom)
+		$custom_keys  = array_keys( alg_get_custom_order_statuses_from_cpt() ); // keys like 'wc-...'
 
-		$statuses = wc_get_order_statuses();
-		$options  = [];
+		// Remove custom statuses from the list
+		$core_statuses = array_diff_key( $all_statuses, array_flip( $custom_keys ) );
 
-		foreach ( $statuses as $value => $label ) {
+		$options = [];
+		foreach ( $core_statuses as $key => $label ) {
 			$options[] = [
-				'value' => str_replace( 'wc-', '', $value ),
+				'value' => str_replace( 'wc-', '', $key ),
 				'label' => $label,
 			];
 		}
@@ -349,12 +358,14 @@ class Api_Options extends Api_Base {
 			'title'   => 'cos-options',
 			'type'    => 'object',
 			'properties' => [
-				'order_statuses'     => [ 'type' => 'array' ],
-				'payment_methods'    => [ 'type' => 'array' ],
-				'shipping_methods'   => [ 'type' => 'array' ],
-				'product_categories' => [ 'type' => 'array' ],
-				'user_roles'         => [ 'type' => 'array' ],
-				'countries'          => [ 'type' => 'array' ],
+				'order_statuses'         => [ 'type' => 'array' ],
+				'custom_order_statuses'  => [ 'type' => 'array' ],
+				'default_order_statuses' => [ 'type' => 'array' ],
+				'payment_methods'        => [ 'type' => 'array' ],
+				'shipping_methods'       => [ 'type' => 'array' ],
+				'product_categories'     => [ 'type' => 'array' ],
+				'user_roles'             => [ 'type' => 'array' ],
+				'countries'              => [ 'type' => 'array' ],
 			],
 		];
 	}

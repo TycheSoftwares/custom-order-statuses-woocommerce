@@ -3,7 +3,7 @@
  * Free version – core status management is free; advanced features (stock, email, SMS, paid flag, customer cancellation) are Pro-only.
  */
 
-import { useState, useCallback } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import {
     Button,
@@ -135,7 +135,7 @@ function StatusManager({ noticeOperations, noticeUI }) {
     const watchTitle = watch('title');
 
     // Auto-generate slug from title (add only, don't change on edit)
-    useCallback(() => {
+    useEffect(() => {
         if (!editingId && watchTitle) {
             const slug = watchTitle.toLowerCase()
                 .replace(/[^a-z0-9]+/g, '-')
