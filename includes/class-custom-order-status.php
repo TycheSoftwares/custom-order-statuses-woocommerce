@@ -575,6 +575,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\Custom_Order_Status' ) ) :
 		public function action_links( $links ) {
 			$custom_links   = array();
 			$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=custom-order-statuses-for-woocommerce' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
+			$custom_links[] = '<a href="https://www.tychesoftwares.com/store/premium-plugins/custom-order-status-woocommerce/?utm_source=cosupgradetopro&utm_medium=unlockall&utm_campaign=CustomOrderStatusLite">' . __( 'Unlock All', 'custom-order-statuses-woocommerce' ) . '</a>';
 
 			return array_merge( $custom_links, $links );
 		}

@@ -77,7 +77,28 @@ class Api_Settings extends Api_Base {
 				],
 			]
 		);
+
+		register_rest_route(
+            $this->namespace,
+            '/tracking/reset',
+            array(
+                'methods'             => 'POST',
+                'callback'            => array( $this, 'reset_tracking' ),
+                'permission_callback' => array( $this, 'check_permission' ),
+            )
+        );
 	}
+
+	/**
+     * POST /tracking/reset – returns true.
+     *
+     * @return WP_REST_Response
+     */
+    public function reset_tracking() {
+        delete_option( 'cos_lite_allow_tracking' );
+        delete_option( 'ts_tracker_last_send' );
+        return $this->success( array( 'reset' => true ) );
+    }
 
 	// ─── Handlers ─────────────────────────────────────────────────────────────
 

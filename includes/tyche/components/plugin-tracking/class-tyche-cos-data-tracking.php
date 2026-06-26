@@ -26,11 +26,11 @@ if ( ! class_exists( 'Tyche_COS_Data_Tracking' ) ) :
 		 */
 		public function __construct() {
 			// Include JS script for the notice.
-			add_filter( 'cos_pro_ts_tracker_data', array( __CLASS__, 'cos_pro_ts_add_plugin_tracking_data' ), 10, 1 );
+			add_filter( 'cos_lite_ts_tracker_data', array( __CLASS__, 'cos_pro_ts_add_plugin_tracking_data' ), 10, 1 );
 			add_action( 'admin_footer', array( __CLASS__, 'ts_admin_notices_scripts' ) );
 			// Send Tracker Data.
-			add_action( 'cos_pro_init_tracker_completed', array( __CLASS__, 'init_tracker_completed' ), 10, 2 );
-			add_filter( 'cos_pro_ts_tracker_display_notice', array( __CLASS__, 'cos_pro_ts_tracker_display_notice' ), 10, 1 );
+			add_action( 'cos_lite_init_tracker_completed', array( __CLASS__, 'init_tracker_completed' ), 10, 2 );
+			add_filter( 'cos_lite_ts_tracker_display_notice', array( __CLASS__, 'cos_pro_ts_tracker_display_notice' ), 10, 1 );
 
 			add_filter( 'woocommerce_reset_settings_alg_wc_custom_order_statuses', array( $this, 'ts_tracking_reset_option' ), 10, 2 );
 		}
