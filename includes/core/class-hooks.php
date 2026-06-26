@@ -221,7 +221,7 @@ class Hooks {
 
 		wp_register_script(
 			'tyche',
-			plugins_url() . '/custom-order-statuses-for-woocommerce/assets/js/tyche.js',
+			plugins_url() . '/custom-order-statuses-woocommerce/assets/js/tyche.js',
 			array( 'jquery' ),
 			COS_VERSION,
 			true
@@ -500,8 +500,8 @@ class Hooks {
     public function cos_custom_order_tables_compatibility() {
 
         if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
-            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'orders_cache', 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php', true );
+            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', 'custom-order-statuses-woocommerce/custom-order-statuses-for-woocommerce.php', true );
+            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'orders_cache', 'custom-order-statuses-woocommerce/custom-order-statuses-for-woocommerce.php', true );
         }
     }
 

@@ -27,8 +27,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\Deactivation' ) ) {
 			new Tyche_Plugin_Deactivation(
 				array(
 					'plugin_name'       => 'Custom Order Status for WooCommerce',
-					'plugin_base'       => 'custom-order-statuses-for-woocommerce/custom-order-statuses-for-woocommerce.php',
-					'script_file'       => COS_PLUGIN_URL . '/includes/tyche/assets/js/plugin-deactivation.js',
+					'plugin_base'       => 'custom-order-statuses-woocommerce/custom-order-statuses-for-woocommerce.php',
+					'script_file'       => COS_PLUGIN_URL . 'includes/tyche/assets/js/plugin-deactivation.js',
 					'plugin_short_name' => 'cos_lite',
 					'version'           => COS_VERSION,
 					'plugin_locale'     => 'custom-order-statuses-woocommerce',
