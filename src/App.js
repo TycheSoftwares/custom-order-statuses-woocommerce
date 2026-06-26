@@ -38,7 +38,7 @@ const TABS = [
     { name: 'emails',      title: __( 'Emails',             'custom-order-statuses-woocommerce' ), path: '/emails' },
     { name: 'sms',         title: __( 'SMS',                        'custom-order-statuses-woocommerce' ), path: '/sms' },
     { name: 'gateways',    title: __( 'Status by Payments', 'custom-order-statuses-woocommerce' ), path: '/gateways' },
-    { name: 'labels',      title: __( 'Labels',        'custom-order-statuses-woocommerce' ), path: '/labels' },    
+    { name: 'labels',      title: __( 'Labels',        'custom-order-statuses-woocommerce' ), path: '/labels' },
 ];
 
 function App() {
@@ -101,7 +101,7 @@ function App() {
                     </HStack>
                     <HStack justify="center">
                         <Text>{ __( "If this plugin helped you,", 'custom-order-statuses-woocommerce' ) }</Text>
-                        <ExternalLink href="https://www.tychesoftwares.com/submit-review/" className="bogo-link">
+                        <ExternalLink href="https://wordpress.org/support/plugin/custom-order-statuses-woocommerce/reviews/" className="bogo-link">
                         { __( 'please rate it', 'custom-order-statuses-woocommerce' ) }
                         </ExternalLink>
                         <Text style={{ fontSize: "17px", color: "#FFBA00" }}>★★★★★</Text>

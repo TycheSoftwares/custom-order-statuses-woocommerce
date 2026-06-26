@@ -1,5 +1,6 @@
 // src/components/ProNotice.js
 import { Notice, Button } from '@wordpress/components';
+import { ExternalLink } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
 
 const UPGRADE_URL = 'https://www.tychesoftwares.com/products/custom-order-statuses-woocommerce-pro/?utm_source=coslite&utm_medium=notice&utm_campaign=upgrade';
@@ -27,8 +28,7 @@ export default function ProNotice({ feature }) {
     );
 }
 
-// Named export: inline notice (used next to toggles)
-export function ProInlineNotice({ feature, message, inline = false, className = '' }) {
+export function ProInlineNotice({ feature, message, className = '' }) {
     const defaultMessage = feature
         ? sprintf( __('%s is only available in the Pro version.', 'custom-order-statuses-woocommerce'), feature )
         : __('This option is only available in the Pro version.', 'custom-order-statuses-woocommerce');
@@ -36,32 +36,26 @@ export function ProInlineNotice({ feature, message, inline = false, className = 
     const displayMessage = message || defaultMessage;
 
     const style = {
-        display      : inline ? 'inline-flex' : 'flex',
+        display      : 'inline-flex',      // always inline
         alignItems   : 'center',
         gap          : '6px',
-        marginTop    : inline ? 0 : '8px',
-        padding      : '8px 10px',
-        background   : '#fef9ec',
-        borderLeft   : '2px solid #f0c040',
+        marginTop    : 0,
         fontSize     : '12px',
-        color        : '#1d2327',
-        lineHeight   : 1.4,
     };
 
     return (
         <div style={ style } className={ className }>
-            <span>
-                { displayMessage }
-                { ' ' }
-                <a
-                    href={ UPGRADE_URL }
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: '#2271b1', fontWeight: 600, textDecoration: 'underline' }}
-                >
+            <ExternalLink
+                href={ UPGRADE_URL }
+                style={{
+                    textDecoration: 'none',
+                    fontWeight: 600
+                }}
+            >
+                <span style={{ textDecoration: 'underline' }}>
                     { __( 'Upgrade to Pro', 'custom-order-statuses-woocommerce' ) }
-                </a>
-            </span>
+                </span>
+            </ExternalLink>
         </div>
     );
 }

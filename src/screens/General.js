@@ -5,6 +5,7 @@
 
 import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
 import {
     Button,
     ToggleControl,
@@ -18,8 +19,7 @@ import {
     __experimentalHStack as HStack,
     __experimentalConfirmDialog as ConfirmDialog,
 } from '@wordpress/components';
-import { dispatch } from '@wordpress/data';
-import { store as coreDataStore } from '@wordpress/core-data';
+
 import { useForm } from 'react-hook-form';
 import SettingsCard from '../components/SettingsCard';
 import HelpTip from '../components/HelpTip';
@@ -34,13 +34,13 @@ function General({ noticeOperations, noticeUI }) {
     const [orderStatuses, setOrderStatuses] = useState([]);
 
     // Use global settings context
-    const { 
-        settings, 
+    const {
+        settings,
         options,
-        isLoading: globalLoading, 
+        isLoading: globalLoading,
         updateSettingsData,
         fetchSection,
-        loadedSections 
+        loadedSections
     } = useSettings();
 
     // Initialize isFormReady based on whether data is already loaded
@@ -107,10 +107,10 @@ function General({ noticeOperations, noticeUI }) {
         try {
             const current = settings || {};
             await updateSettings({ ...current, general: data });
-            
+
             // Update global settings
             updateSettingsData('settings', { ...current, general: data });
-            
+
             noticeOperations.removeAllNotices();
             noticeOperations.createNotice({
                 status: 'success',
@@ -131,11 +131,11 @@ function General({ noticeOperations, noticeUI }) {
         try {
             const defaults = await resetSection('general');
             reset(defaults);
-            
+
             // Update global settings with defaults
             const current = settings || {};
             updateSettingsData('settings', { ...current, general: defaults });
-            
+
             noticeOperations.removeAllNotices();
             noticeOperations.createNotice({
                 status: 'success',
@@ -154,11 +154,7 @@ function General({ noticeOperations, noticeUI }) {
 
     const resetTracking = () => {
         setShowLoader(true);
-        dispatch(coreDataStore)
-            .saveEntityRecord('root', 'site', {
-                cos_allow_tracking: '',
-                ts_tracker_last_send: '',
-            })
+        apiFetch({ path: '/cos-pro/v1/tracking/reset', method: 'POST' })
             .then(() => {
                 noticeOperations.removeAllNotices();
                 noticeOperations.createNotice({
@@ -225,7 +221,7 @@ function General({ noticeOperations, noticeUI }) {
                                     name: 'enable_fallback', defaultValue: false,
                                     label: __( 'Apply fallback status when plugin is disabled', 'custom-order-statuses-woocommerce' ),
                                     render: () => (
-                                        <div style={{ marginLeft: '40px' }}>
+                                        <div style={{ marginLeft: '40px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                                             <div style={{ opacity: 0.5, pointerEvents: 'none' }}>
                                                 <ToggleControl
                                                     checked={ false }
@@ -284,7 +280,7 @@ function General({ noticeOperations, noticeUI }) {
                                     name: 'add_to_order_list_actions', defaultValue: false,
                                     label: __('Show in order list actions', 'custom-order-statuses-woocommerce'),
                                     render: (f) => (
-                                        <div style={{ marginLeft: '40px' }}>
+                                        <div style={{ marginLeft: '40px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                                             <ToggleControl checked={ false } disabled onChange={f.onChange} __nextHasNoMarginBottom />
                                             <ProInlineNotice />
                                         </div>
@@ -295,7 +291,7 @@ function General({ noticeOperations, noticeUI }) {
                                     label: __('Show colors for action buttons', 'custom-order-statuses-woocommerce'),
                                     showWhen: !!showListColors,
                                     render: (f) => (
-                                        <div style={{ marginLeft: '40px' }}>
+                                        <div style={{ marginLeft: '40px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                                             <ToggleControl checked={ false } disabled onChange={f.onChange} __nextHasNoMarginBottom />
                                             <ProInlineNotice />
                                         </div>
@@ -305,7 +301,7 @@ function General({ noticeOperations, noticeUI }) {
                                     name: 'add_to_order_preview_actions', defaultValue: false,
                                     label: __('Show in order preview actions', 'custom-order-statuses-woocommerce'),
                                     render: (f) => (
-                                        <div style={{ marginLeft: '40px' }}>
+                                        <div style={{ marginLeft: '40px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                                             <ToggleControl checked={ false } disabled onChange={f.onChange} __nextHasNoMarginBottom />
                                             <ProInlineNotice />
                                         </div>
@@ -324,8 +320,9 @@ function General({ noticeOperations, noticeUI }) {
                                     name: 'enable_column_icons', defaultValue: true,
                                     label: __('Show icons in status column', 'custom-order-statuses-woocommerce'),
                                     render: (f) => (
-                                        <div style={{ marginLeft: '40px' }}>
-                                            <ToggleControl checked={!!f.value} onChange={f.onChange} __nextHasNoMarginBottom />
+                                        <div style={{ marginLeft: '40px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                                            <ToggleControl checked={ false } disabled onChange={f.onChange} __nextHasNoMarginBottom />
+                                            <ProInlineNotice />
                                         </div>
                                     ),
                                 },
@@ -342,8 +339,8 @@ function General({ noticeOperations, noticeUI }) {
                                     name: '_subheading2',
                                     defaultValue: false,
                                     render: () => (
-                                        <div style={{ 
-                                            margin: '16px 0 8px 0', 
+                                        <div style={{
+                                            margin: '16px 0 8px 0',
                                             paddingBottom: '16px',
                                             borderBottom: '1px solid #e0e0e0',
                                             width: '100%'
@@ -356,34 +353,28 @@ function General({ noticeOperations, noticeUI }) {
                                 },
                                 {
                                     name: 'enable_editable', defaultValue: false,
-                                    label: __( 'Allow editing of orders with this status', 'custom-order-statuses-woocommerce' ),
-                                    render: () => (
+                                    label: __( 'Allow editing of orders with custom status', 'custom-order-statuses-woocommerce' ),
+                                    render: (f) => (
                                         <div style={{ marginLeft: '40px' }}>
-                                            <div style={{ opacity: 0.5, pointerEvents: 'none' }}>
-                                                <ToggleControl
-                                                    checked={ false }
-                                                    onChange={ () => {} }
-                                                    __nextHasNoMarginBottom
-                                                />
-                                            </div>
-                                            <ProInlineNotice />
+                                            <ToggleControl
+                                                checked={!!f.value}
+                                                onChange={f.onChange}
+                                                __nextHasNoMarginBottom
+                                            />
                                         </div>
                                     ),
                                 },
                                 {
                                     name: 'enable_paid', defaultValue: false,
-                                    label: __( 'Mark orders with this status as paid', 'custom-order-statuses-woocommerce' ),
-                                    render: () => (
+                                    label: __( 'Mark orders with custom status as paid', 'custom-order-statuses-woocommerce' ),
+                                    render: (f) => (
                                         <div style={{ marginLeft: '40px' }}>
-                                            <div style={{ opacity: 0.5, pointerEvents: 'none' }}>
-                                                <ToggleControl
-                                                    checked={ false }
-                                                    onChange={ () => {} }
-                                                    help={ __( 'Default paid statuses: Processing, Completed.', 'custom-order-statuses-woocommerce' ) }
-                                                    __nextHasNoMarginBottom
-                                                />
-                                            </div>
-                                            <ProInlineNotice />
+                                            <ToggleControl
+                                                checked={!!f.value}
+                                                onChange={f.onChange}
+                                                help={ __( 'Default paid statuses: Processing, Completed.', 'custom-order-statuses-woocommerce' ) }
+                                                __nextHasNoMarginBottom
+                                            />
                                         </div>
                                     ),
                                 },
@@ -391,8 +382,8 @@ function General({ noticeOperations, noticeUI }) {
                                     name: '_subheading3',
                                     defaultValue: false,
                                     render: () => (
-                                        <div style={{ 
-                                            margin: '16px 0 8px 0', 
+                                        <div style={{
+                                            margin: '16px 0 8px 0',
                                             paddingBottom: '16px',
                                             borderBottom: '1px solid #e0e0e0',
                                             width: '100%'
