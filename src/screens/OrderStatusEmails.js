@@ -75,13 +75,13 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
     const [customStatusOptions, setCustomStatusOptions] = useState([]);
     const [isResetOpen, setIsResetOpen] = useState(false);
 
-    const { 
-        settings, 
+    const {
+        settings,
         options,
         isLoading: globalLoading,
         loadedSections,
         fetchSection,
-        updateSettingsData 
+        updateSettingsData
     } = useSettings();
 
     const [isFormReady, setIsFormReady] = useState(() => {
@@ -92,12 +92,12 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
     const currentAdminValues = settings?.admin_email || {};
 
     const emailForm = useForm({
-        defaultValues: { 
+        defaultValues: {
             ...DEFAULT_EMAIL_VALUES,
             ...currentEmailValues,
         },
     });
-    
+
     // Admin form – never saves, just a placeholder
     const adminForm = useForm({
         defaultValues: ADMIN_DISABLED_VALUES,
@@ -152,7 +152,7 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
             const current = settings || {};
             await updateSettings({ ...current, emails: emailData });
             updateSettingsData('settings', { ...current, emails: emailData });
-            
+
             noticeOperations.removeAllNotices();
             noticeOperations.createNotice({
                 status: 'success',
@@ -173,10 +173,10 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
         try {
             const emailDefaults = await resetSection('emails');
             if (emailDefaults) emailForm.reset(emailDefaults);
-            
+
             const current = settings || {};
             updateSettingsData('settings', { ...current, emails: emailDefaults });
-            
+
             noticeOperations.removeAllNotices();
             noticeOperations.createNotice({
                 status: 'success',
@@ -205,20 +205,20 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                 </div>
             ) : (
                 <VStack className="cos_setting_section" spacing={10}>
-                    
+
                     {/* ── Section 1: Customer Email Notifications (Fully functional) ── */}
                     <SettingsCard
                         heading={__('Customer Email Notifications', 'custom-order-statuses-woocommerce')}
                         subHeading={__('Notify customers on status change. Note: overridden by status-level email settings.', 'custom-order-statuses-woocommerce')}
                         control={emailForm.control}
                         fields={[
-                            { 
-                                name: 'enabled', defaultValue: false, 
+                            {
+                                name: 'enabled', defaultValue: false,
                                 label: __('Enable customer notifications', 'custom-order-statuses-woocommerce'),
-                                render: (f) => <ToggleControl checked={!!f.value} onChange={f.onChange} __nextHasNoMarginBottom /> 
+                                render: (f) => <ToggleControl checked={!!f.value} onChange={f.onChange} __nextHasNoMarginBottom />
                             },
-                            { 
-                                name: 'statuses', defaultValue: [], 
+                            {
+                                name: 'statuses', defaultValue: [],
                                 label: __('Statuses', 'custom-order-statuses-woocommerce'),
                                 render: (f) => (
                                     <div style={{ display: 'flex', marginLeft: '-32px' }}>
@@ -227,8 +227,8 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                                     </div>
                                 ),
                             },
-                            { 
-                                name: 'address', defaultValue: '', 
+                            {
+                                name: 'address', defaultValue: '',
                                 label: __('Email address', 'custom-order-statuses-woocommerce'),
                                 render: (f) => (
                                     <div style={{ display: 'flex', marginLeft: '-32px' }}>
@@ -237,30 +237,33 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                                     </div>
                                 ),
                             },
-                            { 
-                                name: 'bcc', defaultValue: '', 
+                            {
+                                name: 'bcc', defaultValue: '',
                                 label: __('BCC', 'custom-order-statuses-woocommerce'),
                                 render: (f) => (
-                                    <div style={{ display: 'flex', marginLeft: '-32px' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '-32px' }}>
                                         <HelpTip message={__('Comma separated list of emails.', 'custom-order-statuses-woocommerce')} className={'cos-select-helptip'}/>
-                                        <InputControl value={f.value ?? ''} onChange={f.onChange} disabled /> <ProInlineNotice />
+                                        <InputControl style={{ flex: 1 }} value={f.value ?? ''} onChange={f.onChange} disabled />
+                                        <div style={{ marginLeft: '8px', display: 'flex', alignItems: 'center' }}>
+                                            <ProInlineNotice />
+                                        </div>
                                     </div>
                                 ),
                             },
-                            { 
-                                name: 'subject', defaultValue: '', 
+                            {
+                                name: 'subject', defaultValue: '',
                                 label: __('Email subject', 'custom-order-statuses-woocommerce'),
-                                render: (f) => <InputControl value={f.value ?? ''} onChange={f.onChange} help={<ShortcodeHelp codes={SUBJECT_CODES} />} /> 
+                                render: (f) => <InputControl value={f.value ?? ''} onChange={f.onChange} help={<ShortcodeHelp codes={SUBJECT_CODES} />} />
                             },
-                            { 
-                                name: 'heading', defaultValue: '', 
+                            {
+                                name: 'heading', defaultValue: '',
                                 label: __('Email heading', 'custom-order-statuses-woocommerce'),
-                                render: (f) => <InputControl value={f.value ?? ''} onChange={f.onChange} help={<ShortcodeHelp codes={SUBJECT_CODES} />} /> 
+                                render: (f) => <InputControl value={f.value ?? ''} onChange={f.onChange} help={<ShortcodeHelp codes={SUBJECT_CODES} />} />
                             },
-                            { 
-                                name: 'content', defaultValue: '', 
+                            {
+                                name: 'content', defaultValue: '',
                                 label: __('Email content', 'custom-order-statuses-woocommerce'),
-                                render: (f) => <TextareaControl value={f.value ?? ''} onChange={f.onChange} rows={8} help={<ShortcodeHelp codes={CONTENT_CODES} />} __nextHasNoMarginBottom /> 
+                                render: (f) => <TextareaControl value={f.value ?? ''} onChange={f.onChange} rows={8} help={<ShortcodeHelp codes={CONTENT_CODES} />} __nextHasNoMarginBottom />
                             },
                         ]}
                     />
@@ -275,30 +278,30 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                             subHeading={__('Alert the admin when an order stays in the same status too long.', 'custom-order-statuses-woocommerce')}
                             control={adminForm.control}
                             fields={[
-                                { 
-                                    name: 'enabled', defaultValue: false, 
+                                {
+                                    name: 'enabled', defaultValue: false,
                                     label: __('Enable admin alerts', 'custom-order-statuses-woocommerce'),
-                                    render: (f) => <ToggleControl checked={false} onChange={() => {}} disabled __nextHasNoMarginBottom /> 
+                                    render: (f) => <ToggleControl checked={false} onChange={() => {}} disabled __nextHasNoMarginBottom />
                                 },
-                                { 
-                                    name: 'statuses', defaultValue: [], 
+                                {
+                                    name: 'statuses', defaultValue: [],
                                     label: __('Statuses', 'custom-order-statuses-woocommerce'),
                                     render: (f) => (
                                         <div style={{ display: 'flex', alignItems: 'center', marginLeft: '-32px' }}>
                                             <HelpTip message={__('Custom statuses to send emails. Leave blank to send emails on all custom statuses.', 'custom-order-statuses-woocommerce')} className={'cos-select-helptip'}/>
-                                            <Select 
-                                                isMulti 
+                                            <Select
+                                                isMulti
                                                 options={statusOptions}
                                                 value={[]}
                                                 isDisabled
                                                 placeholder={__('Select statuses…', 'custom-order-statuses-woocommerce')}
-                                                classNamePrefix="cos-select" 
+                                                classNamePrefix="cos-select"
                                             />
                                         </div>
                                     ),
                                 },
-                                { 
-                                    name: 'interval_time', defaultValue: 1, 
+                                {
+                                    name: 'interval_time', defaultValue: 1,
                                     label: __('Send after', 'custom-order-statuses-woocommerce'),
                                     render: (f) => (
                                         <div style={{ display: 'flex', marginLeft: '-32px' }}>
@@ -307,30 +310,30 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                                         </div>
                                     ),
                                 },
-                                { 
-                                    name: 'interval', defaultValue: 'days', 
+                                {
+                                    name: 'interval', defaultValue: 'days',
                                     label: __('Time unit', 'custom-order-statuses-woocommerce'),
                                     render: (f) => (
                                         <div style={{ display: 'flex', marginLeft: '-32px' }}>
                                             <HelpTip message={__('Select time unit to send admin email everytime.', 'custom-order-statuses-woocommerce')} className={'cos-select-helptip'}/>
-                                            <SelectControl 
-                                                value={ADMIN_DISABLED_VALUES.interval} 
-                                                onChange={() => {}} 
+                                            <SelectControl
+                                                value={ADMIN_DISABLED_VALUES.interval}
+                                                onChange={() => {}}
                                                 options={[
                                                     { label: __('Minutes', 'custom-order-statuses-woocommerce'), value: 'minutes' },
                                                     { label: __('Hours', 'custom-order-statuses-woocommerce'), value: 'hours' },
                                                     { label: __('Days', 'custom-order-statuses-woocommerce'), value: 'days' },
                                                     { label: __('Weeks', 'custom-order-statuses-woocommerce'), value: 'weeks' },
                                                     { label: __('Months', 'custom-order-statuses-woocommerce'), value: 'months' },
-                                                ]} 
+                                                ]}
                                                 disabled
-                                                __nextHasNoMarginBottom 
+                                                __nextHasNoMarginBottom
                                             />
                                         </div>
-                                    ) 
+                                    )
                                 },
-                                { 
-                                    name: 'address', defaultValue: '', 
+                                {
+                                    name: 'address', defaultValue: '',
                                     label: __('Email address', 'custom-order-statuses-woocommerce'),
                                     render: (f) => (
                                         <div style={{ display: 'flex', marginLeft: '-32px'}}>
@@ -339,20 +342,20 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                                         </div>
                                     ),
                                 },
-                                { 
-                                    name: 'subject', defaultValue: '', 
+                                {
+                                    name: 'subject', defaultValue: '',
                                     label: __('Email subject', 'custom-order-statuses-woocommerce'),
-                                    render: (f) => <InputControl value={ADMIN_DISABLED_VALUES.subject} disabled help={<ShortcodeHelp codes={ADMIN_CODES} />} /> 
+                                    render: (f) => <InputControl value={ADMIN_DISABLED_VALUES.subject} disabled help={<ShortcodeHelp codes={ADMIN_CODES} />} />
                                 },
-                                { 
-                                    name: 'heading', defaultValue: '', 
+                                {
+                                    name: 'heading', defaultValue: '',
                                     label: __('Email heading', 'custom-order-statuses-woocommerce'),
-                                    render: (f) => <InputControl value={ADMIN_DISABLED_VALUES.heading} disabled help={<ShortcodeHelp codes={ADMIN_CODES} />} /> 
+                                    render: (f) => <InputControl value={ADMIN_DISABLED_VALUES.heading} disabled help={<ShortcodeHelp codes={ADMIN_CODES} />} />
                                 },
-                                { 
-                                    name: 'content', defaultValue: '', 
+                                {
+                                    name: 'content', defaultValue: '',
                                     label: __('Email content', 'custom-order-statuses-woocommerce'),
-                                    render: (f) => <TextareaControl value={ADMIN_DISABLED_VALUES.content} disabled rows={8} help={<ShortcodeHelp codes={ADMIN_CODES} />} __nextHasNoMarginBottom /> 
+                                    render: (f) => <TextareaControl value={ADMIN_DISABLED_VALUES.content} disabled rows={8} help={<ShortcodeHelp codes={ADMIN_CODES} />} __nextHasNoMarginBottom />
                                 },
                             ]}
                         />
