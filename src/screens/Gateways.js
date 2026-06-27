@@ -19,13 +19,13 @@ function Gateways({ noticeOperations, noticeUI }) {
     const [orderStatuses, setOrderStatuses] = useState([]);
     const [values, setValues] = useState({});
 
-    const { 
-        settings, 
+    const {
+        settings,
         options,
         isLoading: globalLoading,
         loadedSections,
         fetchSection,
-        updateSettingsData 
+        updateSettingsData
     } = useSettings();
 
     const [isDataReady, setIsDataReady] = useState(() => {
@@ -63,10 +63,10 @@ function Gateways({ noticeOperations, noticeUI }) {
         try {
             await resetSection('gateways');
             setValues({});
-            
+
             const current = settings || {};
             updateSettingsData('settings', { ...current, gateways: {} });
-            
+
             noticeOperations.removeAllNotices();
             noticeOperations.createNotice({
                 status: 'success',
@@ -89,7 +89,7 @@ function Gateways({ noticeOperations, noticeUI }) {
             const current = settings || {};
             await updateSettings({ ...current, gateways: values });
             updateSettingsData('settings', { ...current, gateways: values });
-            
+
             noticeOperations.removeAllNotices();
             noticeOperations.createNotice({
                 status: 'success',
@@ -114,8 +114,6 @@ function Gateways({ noticeOperations, noticeUI }) {
 
     return (
         <VStack style={{ marginTop: '30px' }}>
-            {noticeUI}
-
             {isLoading ? (
                 <div style={{ padding: '40px', textAlign: 'center' }}>
                     <Spinner style={{ width: '30px', height: '30px' }} />
@@ -166,45 +164,29 @@ function Gateways({ noticeOperations, noticeUI }) {
                         </CardBody>
                     </Card>
 
-                    <Card>
-                        <CardHeader>
-                            <VStack spacing={2}>
-                                <Heading level={4}>{__('Reset Settings', 'custom-order-statuses-woocommerce')}</Heading>
-                            </VStack>
-                        </CardHeader>
-                        <CardBody>
-                            <table className="cos-settings-table">
-                                <colgroup>
-                                    <col className="cos-settings-table__label-col" />
-                                    <col className="cos-settings-table__field-col" />
-                                </colgroup>
-                                <tbody>
-                                    <tr className="cos-settings-table__row">
-                                        <td className="cos-settings-table__field">
-                                            <Button variant="secondary" type="button" onClick={() => setIsResetOpen(true)}>
-                                                {__('Reset Settings', 'custom-order-statuses-woocommerce')}
-                                            </Button>
-                                            <ConfirmDialog
-                                                isOpen={isResetOpen}
-                                                cancelButtonText={__('Cancel', 'custom-order-statuses-woocommerce')}
-                                                confirmButtonText={__('Reset', 'custom-order-statuses-woocommerce')}
-                                                onCancel={() => setIsResetOpen(false)}
-                                                onConfirm={handleReset}
-                                            >
-                                                {__('Reset all gateway status settings to defaults?', 'custom-order-statuses-woocommerce')}
-                                            </ConfirmDialog>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </CardBody>
-                    </Card>
-
+                    {/* Button row: Save + Reset */}
                     <HStack spacing={3} expanded={false} justify="left">
                         <Button variant="primary" type="button" onClick={handleSave}>
                             {__('Save Changes', 'custom-order-statuses-woocommerce')}
                         </Button>
+                        <Button variant="secondary" type="button" onClick={() => setIsResetOpen(true)}>
+                            {__('Reset Settings', 'custom-order-statuses-woocommerce')}
+                        </Button>
                     </HStack>
+
+                    {/* Notice UI placed below the buttons */}
+                    {noticeUI}
+
+                    {/* Confirm Dialog for Reset */}
+                    <ConfirmDialog
+                        isOpen={isResetOpen}
+                        cancelButtonText={__('Cancel', 'custom-order-statuses-woocommerce')}
+                        confirmButtonText={__('Reset', 'custom-order-statuses-woocommerce')}
+                        onCancel={() => setIsResetOpen(false)}
+                        onConfirm={handleReset}
+                    >
+                        {__('Reset all gateway status settings to defaults?', 'custom-order-statuses-woocommerce')}
+                    </ConfirmDialog>
                 </VStack>
             )}
 
