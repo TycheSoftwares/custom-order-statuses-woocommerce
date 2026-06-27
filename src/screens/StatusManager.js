@@ -19,6 +19,7 @@ import {
     __experimentalText as Text,
     __experimentalHeading as Heading,
     __experimentalConfirmDialog as ConfirmDialog,
+    ExternalLink, // ✅ added for inline notice
 } from '@wordpress/components';
 import { useForm } from 'react-hook-form';
 import SettingsCard from '../components/SettingsCard';
@@ -72,31 +73,18 @@ const UPGRADE_URL = 'https://www.tychesoftwares.com/products/custom-order-status
 
 function ProInlineNotice() {
     return (
-        <div style={{
-            display      : 'inline-flex',
-            alignItems   : 'center',
-            gap          : '6px',
-            marginTop    : '6px',
-            padding      : '8px 10px',
-            background   : '#fef9ec',
-            borderLeft   : '2px solid #f0c040',
-            fontSize     : '12px',
-            color        : '#1d2327',
-            lineHeight   : 1.4,
-        }}>
-            <span>
-                { __( 'This option is only available in the Pro version.', 'custom-order-statuses-woocommerce' ) }
-                { ' ' }
-                <a
-                    href={ UPGRADE_URL }
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: '#2271b1', fontWeight: 600, textDecoration: 'underline' }}
-                >
-                    { __( 'Upgrade to Pro', 'custom-order-statuses-woocommerce' ) }
-                </a>
+        <ExternalLink
+            href={ UPGRADE_URL }
+            style={{
+                textDecoration: 'none',
+                color: '#2271b1',
+                fontWeight: 600
+            }}
+        >
+            <span style={{ textDecoration: 'underline' }}>
+                { __( 'Upgrade to Pro', 'custom-order-statuses-woocommerce' ) }
             </span>
-        </div>
+        </ExternalLink>
     );
 }
 
@@ -182,20 +170,20 @@ function StatusManager({ noticeOperations, noticeUI }) {
 
     const onSubmit = async (data) => {
         if (!data.title?.trim()) {
-            noticeOperations.createNotice({ 
-                status: 'error', 
-                content: __('Please enter a title.', 'custom-order-statuses-woocommerce') 
+            noticeOperations.createNotice({
+                status: 'error',
+                content: __('Please enter a title.', 'custom-order-statuses-woocommerce')
             });
             return;
         }
         if (!data.slug?.trim()) {
-            noticeOperations.createNotice({ 
-                status: 'error', 
-                content: __('Please enter a slug.', 'custom-order-statuses-woocommerce') 
+            noticeOperations.createNotice({
+                status: 'error',
+                content: __('Please enter a slug.', 'custom-order-statuses-woocommerce')
             });
             return;
         }
-        
+
         setShowLoader(true);
         try {
             // Only core fields are saved; advanced fields forced to empty/false
@@ -462,7 +450,7 @@ function StatusManager({ noticeOperations, noticeUI }) {
                                 <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #f0f0f0' }}>
                                     <ToggleControl
                                         label={__('Active', 'custom-order-statuses-woocommerce')}
-                                        help={watch('post_status') === 'publish' 
+                                        help={watch('post_status') === 'publish'
                                             ? __('Status is active and available for use.', 'custom-order-statuses-woocommerce')
                                             : __('Status is inactive (draft) and not available for use.', 'custom-order-statuses-woocommerce')}
                                         checked={watch('post_status') === 'publish'}
@@ -492,30 +480,53 @@ function StatusManager({ noticeOperations, noticeUI }) {
                                     { name: 'icon_code', label: __('Icon', 'custom-order-statuses-woocommerce'), render: (f) => <IconPicker value={f.value ?? ''} onChange={f.onChange} /> },
                                     { name: 'color', label: __('Status Color', 'custom-order-statuses-woocommerce'), render: (f) => <input type="color" value={f.value ?? '#000000'} onChange={(e) => f.onChange(e.target.value)} style={{ width: '80px', height: '36px', padding: '2px', border: '1px solid #8c8f94', borderRadius: '4px', cursor: 'pointer' }} /> },
                                     { name: 'text_color', label: __('Text Color', 'custom-order-statuses-woocommerce'), render: (f) => <input type="color" value={f.value ?? '#ffffff'} onChange={(e) => f.onChange(e.target.value)} style={{ width: '80px', height: '36px', padding: '2px', border: '1px solid #8c8f94', borderRadius: '4px', cursor: 'pointer' }} /> },
+                                    {
+                                        name: '_color_notice',
+                                        defaultValue: false,
+                                        render: () => (
+                                            <div>
+                                                <span>
+                                                    <i>
+                                                        {__('* Please enable colors for status column from ', 'custom-order-statuses-woocommerce')}
+                                                        <a href="#general" style={{ color: '#2271b1', textDecoration: 'underline' }}>
+                                                            {__('here', 'custom-order-statuses-woocommerce')}
+                                                        </a>
+                                                        {__(' if it is not enabled.', 'custom-order-statuses-woocommerce')}
+                                                    </i>
+                                                </span>
+                                            </div>
+                                        ),
+                                    },
                                 ]}
                             />
 
                             {/* Stock & Inventory – Pro only (disabled) */}
                             <SettingsCard
                                 heading={__('Stock & Inventory', 'custom-order-statuses-woocommerce')}
-                                headingExtra={<ProNotice feature={__('Stock management', 'custom-order-statuses-woocommerce')} />}
                                 control={control}
                                 fields={[{
                                     name: 'reduce_stock',
                                     label: __('Stock update', 'custom-order-statuses-woocommerce'),
                                     render: (f) => (
-                                        <SelectControl
-                                            value=""
-                                            onChange={() => {}}
-                                            options={[
-                                                { label: __('No stock change', 'custom-order-statuses-woocommerce'), value: '' },
-                                                { label: __('Increase Stock Level', 'custom-order-statuses-woocommerce'), value: 'increase' },
-                                                { label: __('Decrease Stock Level', 'custom-order-statuses-woocommerce'), value: 'decrease' },
-                                            ]}
-                                            disabled
-                                            help={__('When the order status changes to this state it will increase/decrease the stock as per the setting below.', 'custom-order-statuses-woocommerce')}
-                                            __nextHasNoMarginBottom
-                                        />
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                <div style={{ flex: 1 }}>
+                                                    <SelectControl
+                                                        value=""
+                                                        onChange={() => {}}
+                                                        options={[
+                                                            { label: __('No stock change', 'custom-order-statuses-woocommerce'), value: '' },
+                                                            { label: __('Increase Stock Level', 'custom-order-statuses-woocommerce'), value: 'increase' },
+                                                            { label: __('Decrease Stock Level', 'custom-order-statuses-woocommerce'), value: 'decrease' },
+                                                        ]}
+                                                        disabled
+                                                        help={__('When the order status changes to this state it will increase/decrease the stock as per the setting below.', 'custom-order-statuses-woocommerce')}
+                                                        __nextHasNoMarginBottom
+                                                    />
+                                                </div>
+                                                <ProInlineNotice />
+                                            </div>
+                                        </div>
                                     ),
                                 }]}
                             />
@@ -562,11 +573,11 @@ function StatusManager({ noticeOperations, noticeUI }) {
                                 control={control}
                                 fields={[
                                     { name: 'email_enabled', label: __('Send email notification', 'custom-order-statuses-woocommerce'), render: () => <ToggleControl checked={false} disabled __nextHasNoMarginBottom /> },
-                                    { name: 'email_address', label: __('Email address', 'custom-order-statuses-woocommerce'), render: () => <TextControl value="" disabled placeholder="customer@example.com" __nextHasNoMarginBottom /> },
-                                    { name: 'email_bcc', label: __('BCC', 'custom-order-statuses-woocommerce'), render: () => <TextControl value="" disabled placeholder="admin@example.com" __nextHasNoMarginBottom /> },
-                                    { name: 'email_subject', label: __('Email subject', 'custom-order-statuses-woocommerce'), render: () => <TextControl value="" disabled help={<ShortcodeHelp codes={EMAIL_SUBJECT_CODES} />} __nextHasNoMarginBottom /> },
-                                    { name: 'email_heading', label: __('Email heading', 'custom-order-statuses-woocommerce'), render: () => <TextControl value="" disabled help={<ShortcodeHelp codes={EMAIL_SUBJECT_CODES} />} __nextHasNoMarginBottom /> },
-                                    { name: 'email_content', label: __('Email content', 'custom-order-statuses-woocommerce'), render: () => <TextareaControl value="" disabled rows={6} help={<ShortcodeHelp codes={EMAIL_CONTENT_CODES} />} __nextHasNoMarginBottom /> },
+                                    { name: 'email_address', label: __('Email address', 'custom-order-statuses-woocommerce'), render: () => <TextControl value="" disabled placeholder="customer@example.com" __nextHasNoMarginBottom style={{ opacity: 0.6 }} /> },
+                                    { name: 'email_bcc', label: __('BCC', 'custom-order-statuses-woocommerce'), render: () => <TextControl value="" disabled placeholder="admin@example.com" __nextHasNoMarginBottom style={{ opacity: 0.6 }} /> },
+                                    { name: 'email_subject', label: __('Email subject', 'custom-order-statuses-woocommerce'), render: () => <TextControl value="" disabled help={<ShortcodeHelp codes={EMAIL_SUBJECT_CODES} />} __nextHasNoMarginBottom style={{ opacity: 0.6 }} /> },
+                                    { name: 'email_heading', label: __('Email heading', 'custom-order-statuses-woocommerce'), render: () => <TextControl value="" disabled help={<ShortcodeHelp codes={EMAIL_SUBJECT_CODES} />} __nextHasNoMarginBottom style={{ opacity: 0.6 }} /> },
+                                    { name: 'email_content', label: __('Email content', 'custom-order-statuses-woocommerce'), render: () => <TextareaControl value="" disabled rows={6} help={<ShortcodeHelp codes={EMAIL_CONTENT_CODES} />} __nextHasNoMarginBottom style={{ opacity: 0.6 }} /> },
                                 ]}
                             />
 
