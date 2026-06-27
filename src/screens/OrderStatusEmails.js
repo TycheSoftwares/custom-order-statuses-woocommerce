@@ -197,8 +197,6 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
 
     return (
         <VStack style={{ marginTop: '30px' }}>
-            {noticeUI}
-
             {isLoading ? (
                 <div style={{ padding: '40px', textAlign: 'center' }}>
                     <Spinner style={{ width: '30px', height: '30px' }} />
@@ -361,20 +359,20 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                         />
                     </div>
 
-                    {/* ── Reset and Save buttons (only for Customer Email section) ── */}
-                    <SettingsCard
-                        heading={__('Reset Customer Email Settings', 'custom-order-statuses-woocommerce')}
-                        control={emailForm.control}
-                        fields={[{
-                            name: '_reset', defaultValue: false,
-                            render: () => (
-                                <Button variant="secondary" type="button" onClick={() => setIsResetOpen(true)}>
-                                    {__('Reset Customer Email Settings', 'custom-order-statuses-woocommerce')}
-                                </Button>
-                            ),
-                        }]}
-                    />
+                    {/* ── Button row: Save + Reset ── */}
+                    <HStack spacing={3} expanded={false} justify="left">
+                        <Button variant="primary" type="button" onClick={handleSave}>
+                            {__('Save Changes', 'custom-order-statuses-woocommerce')}
+                        </Button>
+                        <Button variant="secondary" type="button" onClick={() => setIsResetOpen(true)}>
+                            {__('Reset Customer Email Settings', 'custom-order-statuses-woocommerce')}
+                        </Button>
+                    </HStack>
 
+                    {/* Notice UI placed below the buttons */}
+                    {noticeUI}
+
+                    {/* Confirm Dialog for Reset */}
                     <ConfirmDialog
                         isOpen={isResetOpen}
                         cancelButtonText={__('Cancel', 'custom-order-statuses-woocommerce')}
@@ -384,12 +382,6 @@ function OrderStatusEmails({ noticeOperations, noticeUI }) {
                     >
                         {__('Reset Customer Email settings to defaults?', 'custom-order-statuses-woocommerce')}
                     </ConfirmDialog>
-
-                    <HStack spacing={3} expanded={false} justify="left">
-                        <Button variant="primary" type="button" onClick={handleSave}>
-                            {__('Save Changes', 'custom-order-statuses-woocommerce')}
-                        </Button>
-                    </HStack>
                 </VStack>
             )}
 

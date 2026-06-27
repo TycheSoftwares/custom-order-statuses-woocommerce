@@ -184,8 +184,6 @@ function General({ noticeOperations, noticeUI }) {
 
     return (
         <VStack style={{ marginTop: '30px' }}>
-            {noticeUI}
-
             {isLoading ? (
                 <div style={{ padding: '40px', textAlign: 'center' }}>
                     <Spinner style={{ width: '30px', height: '30px' }} />
@@ -414,29 +412,10 @@ function General({ noticeOperations, noticeUI }) {
                         />
 
                         <SettingsCard
-                            heading={__('Reset Settings', 'custom-order-statuses-woocommerce')}
+                            heading={__('Usage Data Tracking', 'custom-order-statuses-woocommerce')}
                             control={control}
                             className="cos-general-settings"
                             fields={[
-                                {
-                                    name: '_reset', defaultValue: false,
-                                    render: () => (
-                                        <>
-                                            <Button variant="secondary" onClick={() => setIsDialogOpen(true)}>
-                                                {__('Reset Settings', 'custom-order-statuses-woocommerce')}
-                                            </Button>
-                                            <ConfirmDialog
-                                                isOpen={isDialogOpen}
-                                                cancelButtonText={__('Cancel', 'custom-order-statuses-woocommerce')}
-                                                confirmButtonText={__('Reset', 'custom-order-statuses-woocommerce')}
-                                                onCancel={() => setIsDialogOpen(false)}
-                                                onConfirm={onReset}
-                                            >
-                                                {__('Are you sure you want to reset General settings to defaults?', 'custom-order-statuses-woocommerce')}
-                                            </ConfirmDialog>
-                                        </>
-                                    ),
-                                },
                                 {
                                     name: 'ts_reset_tracking', defaultValue: false,
                                     render: () => (
@@ -459,12 +438,29 @@ function General({ noticeOperations, noticeUI }) {
                             ]}
                         />
 
+                        {/* Button row: Save + Reset Settings */}
                         <HStack spacing={3} expanded={false} justify="left">
                             <Button variant="primary" type="submit">
                                 {__('Save Changes', 'custom-order-statuses-woocommerce')}
                             </Button>
+                            <Button variant="secondary" onClick={() => setIsDialogOpen(true)}>
+                                {__('Reset Settings', 'custom-order-statuses-woocommerce')}
+                            </Button>
                         </HStack>
 
+                        {/* Notice UI placed below the buttons */}
+                        {noticeUI}
+
+                        {/* Confirm Dialog for Reset Settings (general reset) */}
+                        <ConfirmDialog
+                            isOpen={isDialogOpen}
+                            cancelButtonText={__('Cancel', 'custom-order-statuses-woocommerce')}
+                            confirmButtonText={__('Reset', 'custom-order-statuses-woocommerce')}
+                            onCancel={() => setIsDialogOpen(false)}
+                            onConfirm={onReset}
+                        >
+                            {__('Are you sure you want to reset General settings to defaults?', 'custom-order-statuses-woocommerce')}
+                        </ConfirmDialog>
                     </VStack>
                 </form>
             )}

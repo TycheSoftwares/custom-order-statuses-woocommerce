@@ -202,7 +202,7 @@ if ( ! function_exists( 'cos_wc_hpos_enabled' ) ) {
  * @version 2.3.0
  * @since   2.3.0
  */
-if ( ! function_exists( 'cos_wc_hpos_enabled' ) ) {
+if ( ! function_exists( 'cos_pro_convert_number' ) ) {
 	function cos_pro_convert_number( $number ) {
 		if ( ( $number < 0 ) || ( $number > 999999999 ) ) {
 			$result = 'zero';
