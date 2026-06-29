@@ -202,8 +202,8 @@ if ( ! function_exists( 'cos_wc_hpos_enabled' ) ) {
  * @version 2.3.0
  * @since   2.3.0
  */
-if ( ! function_exists( 'cos_pro_convert_number' ) ) {
-	function cos_pro_convert_number( $number ) {
+if ( ! function_exists( 'cos_lite_convert_number' ) ) {
+	function cos_lite_convert_number( $number ) {
 		if ( ( $number < 0 ) || ( $number > 999999999 ) ) {
 			$result = 'zero';
 		}
@@ -222,13 +222,13 @@ if ( ! function_exists( 'cos_pro_convert_number' ) ) {
 		// Ones.
 		$result = '';
 		if ( $giga ) {
-			$result .= cos_pro_convert_number( $giga ) . 'Million';
+			$result .= cos_lite_convert_number( $giga ) . 'Million';
 		}
 		if ( $kilo ) {
-			$result .= ( empty( $result ) ? '' : ' ' ) . cos_pro_convert_number( $kilo ) . ' Thousand';
+			$result .= ( empty( $result ) ? '' : ' ' ) . cos_lite_convert_number( $kilo ) . ' Thousand';
 		}
 		if ( $hecto ) {
-			$result .= ( empty( $result ) ? '' : ' ' ) . cos_pro_convert_number( $hecto ) . ' Hundred';
+			$result .= ( empty( $result ) ? '' : ' ' ) . cos_lite_convert_number( $hecto ) . ' Hundred';
 		}
 		$ones = array( '', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eightteen', 'Nineteen' );
 		$tens = array( '', '', 'Twenty', 'Thirty', 'Fourty', 'Fifty', 'Sixty', 'Seventy', 'Eigthy', 'Ninety' );

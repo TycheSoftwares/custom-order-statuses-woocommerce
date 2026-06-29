@@ -114,7 +114,7 @@ if ( ! class_exists( 'Tyche_COS_Data_Tracking' ) ) :
 		 * Add tracker completed.
 		 */
 		public static function init_tracker_completed() {
-			header( 'Location: ' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_custom_order_statuses' ) );
+			header( 'Location: ' . admin_url( 'admin.php?page=wc-settings&tab=custom-order-statuses-for-woocommerce' ) );
 			exit;
 		}
 

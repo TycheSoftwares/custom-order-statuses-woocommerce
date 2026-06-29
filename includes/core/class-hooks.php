@@ -277,7 +277,7 @@ class Hooks {
 			$int_time   = $settings['admin_email']['interval_time'] ?? 1;
 			$int_period = $settings['admin_email']['interval']      ?? 'days';
 			if ( ! empty( $int_time ) && ! empty( $int_period ) ) { //phpcs:ignore
-			$schedule_key = 'every_' . strtolower( cos_pro_convert_number( $int_time ) ) . '_' . $int_period;
+			$schedule_key = 'every_' . strtolower( cos_lite_convert_number( $int_time ) ) . '_' . $int_period;
 			$interval     = 0;
 			switch ( $int_period ) {
 				case 'minutes':
