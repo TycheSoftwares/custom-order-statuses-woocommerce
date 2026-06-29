@@ -373,8 +373,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\Custom_Order_Status' ) ) :
 			// Interval time period options.
 			$int_period   = Hooks::cos_get_setting( 'admin_email', 'interval',      'days' );
 			$int_time     = Hooks::cos_get_setting( 'admin_email', 'interval_time', 1 );
-			$schedule_key = 'every_' . cos_pro_convert_number( $int_time ) . '_' . $int_period;
-			$sche_display = 'Every ' . cos_pro_convert_number( $int_time ) . ' ' . $int_period;
+			$schedule_key = 'every_' . cos_lite_convert_number( $int_time ) . '_' . $int_period;
+			$sche_display = 'Every ' . cos_lite_convert_number( $int_time ) . ' ' . $int_period;
 			$interval     = 0;
 			switch ( $int_period ) {
 				case 'minutes':
