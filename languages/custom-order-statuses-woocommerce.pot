@@ -2,20 +2,22 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Order Status for WooCommerce 2.10.0\n"
+"Project-Id-Version: Custom Order Status for WooCommerce 3.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-order-statuses-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-03T05:25:04+00:00\n"
+"POT-Creation-Date: 2026-06-30T04:43:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: custom-order-statuses-woocommerce\n"
 
 #. Plugin Name of the plugin
 #: custom-order-statuses-for-woocommerce.php
+#: build/settings.js:1
+#: src/App.js:50
 msgid "Custom Order Status for WooCommerce"
 msgstr ""
 
@@ -26,7 +28,7 @@ msgstr ""
 
 #. Description of the plugin
 #: custom-order-statuses-for-woocommerce.php
-msgid "Add custom order statuses to WooCommerce."
+msgid "Create and manage custom order statuses for WooCommerce."
 msgstr ""
 
 #. Author of the plugin
@@ -39,651 +41,1507 @@ msgstr ""
 msgid "https://www.tychesoftwares.com/"
 msgstr ""
 
-#: custom-order-statuses-for-woocommerce.php:44
-msgid "Unlock All"
+#: includes/admin/class-cpt.php:67
+msgid "Custom Order Status plugin has been updated to use custom post types. We highly recommend you to update the database so you can take advantage of the new features like setting a different email for each custom status."
 msgstr ""
 
-#. translators: Custom Order status.
-#: includes/class-alg-wc-custom-order-statuses-core.php:223
-msgid "Change order status to %s"
+#: includes/admin/class-cpt.php:71
+msgid "Update Now"
 msgstr ""
 
-#. translators: WC Order Number, New Status & Date on which the order was placed.
-#. translators: 1$s: site title, 2$s: order number, 3$s: status to, 4$s: order date
-#. translators: merge tags - order number, new status, order date.
-#: includes/class-alg-wc-custom-order-statuses-core.php:281
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:499
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:111
-msgid "[%1$s] Order #%2$s status changed to %3$s - %4$s"
-msgstr ""
-
-#. translators: New Order status.
-#. translators: $s: status to
-#. translators: Merge tags - new status.
-#: includes/class-alg-wc-custom-order-statuses-core.php:286
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:515
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:125
-msgid "Order status changed to %s"
-msgstr ""
-
-#. translators: WC Order Number, Old status, new status.
-#. translators: 1$s: order number, 2$s: status from, 3$s: status to
-#. translators: Merge tags - Order Number, old status, new status.
-#: includes/class-alg-wc-custom-order-statuses-core.php:292
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:531
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:134
-msgid "Order #%1$s status changed from %2$s to %3$s"
-msgstr ""
-
-#. translators: New Status.
-#: includes/class-alg-wc-custom-order-statuses-core.php:660
-msgid "Change status to %s"
-msgstr ""
-
-#. translators: custom status.
-#: includes/class-alg-wc-custom-order-statuses-core.php:688
-#: includes/class-alg-wc-custom-order-statuses-core.php:695
-msgid "Mark %s"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:42
-#: includes/class-alg-wc-custom-order-statuses-tool.php:43
-#: includes/settings/class-alg-wc-settings-custom-order-statuses.php:30
-msgid "Custom Order Status"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:95
-#: includes/class-alg-wc-custom-order-statuses-tool.php:215
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:379
-msgid "Slug"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:96
-#: includes/class-alg-wc-custom-order-statuses-tool.php:216
-msgid "Label"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:97
-#: includes/class-alg-wc-custom-order-statuses-tool.php:217
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:386
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:580
-msgid "Icon Code"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:98
-#: includes/class-alg-wc-custom-order-statuses-tool.php:218
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:392
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:581
-msgid "Color"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:99
-#: includes/class-alg-wc-custom-order-statuses-tool.php:219
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:396
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:582
-msgid "Text Color"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:100
-msgid "Actions"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:121
-#: includes/class-alg-wc-custom-order-statuses-tool.php:130
-msgid "Are you sure?"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:139
-msgid "This status can not be deleted as it's set to be the fallback status. Change 'Fallback Delete Order Status' to some other value in plugin's settings to delete this status."
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:143
-msgid "Delete"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:144
-msgid "Delete with fallback"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:145
-#: includes/class-alg-wc-custom-order-statuses-tool.php:190
-msgid "Edit"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:155
-msgid "Status Table"
-msgstr ""
-
-#. translators: plugin settings link.
-#: includes/class-alg-wc-custom-order-statuses-tool.php:159
-msgid "\"Delete with fallback\" button will delete custom status and change status for every order with that status to \"fallback status\". Fallback status can be set in <a href=\"%s\">plugin's general settings</a>. Please note - if you have large number of orders this may take longer."
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:190
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:76
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:83
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:155
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:176
-msgid "Add"
-msgstr ""
-
-#. translators: Icon page Link.
-#: includes/class-alg-wc-custom-order-statuses-tool.php:200
-msgid "You can check icon codes <a target=\"_blank\" href=\"%s\">here</a>"
-msgstr ""
-
-#. translators: WC status prefix.
-#: includes/class-alg-wc-custom-order-statuses-tool.php:204
-msgid "Without %s prefix"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:209
-msgid "Edit custom status"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:209
-msgid "Add new custom status"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:212
-msgid "Clear form"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:226
-msgid "Status"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:249
-msgid "<<Plugin settings"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:250
-msgid "Custom Order Status Tool"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:251
-msgid "The tool lets you add or delete any WooCommerce orders custom status."
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:279
-msgid "Status slug is empty. Status was not added!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:284
-msgid "Status slug is already present. Please use another slug name."
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:288
-msgid "The length of status slug must be 17 or less characters. Status was not added!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:291
-msgid "Status label is empty. Status was not added!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:298
-msgid "Duplicate slug. Status was not added!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:302
-msgid "Duplicate slug (default WooCommerce status). Status was not added!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:317
-msgid "New status has been successfully added!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:318
-msgid "Status was not added!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:336
-msgid "Status label is empty. Status was not edited!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:350
-msgid "Status has been successfully edited!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:352
-msgid "Status was not edited!"
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:386
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:640
-msgid "Status has been successfully deleted."
-msgstr ""
-
-#. translators: number of orders for which status has been changed.
-#: includes/class-alg-wc-custom-order-statuses-tool.php:389
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:643
-msgid "Status has been changed for %d orders."
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:392
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:646
-msgid "Delete failed."
-msgstr ""
-
-#: includes/class-alg-wc-custom-order-statuses-tool.php:395
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:649
-msgid "Delete failed (status not found)."
-msgstr ""
-
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:264
+#: includes/admin/class-cpt.php:177
 msgctxt "custom_order_status"
 msgid "Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:265
+#: includes/admin/class-cpt.php:178
 msgctxt "post type singular name"
 msgid "Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:266
+#: includes/admin/class-cpt.php:179
 msgctxt "admin menu"
 msgid "Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:267
+#: includes/admin/class-cpt.php:180
 msgctxt "add new on admin bar"
 msgid "Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:268
+#: includes/admin/class-cpt.php:181
 msgctxt "custom_order_status"
 msgid "Add New"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:269
+#: includes/admin/class-cpt.php:182
 msgid "Add New Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:270
+#: includes/admin/class-cpt.php:183
 msgid "New Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:271
+#: includes/admin/class-cpt.php:184
 msgid "Edit Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:272
+#: includes/admin/class-cpt.php:185
 msgid "View Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:273
+#: includes/admin/class-cpt.php:186
 msgid "All Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:274
+#: includes/admin/class-cpt.php:187
+#: build/settings.js:1
+#: src/screens/StatusManager.js:343
 msgid "Search Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:275
+#: includes/admin/class-cpt.php:188
 msgid "Parent Custom Order Status:"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:276
+#: includes/admin/class-cpt.php:189
 msgid "No Custom Order Status found."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:277
+#: includes/admin/class-cpt.php:190
 msgid "No Custom Order Status found in Trash."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:282
+#: includes/admin/class-cpt.php:195
 msgid "Description."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:354
-msgid "Status details"
+#: includes/admin/class-settings.php:26
+#: build/settings.js:1
+#: src/screens/StatusManager.js:300
+msgid "Custom Order Status"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:355
-msgid "General Settings "
+#: includes/admin/class-settings.php:51
+msgid "COS Pro: run %s to build the settings UI."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:356
-msgid "Email Settings"
+#: includes/api/class-api-base.php:50
+msgid "You do not have permission to manage Custom Order Status settings."
 msgstr ""
 
-#. translators: $s: wc string
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:381
-msgid "* Without %s prefix,"
+#: includes/api/class-api-license.php:67
+msgid "License key to activate."
 msgstr ""
 
-#. translators: $s: wc string
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:382
-msgid "17 characters max."
+#: includes/api/class-api-license.php:113
+msgid "Please enter a license key."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:388
-msgid "* You can check icon codes"
+#: includes/api/class-api-license.php:134
+msgid "Invalid response from the licensing server. Please try again."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:388
-msgid "here"
+#: includes/api/class-api-license.php:173
+msgid "No active license key found."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:402
-msgid "*Please enable colors for status column from <a href=\""
+#: includes/api/class-api-license.php:257
+msgid "Your license key has expired. Please renew your license."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:438
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:193
-msgid "Make custom status orders paid"
+#: includes/api/class-api-license.php:258
+msgid "Your license key has been disabled. Please contact support."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:442
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:145
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:186
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:194
-msgid "Enable"
+#: includes/api/class-api-license.php:259
+msgid "Invalid license key. Please check and try again."
 msgstr ""
 
-#. translators: %s: Processing and Completed status.
-#. translators: List of WC statuses which are paid.
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:447
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:199
-msgid "By default paid statuses are: %s."
+#: includes/api/class-api-license.php:260
+msgid "License key does not match this product."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:472
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:52
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:75
-msgid "Emails"
+#: includes/api/class-api-license.php:261
+msgid "Your license key is not active for this URL."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:477
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:76
-msgid "Enable section"
+#: includes/api/class-api-license.php:262
+msgid "License key does not match this product name."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:483
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:91
-msgid "Email address"
+#: includes/api/class-api-license.php:263
+msgid "Your license key has reached its activation limit."
 msgstr ""
 
-#. translators: $s: admin email
-#. translators: Comma seperated list of emails.
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:486
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:93
-msgid "Comma separated list of emails. Leave blank to send emails to admin (%s)."
+#: includes/api/class-api-license.php:267
+msgid "License activation failed. Please check your license key or contact support."
 msgstr ""
 
-#. translators: 1$s: customer email, 2$s admin email
-#. translators: Merge tags for customer & admin emails.
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:487
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:96
-msgid "Use %1$s to send email to the customer's billing email; %2$s to the admin's email."
+#: includes/api/class-api-options.php:60
+msgid "Product search keyword."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:491
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:106
-msgid "Email subject"
+#: includes/api/class-api-options.php:244
+msgid "%1$s (%2$s)"
 msgstr ""
 
-#. translators: $s: default values for the field
-#. translators: 1$s: default value of this field
-#. translators: Merge tags.
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:495
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:511
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:527
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:64
-msgid "Replaced values: %s."
+#: includes/api/class-api-options.php:261
+msgid "%1$s (Rest of World)"
 msgstr ""
 
-#. translators: $s: default values for the field
-#. translators: 1$s: default value of this field
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:495
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:511
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:527
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:67
-msgid "You can also use shortcodes here."
+#: includes/api/class-api-options.php:317
+msgid "Guest"
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:507
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:121
-msgid "Email heading"
+#: includes/api/class-api-rules.php:66
+msgid "Unique rule identifier."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:523
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:130
-msgid "Email content"
+#: includes/api/class-api-rules.php:170
+#: includes/api/class-api-rules.php:191
+#: includes/api/class-api-rules.php:230
+msgid "Rule not found."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:579
-msgid "Title"
+#: includes/api/class-api-rules.php:337
+msgid "Human-readable rule name."
 msgstr ""
 
-#: includes/class-alg-wc-custom-post-type-for-order-statuses.php:583
-msgid "Date"
+#: includes/api/class-api-settings.php:75
+msgid "Settings section key to reset."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:172
-msgid "I only needed the plugin for a short period."
+#: includes/api/class-api-settings.php:136
+msgid "Settings must be a valid object."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:178
-msgid "I found a better plugin."
+#. translators: %s: section key
+#: includes/api/class-api-settings.php:176
+msgid "Unknown settings section: %s"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:180
-msgid "Please let us have the plugin's name so that we can make improvements"
+#: includes/api/class-api-settings.php:399
+msgid "Plugin settings object."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
-msgid "The plugin is not working."
+#: includes/api/class-api-settings.php:419
+msgid "Full settings object to persist."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:186
-msgid "Please share what was faulty with the plugin so that we may get the issue fixed."
+#. translators: 1$s: site title, 2$s: order number, 3$s: status to, 4$s: order date
+#: includes/class-custom-order-status.php:452
+#: includes/core/class-hooks.php:898
+msgid "[%1$s] Order #%2$s status changed to %3$s - %4$s"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
-msgid "The plugin is causing issues on my site"
+#. translators: $s: status to
+#: includes/class-custom-order-status.php:455
+#: includes/core/class-hooks.php:905
+msgid "Order status changed to %s"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:192
-msgid "We’re sorry! Please tell us about the issues so that we can get them fixed."
+#. translators: 1$s: order number, 2$s: status from, 3$s: status to
+#: includes/class-custom-order-status.php:456
+#: includes/core/class-hooks.php:913
+msgid "Order #%1$s status changed from %2$s to %3$s"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
-msgid "Some features I need are not working as per my expectations"
+#: includes/class-custom-order-status.php:578
+msgid "Unlock All"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:198
-msgid "Please tell us about these features."
+#: includes/core/class-hooks.php:679
+msgid "Order status will be changed automatically to \"%s\" in %s %s."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
-msgid "The plugin is not compatible with another plugin/theme"
+#: includes/core/class-hooks.php:700
+msgid "Order status changed via scheduled action."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:204
-msgid "We’re sorry! We would like you to tell us the plugin/theme so that we can work on the compatibility."
+#: includes/core/class-hooks.php:704
+msgid "Scheduled status change to \"%s\" skipped. Current status is \"%s\", expected \"%s\"."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
-msgid "Other"
+#. translators: %s: order status
+#: includes/core/class-hooks.php:798
+msgid "Change order status to %s"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:214
-msgid "I can’t customize order status emails."
+#. translators: Name of the custom status.
+#: includes/core/class-hooks.php:1618
+msgid "Change status to %s"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:228
-msgid "If you have a moment, please let us know why you are deactivating:"
+#: includes/core/class-hooks.php:1643
+#: includes/core/class-hooks.php:1644
+msgid "Mark"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:239
-msgid "Skip & Deactivate"
+#: includes/tyche/components/plugin-tracking/class-tyche-cos-data-tracking.php:54
+msgid "This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:240
-msgid "Submit & Deactivate"
+#: build/settings.js:1
+#: src/components/ProNotice.js:18
+msgid "is only available in the Pro version."
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:241
-msgid "Cancel"
+#: build/settings.js:1
+#: src/components/ProNotice.js:22
+#: src/components/ProNotice.js:56
+#: src/screens/StatusManager.js:85
+msgid "Upgrade to Pro"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:254
-msgid "Please select a reason for deactivation!"
+#: build/settings.js:1
+#: src/components/ProNotice.js:33
+msgid "%s is only available in the Pro version."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:52
-msgid "Advanced"
+#: build/settings.js:1
+#: src/components/ProNotice.js:34
+msgid "This option is only available in the Pro version."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:64
-msgid "Advanced Options"
+#: build/settings.js:1
+#: src/screens/Gateways.js:73
+#: src/screens/General.js:142
+#: src/screens/OrderStatusEmails.js:183
+msgid "Settings reset to defaults."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:69
-msgid "Filters priority"
+#: build/settings.js:1
+#: src/screens/Gateways.js:78
+#: src/screens/General.js:147
+#: src/screens/OrderStatusEmails.js:188
+msgid "Reset failed."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-advanced.php:70
-msgid "This will set priority for WooCommerce filters used in plugin. Leave zero, if not sure."
+#: build/settings.js:1
+#: src/screens/General.js:162
+msgid "Tracking has been successfully reset."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:70
-msgid "Emails Options"
+#: build/settings.js:1
+#: src/screens/General.js:168
+msgid "Failed to reset tracking."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:82
-msgid "Statuses"
+#: build/settings.js:1
+#: src/screens/General.js:178
+msgid "No changes (WooCommerce default)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-emails.php:83
-msgid "Custom statuses to send emails. Leave blank to send emails on all custom statuses."
+#: build/settings.js:1
+#: src/screens/Gateways.js:96
+#: src/screens/General.js:117
+#: src/screens/OrderStatusEmails.js:159
+msgid "Settings saved successfully."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:52
-msgid "General"
+#: build/settings.js:1
+#: src/screens/Gateways.js:101
+#: src/screens/General.js:122
+#: src/screens/OrderStatusEmails.js:164
+msgid "Error saving settings."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:64
-msgid "General Options"
+#: build/settings.js:1
+#: src/screens/General.js:196
+msgid "Order Status Defaults"
 msgstr ""
 
-#. translators: Link to the page to create custom statuses.
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:68
-msgid "Use %s to create, edit and delete custom statuses."
+#: build/settings.js:1
+#: src/screens/General.js:197
+msgid "Choose default and fallback order statuses"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:70
-msgid "custom order statuses page"
-msgstr ""
-
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:75
-msgid "Add custom statuses to admin order bulk actions"
-msgstr ""
-
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:82
-msgid "Add custom statuses to admin reports"
-msgstr ""
-
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:89
+#: build/settings.js:1
+#: src/screens/General.js:203
 msgid "Default order status"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:90
+#: build/settings.js:1
+#: src/screens/General.js:206
 msgid "You can change the default order status here. However some payment gateways may change this status immediately on order creation. E.g. BACS gateway will change status to On-hold."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:91
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:100
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:109
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:118
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:127
-msgid "Plugin must be enabled to add custom statuses to the list."
+#: build/settings.js:1
+#: src/screens/General.js:211
+msgid "Set per-gateway defaults in the Status by Payments tab."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:96
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:105
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:114
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:123
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:132
-msgid "No changes"
+#: build/settings.js:1
+#: src/screens/General.js:220
+msgid "Apply fallback status when plugin is disabled"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:99
-msgid "Default order status for BACS (Direct bank transfer) payment method"
+#: build/settings.js:1
+#: src/screens/General.js:236
+msgid "Status when a custom status is deleted"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:108
-msgid "Default order status for Check payment method"
+#: build/settings.js:1
+#: src/screens/General.js:239
+msgid "When you delete some custom status, all orders with that status will be updated to this fallback status. Please note that all fallback status triggers (email etc.) will be activated."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:117
-msgid "Default order status for COD (Cash on delivery) payment method"
+#: build/settings.js:1
+#: src/screens/General.js:244
+msgid "Used when a custom status is removed."
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:126
-msgid "Default order status for Paypal payment method"
+#: build/settings.js:1
+#: src/screens/General.js:255
+msgid "Display Settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:135
-msgid "Fallback delete order status"
+#: build/settings.js:1
+#: src/screens/General.js:256
+msgid "Control how custom statuses appear across your store"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:136
-msgid "When you delete some custom status with \"Custom Order Statuses Tool\", all orders with that status will be updated to this fallback status. Please note that all fallback status triggers (email etc.) will be activated."
+#: build/settings.js:1
+#: src/screens/General.js:261
+msgid "Show in bulk actions"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:141
-msgid "No fallback"
+#: build/settings.js:1
+#: src/screens/General.js:270
+msgid "Show in reports"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:144
-msgid "Enable colors in status column"
+#: build/settings.js:1
+#: src/screens/General.js:279
+msgid "Show in order list actions"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:154
-msgid "Add custom statuses to admin order list action buttons"
+#: build/settings.js:1
+#: src/screens/General.js:289
+msgid "Show colors for action buttons"
 msgstr ""
 
-#. translators: Link to the Pro version.
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:160
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:170
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:181
-msgid "Get <a href=\"%s\" target=\"_blank\">Custom Order Status for WooCommerce Pro</a> to enable this option."
+#: build/settings.js:1
+#: src/screens/General.js:300
+msgid "Show in order preview actions"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:165
-msgid "Enable colors"
+#: build/settings.js:1
+#: src/screens/General.js:310
+msgid "Show colors in status column"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:175
-msgid "Add custom statuses to admin order preview action buttons"
+#: build/settings.js:1
+#: src/screens/General.js:319
+msgid "Show icons in status column"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:185
-msgid "Make custom status orders editable"
+#: build/settings.js:1
+#: src/screens/General.js:331
+msgid "Advanced Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-custom-order-statuses-settings-general.php:190
-msgid "Allows editing orders that have custom order statuses."
+#: build/settings.js:1
+#: src/screens/General.js:332
+msgid "Fine-tune how custom statuses behave across your store"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-custom-order-statuses.php:59
+#: build/settings.js:1
+#: src/screens/General.js:347
+msgid "Order Editing & Payments"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/General.js:354
+msgid "Allow editing of orders with custom status"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/General.js:367
+msgid "Mark orders with custom status as paid"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/General.js:373
+#: src/screens/StatusManager.js:546
+msgid "Default paid statuses: Processing, Completed."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/General.js:390
+msgid "Filters Priority"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/General.js:397
+msgid "Priority"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/General.js:400
+msgid "Sets priority for WooCommerce filters used in this plugin. Leave at 0 if unsure."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Gateways.js:173
+#: src/screens/General.js:447
 msgid "Reset Settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-custom-order-statuses.php:64
-msgid "Reset section settings"
+#: build/settings.js:1
+#: src/screens/Gateways.js:183
+#: src/screens/General.js:428
+#: src/screens/General.js:457
+#: src/screens/OrderStatusEmails.js:378
+#: src/screens/StatusManager.js:415
+#: src/screens/StatusManager.js:630
+msgid "Cancel"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-custom-order-statuses.php:65
+#: build/settings.js:1
+#: src/screens/Gateways.js:184
+#: src/screens/General.js:429
+#: src/screens/General.js:458
+#: src/screens/OrderStatusEmails.js:379
 msgid "Reset"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-custom-order-statuses.php:75
+#: build/settings.js:1
+#: src/screens/General.js:462
+msgid "Are you sure you want to reset General settings to defaults?"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/General.js:424
 msgid "Reset Usage Tracking"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-custom-order-statuses.php:76
-msgid "This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data."
+#: build/settings.js:1
+#: src/screens/General.js:433
+msgid "Are you sure you want to reset all usage tracking data?"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Gateways.js:170
+#: src/screens/General.js:444
+#: src/screens/OrderStatusEmails.js:365
+msgid "Save Changes"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/MultiDatePicker.js:95
+msgid "Cannot select past dates. Please select today or a future date."
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/MultiDatePicker.js:205
+msgid "Click the calendar to add dates to skip."
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/MultiDatePicker.js:206
+msgid "date(s) selected"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/MultiDatePicker.js:224
+msgid "Clear all"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/MultiDatePicker.js:230
+msgid "Selected dates shown above. Click × to remove."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:27
+msgid "Monday"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:28
+msgid "Tuesday"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:29
+msgid "Wednesday"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:30
+msgid "Thursday"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:31
+msgid "Friday"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:32
+msgid "Saturday"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:33
+msgid "Sunday"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:321
+#: src/screens/OrderStatusRules.js:36
+msgid "Minutes"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:322
+#: src/screens/OrderStatusRules.js:37
+msgid "Hours"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:323
+#: src/screens/OrderStatusRules.js:38
+msgid "Days"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:324
+#: src/screens/OrderStatusRules.js:39
+msgid "Weeks"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:45
+msgid "Example: Auto‑complete after 3 days (Pro feature)"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:132
+msgid "Custom Order Status Rules"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:138
+msgid "Order Status Rules"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:141
+msgid "Automatically move orders between statuses based on time, payment, shipping, and more."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:145
+msgid "Add New Rule"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:154
+msgid "Status"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:155
+#: src/screens/OrderStatusRules.js:218
+msgid "Rule Name"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:156
+msgid "From"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:157
+msgid "To"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:158
+msgid "Time Trigger"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:182
+#: src/screens/StatusManager.js:391
+msgid "Edit"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:186
+#: src/screens/OrderStatusRules.js:393
+#: src/screens/StatusManager.js:623
+msgid "Delete"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:201
+msgid "rule(s)"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:206
+msgid "Edit Rule (Pro Feature)"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:213
+msgid "Rule Details"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:223
+msgid "Rule active"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:230
+msgid "Status Transition"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:235
+msgid "From status"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:240
+msgid "To status"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:247
+msgid "Timing"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:252
+msgid "Delay"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:255
+msgid "Set it to zero for an immediate status update."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:262
+msgid "Unit"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:267
+msgid "Exclude days of week"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:270
+msgid "Ignored if empty, or if all seven days are selected."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:277
+msgid "Exclude specific dates"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:284
+msgid "Payment & Shipping"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:289
+msgid "Payment methods"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:292
+msgid "Required payment gateways."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:299
+msgid "Shipping methods"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:302
+msgid "Required shipping methods."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:311
+msgid "Products & Categories"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:316
+msgid "Products"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:319
+msgid "Apply only for orders with specific products."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:320
+msgid "Pro feature – upgrade"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:326
+msgid "Categories"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:329
+msgid "Apply only for orders with selected categories."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:338
+msgid "Order Amount & Quantity"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:343
+msgid "Min. order amount"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:346
+msgid "Minimum order amount."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:353
+msgid "Min. order quantity"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:356
+msgid "Minimum order quantity."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:365
+msgid "Filters"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:370
+msgid "User roles"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:373
+msgid "Apply only for specific user roles."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:380
+msgid "Countries"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:383
+msgid "Apply only for specific billing countries."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:397
+msgid "Update Rule"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusRules.js:400
+msgid "Close"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/ShortcodeHelp.js:12
+msgid "Available shortcodes:"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:66
+msgid "Leave blank for all custom statuses…"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:209
+msgid "Customer Email Notifications"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:210
+msgid "Notify customers on status change. Note: overridden by status-level email settings."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:215
+msgid "Enable customer notifications"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:220
+#: src/screens/OrderStatusEmails.js:286
+msgid "Statuses"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:223
+#: src/screens/OrderStatusEmails.js:289
+msgid "Custom statuses to send emails. Leave blank to send emails on all custom statuses."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:230
+#: src/screens/OrderStatusEmails.js:335
+#: src/screens/StatusManager.js:576
+msgid "Email address"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:233
+#: src/screens/OrderStatusEmails.js:338
+msgid "Comma separated list of emails. Leave blank to send emails to admin."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:234
+msgid "Use {customer_email} or {admin_email}. Leave blank for admin."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:240
+#: src/screens/StatusManager.js:577
+msgid "BCC"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:243
+msgid "Comma separated list of emails."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:253
+#: src/screens/OrderStatusEmails.js:345
+#: src/screens/StatusManager.js:578
+msgid "Email subject"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:258
+#: src/screens/OrderStatusEmails.js:350
+#: src/screens/StatusManager.js:579
+msgid "Email heading"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:263
+#: src/screens/OrderStatusEmails.js:355
+#: src/screens/StatusManager.js:580
+msgid "Email content"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:273
+#: src/screens/OrderStatusEmails.js:275
+msgid "Admin Alert Emails"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:276
+msgid "Alert the admin when an order stays in the same status too long."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:281
+msgid "Enable admin alerts"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:295
+#: src/screens/SMS.js:125
+msgid "Select statuses…"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:303
+msgid "Send after"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:306
+msgid "Send an alert after this many units of time."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:313
+msgid "Time unit"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:316
+msgid "Select time unit to send admin email everytime."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:325
+msgid "Months"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:339
+msgid "admin@example.com"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:368
+msgid "Reset Customer Email Settings"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/OrderStatusEmails.js:383
+msgid "Reset Customer Email settings to defaults?"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:87
+#: src/screens/StatusManager.js:587
+msgid "SMS Notifications"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:90
+#: src/screens/StatusManager.js:586
+msgid "SMS Settings"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:91
+msgid "Send SMS notifications via Twilio when order statuses change."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:96
+msgid "Enable SMS notifications"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:101
+msgid "Sender"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:102
+msgid "+1234567890"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:106
+msgid "Twilio Account SID"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:107
+msgid "ACxxxxxxxxxxxxxxxxxxxx"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:111
+msgid "Twilio Auth Token"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:112
+msgid "••••••••••••••••"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:116
+msgid "Apply to statuses"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:119
+msgid "Custom statuses to send SMS. All statuses (leave blank)."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/SMS.js:133
+msgid "Message"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Gateways.js:109
+msgid "WooCommerce default"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Gateways.js:127
+msgid "Default Status by Payment Gateway"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Gateways.js:130
+msgid "Applied right after payment is confirmed."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Gateways.js:137
+msgid "No payment gateways found."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Gateways.js:188
+msgid "Reset all gateway status settings to defaults?"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Labels.js:62
+#: src/screens/Labels.js:66
+msgid "Rename Order Status Labels"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/Labels.js:67
+msgid "Renames the displayed label only. Slugs stay the same."
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:193
+msgid "Add Icon"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:203
+msgid "Remove Icon"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:211
+msgid "Select Icon"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:222
+msgid "Search by name, label or keyword…"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:245
+msgid "Loading icons…"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:254
+msgid "icons"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:256
+msgid "Page"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:343
+msgid "No icons found for"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:360
+msgid "Prev"
+msgstr ""
+
+#: build/settings.js:1
+#: src/components/IconPicker.js:370
+msgid "Next"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:303
+msgid "Create and manage custom order statuses for your WooCommerce store."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:307
+#: src/screens/StatusManager.js:428
+msgid "Add New Order Status"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:316
+msgid "All"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:317
+#: src/screens/StatusManager.js:402
+msgid "Published"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:318
+#: src/screens/StatusManager.js:402
+msgid "Draft"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:351
+#: src/screens/StatusManager.js:416
+msgid "Move to Trash"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:353
+msgid "item(s) selected"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:365
+#: src/screens/StatusManager.js:444
+msgid "Status name"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:367
+#: src/screens/StatusManager.js:480
+msgid "Icon"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:368
+#: src/screens/StatusManager.js:481
+msgid "Status Color"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:369
+#: src/screens/StatusManager.js:482
+msgid "Text Color"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:371
+msgid "Date"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:378
+msgid "No custom order statuses found. Click \"Add New Order Status\" to create one."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:389
+msgid "ID: "
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:393
+msgid "Trash"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:397
+msgid "No Icon"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:411
+msgid "item(s)"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:243
+msgid "Status deleted."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:249
+msgid "Failed to delete status."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:421
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:421
+msgid "item(s)?"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:422
+msgid "Are you sure you want to delete this custom order status?"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:428
+msgid "Edit Order Status"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:435
+msgid "Update the order status details."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:436
+msgid "Give this status a name, icon, and color."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:217
+msgid "Status updated successfully."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:218
+msgid "Status created successfully."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:224
+msgid "Failed to save status."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:182
+msgid "Please enter a slug."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:175
+msgid "Please enter a title."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:447
+msgid "e.g., Ready to Ship"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:452
+msgid "Active"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:454
+msgid "Status is active and available for use."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:455
+msgid "Status is inactive (draft) and not available for use."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:465
+msgid "Status Details"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:470
+msgid "Slug * (URL identifier)"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:475
+msgid "No "
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:475
+msgid "prefix needed. Max 17 characters."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:490
+msgid "* Please enable colors for status column from "
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:492
+msgid "here"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:494
+msgid " if it is not enabled."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:505
+msgid "Stock & Inventory"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:509
+msgid "Stock update"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:518
+msgid "No stock change"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:519
+msgid "Increase Stock Level"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:520
+msgid "Decrease Stock Level"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:523
+msgid "When the order status changes to this state it will increase/decrease the stock as per the setting below."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:536
+msgid "Order Behaviour"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:541
+msgid "Mark as paid"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:553
+msgid "Allow customer cancellation"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:559
+msgid "Choose whether the customer can cancel orders when this status is applied or not."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:571
+msgid "Email Settings"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:572
+msgid "Email Notifications"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:575
+msgid "Send email notification"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:590
+msgid "Send SMS notification"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:593
+msgid "SMS content"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:599
+msgid "Replaced values:"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:605
+msgid "You can also use shortcodes here."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:609
+msgid "Note : For"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:611
+msgid " shortcode add your correct meta key in place of (meta-key)."
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:628
+msgid "Update"
+msgstr ""
+
+#: build/settings.js:1
+#: src/screens/StatusManager.js:628
+msgid "Save"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:35
+msgid "Status Manager"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:36
+msgid "Settings"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:37
+msgid "Rules"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:38
+msgid "Emails"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:39
+msgid "SMS"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:40
+msgid "Status by Payments"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:41
+msgid "Labels"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:53
+msgid "Create, manage and automate custom WooCommerce order statuses."
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:96
+msgid "Need support?"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:99
+msgid "We're always happy to help you."
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:103
+msgid "If this plugin helped you,"
+msgstr ""
+
+#: build/settings.js:1
+#: src/App.js:105
+msgid "please rate it"
+msgstr ""
+
+#: src/screens/General.js:415
+msgid "Usage Data Tracking"
 msgstr ""

@@ -1,4 +1,12 @@
 *** Custom Order Status for WooCommerce ***
+
+2026-06-30 - version 3.0.0
+* New - React-based admin interface for Status Manager, Settings, Rules, Emails, SMS, Status by Payments, Labels, and License pages.
+* Dev - Introduced a REST API layer (cos-pro/v1) for plugin settings operations.
+* Dev - All global plugin settings consolidated from individual alg_orders_custom_statuse_* wp_options rows into a single cos_pro_settings option.
+* Update - Compatibility with WordPress 7.0.
+* Update - Compatibility with WooCommerce 10.9.1.
+
 2026-02-24 - version 2.11.0
 * Fix – Corrected broken icon code reference link for custom order status icons in settings.
 

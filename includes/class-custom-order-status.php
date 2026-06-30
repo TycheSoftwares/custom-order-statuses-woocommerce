@@ -62,7 +62,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\Custom_Order_Status' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $plugin_version = '2.11.0';
+		public $plugin_version = '3.0.0';
 
         /**
          * Minimum version of WordPress required.
