@@ -3,7 +3,7 @@ Contributors: tychesoftwares
 Tags: woocommerce, order status, woo commerce, custom status
 Requires at least: 4.4
 Tested up to: 7.0
-Stable tag: 2.11.0
+Stable tag: 3.0.0
 Requires PHP: 7.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -104,6 +104,13 @@ This plugin lets you create, edit and delete [custom order statuses](https://www
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/docs/custom-order-status-for-woocommerce/custom-order-status-usage-tracking/).
 
 == Changelog ==
+
+= 3.0.0 - 30/06/2026 =
+* New - React-based admin interface for Status Manager, Settings, Rules, Emails, SMS, Status by Payments, Labels, and License pages.
+* Dev - Introduced a REST API layer (cos-pro/v1) for plugin settings operations.
+* Dev - All global plugin settings consolidated from individual alg_orders_custom_statuse_* wp_options rows into a single cos_pro_settings option.
+* Update - Compatibility with WordPress 7.0.
+* Update - Compatibility with WooCommerce 10.9.1.
 
 = 2.11.0 - 24/02/2026 =
 Fix – Corrected broken icon code reference link for custom order status icons in settings.
