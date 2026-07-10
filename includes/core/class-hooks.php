@@ -333,7 +333,7 @@ class Hooks {
 				case 'wc-pending':
 					$field_val           = self::cos_get_setting( 'labels', 'pending', '' );
 					$new_val             = ( $field_val ) ? $field_val : 'Pending payment';
-					$views['wc-pending'] = str_replace( 'Pending payment', __( 'woocommerce' ), $views['wc-pending'] );
+					$views['wc-pending'] = str_replace( 'Pending payment', __( $new_val, 'woocommerce' ), $views['wc-pending'] ); // phpcs:ignore
 					break;
 				case 'wc-processing':
 					$field_val              = self::cos_get_setting( 'labels', 'processing', '' );
@@ -419,38 +419,31 @@ class Hooks {
 			switch ( $key ) {
 				case 'wc-pending':
 					$field_val                    = self::cos_get_setting( 'labels', 'pending', '' );
-					$new_val                      = ( $field_val ) ? $field_val : 'Pending Payment';
-					$order_statuses['wc-pending'] = $new_val;
+					$order_statuses['wc-pending'] = $field_val ? $field_val : $status;
 					break;
 				case 'wc-processing':
 					$field_val                       = self::cos_get_setting( 'labels', 'processing', '' );
-					$new_val                         = ( $field_val ) ? $field_val : 'Processing';
-					$order_statuses['wc-processing'] = $new_val;
+					$order_statuses['wc-processing'] = $field_val ? $field_val : $status;
 					break;
 				case 'wc-on-hold':
 					$field_val                    = self::cos_get_setting( 'labels', 'on-hold', '' );
-					$new_val                      = ( $field_val ) ? $field_val : 'On Hold';
-					$order_statuses['wc-on-hold'] = $new_val;
+					$order_statuses['wc-on-hold'] = $field_val ? $field_val : $status;
 					break;
 				case 'wc-completed':
 					$field_val                      = self::cos_get_setting( 'labels', 'completed', '' );
-					$new_val                        = ( $field_val ) ? $field_val : 'Completed';
-					$order_statuses['wc-completed'] = $new_val;
+					$order_statuses['wc-completed'] = $field_val ? $field_val : $status;
 					break;
 				case 'wc-cancelled':
 					$field_val                      = self::cos_get_setting( 'labels', 'cancelled', '' );
-					$new_val                        = ( $field_val ) ? $field_val : 'Cancelled';
-					$order_statuses['wc-cancelled'] = $new_val;
+					$order_statuses['wc-cancelled'] = $field_val ? $field_val : $status;
 					break;
 				case 'wc-refunded':
 					$field_val                     = self::cos_get_setting( 'labels', 'refunded', '' );
-					$new_val                       = ( $field_val ) ? $field_val : 'Refunded';
-					$order_statuses['wc-refunded'] = $new_val;
+					$order_statuses['wc-refunded'] = $field_val ? $field_val : $status;
 					break;
 				case 'wc-failed':
 					$field_val                   = self::cos_get_setting( 'labels', 'failed', '' );
-					$new_val                     = ( $field_val ) ? $field_val : 'Failed';
-					$order_statuses['wc-failed'] = $new_val;
+					$order_statuses['wc-failed'] = $field_val ? $field_val : $status;
 					break;
 			}
 		}
