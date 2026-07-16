@@ -36,7 +36,6 @@ class Hooks {
 		// Admin.
 		if ( is_admin() ) {
 			// Woocommerce default order statuses label customization filters.
-			add_filter( 'wc_order_statuses', array( $this, 'alg_wc_order_statuses' ), PHP_INT_MAX, 1 );
 			add_filter( 'bulk_actions-edit-shop_order', array( $this, 'alg_default_bulk_actions' ), 1000, 1 );
 			add_filter( 'views_edit-shop_order', array( $this, 'alg_default_views' ), PHP_INT_MAX, 1 );
 
@@ -405,56 +404,6 @@ class Hooks {
 			}
 		}
 		return $actions;
-	}
-
-	/**
-	 * Function alg_wc_order_statuses.
-	 *
-	 * @param array $order_statuses - array of arguments.
-	 * @version 2.3.0
-	 * @since   2.3.0
-	 */
-	public function alg_wc_order_statuses( $order_statuses ) {
-		foreach ( $order_statuses as $key => $status ) {
-			switch ( $key ) {
-				case 'wc-pending':
-					$field_val                    = self::cos_get_setting( 'labels', 'pending', '' );
-					$new_val                      = ( $field_val ) ? $field_val : 'Pending Payment';
-					$order_statuses['wc-pending'] = $new_val;
-					break;
-				case 'wc-processing':
-					$field_val                       = self::cos_get_setting( 'labels', 'processing', '' );
-					$new_val                         = ( $field_val ) ? $field_val : 'Processing';
-					$order_statuses['wc-processing'] = $new_val;
-					break;
-				case 'wc-on-hold':
-					$field_val                    = self::cos_get_setting( 'labels', 'on-hold', '' );
-					$new_val                      = ( $field_val ) ? $field_val : 'On Hold';
-					$order_statuses['wc-on-hold'] = $new_val;
-					break;
-				case 'wc-completed':
-					$field_val                      = self::cos_get_setting( 'labels', 'completed', '' );
-					$new_val                        = ( $field_val ) ? $field_val : 'Completed';
-					$order_statuses['wc-completed'] = $new_val;
-					break;
-				case 'wc-cancelled':
-					$field_val                      = self::cos_get_setting( 'labels', 'cancelled', '' );
-					$new_val                        = ( $field_val ) ? $field_val : 'Cancelled';
-					$order_statuses['wc-cancelled'] = $new_val;
-					break;
-				case 'wc-refunded':
-					$field_val                     = self::cos_get_setting( 'labels', 'refunded', '' );
-					$new_val                       = ( $field_val ) ? $field_val : 'Refunded';
-					$order_statuses['wc-refunded'] = $new_val;
-					break;
-				case 'wc-failed':
-					$field_val                   = self::cos_get_setting( 'labels', 'failed', '' );
-					$new_val                     = ( $field_val ) ? $field_val : 'Failed';
-					$order_statuses['wc-failed'] = $new_val;
-					break;
-			}
-		}
-		return $order_statuses;
 	}
 
 	/**
