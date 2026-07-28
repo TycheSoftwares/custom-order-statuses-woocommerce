@@ -1,5 +1,8 @@
 *** Custom Order Status for WooCommerce ***
 
+2026-07-28 - version 3.0.1
+* Fix - Default WooCommerce order status labels are displayed in English instead of the translated labels.
+
 2026-06-30 - version 3.0.0
 * New - React-based admin interface for Status Manager, Settings, Rules, Emails, SMS, Status by Payments, Labels, and License pages.
 * Dev - Introduced a REST API layer (cos-pro/v1) for plugin settings operations.
