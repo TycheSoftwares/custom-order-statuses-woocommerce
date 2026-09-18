@@ -332,7 +332,7 @@ class Hooks {
 				case 'wc-pending':
 					$field_val           = self::cos_get_setting( 'labels', 'pending', '' );
 					$new_val             = ( $field_val ) ? $field_val : 'Pending payment';
-					$views['wc-pending'] = str_replace( 'Pending payment', __( 'woocommerce' ), $views['wc-pending'] );
+					$views['wc-pending'] = str_replace( 'Pending payment', __( $new_val, 'woocommerce' ), $views['wc-pending'] );
 					break;
 				case 'wc-processing':
 					$field_val              = self::cos_get_setting( 'labels', 'processing', '' );
