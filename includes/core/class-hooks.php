@@ -672,23 +672,35 @@ class Hooks {
 	 * @param int $post_id - Post Id.
 	 */
 	public function update_order_status_on_trash( $post_id ) {
+		if ( 'custom_order_status' !== get_post_type( $post_id ) ) {
+			return;
+		}
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			return;
+		}
 		$slug = get_post_meta( $post_id, 'status_slug', true );
+		if ( empty( $slug ) ) {
+			return;
+		}
+		$custom_statuses = alg_get_custom_order_statuses_from_cpt();
+		if ( ! isset( $custom_statuses[ 'wc-' . $slug ] ) ) {
+			return;
+		}
 
-		if ( ! empty( $slug ) ) {
-			$orders = wc_get_orders(
-				array(
-					'return' => 'ids',
-					'status' => $slug,
-				)
-			);
-			if ( ! empty( $orders ) ) {
-				foreach ( $orders as $order_id ) {
-					$order = wc_get_order( $order_id );
-					if ( $order && $order instanceof WC_Order ) {
-						$fallback_status = self::cos_get_setting( 'general', 'fallback_delete_status', 'on-hold' );
-						$order->update_status( $fallback_status );
-					}
-				}
+		$fallback_status = self::cos_get_setting( 'general', 'fallback_delete_status', 'on-hold' );
+
+		$orders = wc_get_orders(
+			array(
+				'return' => 'ids',
+				'status' => $slug,
+				'limit'  => -1,
+			)
+		);
+
+		foreach ( $orders as $order_id ) {
+			$order = wc_get_order( $order_id );
+			if ( $order instanceof WC_Order ) {
+				$order->update_status( $fallback_status );
 			}
 		}
 	}
