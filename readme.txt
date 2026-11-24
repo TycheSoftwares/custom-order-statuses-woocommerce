@@ -2,8 +2,8 @@
 Contributors: tychesoftwares
 Tags: woocommerce, order status, woo commerce, custom status
 Requires at least: 4.4
-Tested up to: 7.0.2
-Stable tag: 3.0.1
+Tested up to: 7.1.5
+Stable tag: 3.0.2
 Requires PHP: 7.4   
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -166,6 +166,10 @@ Yes. Custom statuses are available from WooCommerce Bulk Actions, making it easy
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/docs/custom-order-status-for-woocommerce/custom-order-status-usage-tracking/).
 
 == Changelog ==
+
+= 3.0.2 - 24/11/2026
+* Fix - Pending Payment order status filter is incorrectly displayed as “woocommerces” on the WooCommerce Orders page when Legacy Order Data Storage is enabled.
+* Fix - Missing authorization vulnerability in the trash handler allows unauthorized users to change order statuses. Thanks to @kta1kri for reporting this issue.
 
 = 3.0.1 - 28/07/2026 =
 * Fix - Default WooCommerce order status labels are displayed in English instead of the translated labels.
