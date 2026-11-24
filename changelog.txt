@@ -1,5 +1,9 @@
 *** Custom Order Status for WooCommerce ***
 
+2026-11-24 - version 3.0.2
+* Fix - Pending Payment order status filter is incorrectly displayed as “woocommerces” on the WooCommerce Orders page when Legacy Order Data Storage is enabled.
+* Fix - Missing authorization vulnerability in the trash handler allows unauthorized users to change order statuses. Thanks to @kta1kri for reporting this issue.
+
 2026-07-28 - version 3.0.1
 * Fix - Default WooCommerce order status labels are displayed in English instead of the translated labels.
 
